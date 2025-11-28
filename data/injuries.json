@@ -1,0 +1,146 @@
+[
+  {
+    "id": "zombie_bite",
+    "name": "Zombie Bite",
+    "description": "Bitten by infected. No cure. Countdown to turning.",
+    "severity": "fatal",
+    "daysUntilDeath": null,
+    "daysUntilTurn": 2,
+    "cure": null,
+    "cureAmount": 0,
+    "effects": {
+      "damagePerDay": 10,
+      "moralePerDay": -10,
+      "movementPenalty": 0,
+      "decisionPenalty": 0
+    },
+    "narration": "fever burning, skin turning gray, eyes glazing over"
+  },
+
+  {
+    "id": "infected_bite",
+    "name": "Infected Bite",
+    "description": "Deep bite wound, infected but not zombified. Deadly without treatment.",
+    "severity": "critical",
+    "daysUntilDeath": 3,
+    "daysUntilTurn": null,
+    "cure": "medicine",
+    "cureAmount": 2,
+    "effects": {
+      "damagePerDay": 5,
+      "moralePerDay": -5,
+      "movementPenalty": 0,
+      "decisionPenalty": 0
+    },
+    "narration": "fever burning, infection spreading from the wound"
+  },
+
+  {
+    "id": "broken_leg",
+    "name": "Broken Leg",
+    "description": "Fractured tibia. Needs rest to heal. Can't run.",
+    "severity": "serious",
+    "daysUntilDeath": null,
+    "daysUntilTurn": null,
+    "cure": "rest",
+    "healDays": 5,
+    "effects": {
+      "damagePerDay": 0,
+      "moralePerDay": -3,
+      "movementPenalty": 0.5,
+      "decisionPenalty": 0
+    },
+    "narration": "limping badly, every step agony, leg useless"
+  },
+
+  {
+    "id": "gunshot_wound",
+    "name": "Gunshot Wound",
+    "description": "Bullet wound, bleeding. Needs medicine fast.",
+    "severity": "critical",
+    "daysUntilDeath": 5,
+    "daysUntilTurn": null,
+    "cure": "medicine",
+    "cureAmount": 1,
+    "effects": {
+      "damagePerDay": 8,
+      "moralePerDay": -5,
+      "movementPenalty": 0,
+      "decisionPenalty": 0
+    },
+    "narration": "bleeding through bandages, pain radiating with every heartbeat"
+  },
+
+  {
+    "id": "concussion",
+    "name": "Concussion",
+    "description": "Head trauma. Confusion, dizziness. Heals with rest.",
+    "severity": "moderate",
+    "daysUntilDeath": null,
+    "daysUntilTurn": null,
+    "cure": "rest",
+    "healDays": 3,
+    "effects": {
+      "damagePerDay": 2,
+      "moralePerDay": -2,
+      "movementPenalty": 0,
+      "decisionPenalty": 0.10
+    },
+    "narration": "head pounding, vision blurry, can't think straight"
+  },
+
+  {
+    "id": "sprained_ankle",
+    "name": "Sprained Ankle",
+    "description": "Twisted ankle. Painful but not life-threatening.",
+    "severity": "minor",
+    "daysUntilDeath": null,
+    "daysUntilTurn": null,
+    "cure": "rest",
+    "healDays": 2,
+    "effects": {
+      "damagePerDay": 1,
+      "moralePerDay": -1,
+      "movementPenalty": 0.2,
+      "decisionPenalty": 0
+    },
+    "narration": "favoring one leg, wincing with each step"
+  },
+
+  {
+    "id": "deep_cut",
+    "name": "Deep Laceration",
+    "description": "Deep cut. Risk of infection without treatment.",
+    "severity": "moderate",
+    "daysUntilDeath": null,
+    "daysUntilTurn": null,
+    "cure": "medicine",
+    "cureAmount": 1,
+    "effects": {
+      "damagePerDay": 3,
+      "moralePerDay": -2,
+      "movementPenalty": 0,
+      "decisionPenalty": 0,
+      "infectionRisk": 0.20
+    },
+    "narration": "wound angry and red, oozing blood"
+  },
+
+  {
+    "id": "exhaustion",
+    "name": "Severe Exhaustion",
+    "description": "Pushed too hard. Need rest desperately.",
+    "severity": "moderate",
+    "daysUntilDeath": null,
+    "daysUntilTurn": null,
+    "cure": "rest",
+    "healDays": 2,
+    "effects": {
+      "damagePerDay": 2,
+      "moralePerDay": -3,
+      "movementPenalty": 0,
+      "decisionPenalty": 0.05
+    },
+    "narration": "barely staying upright, every movement feels like pushing through mud"
+  }
+]

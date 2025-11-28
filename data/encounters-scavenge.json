@@ -1,0 +1,1528 @@
+[
+  {
+    "id": "pharmacy_loot_01",
+    "region": ["east_coast", "midwest", "appalachian"],
+    "danger": "medium",
+    "location": "Abandoned Pharmacy",
+    "description": "The pharmacy door hangs open. Glass crunches underfoot. Shelves are ransacked but not completely empty. Something groans from the back room.",
+    "choices": [
+      {
+        "id": "quick_grab",
+        "text": "Quickly grab from front shelves",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "medicine": 1,
+          "food": 1,
+          "morale": 0,
+          "successNarration": "You snatch bandages and aspirin from the front shelves. A few protein bars sit near the register. You're out the door in thirty seconds."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "You reach for a shelf and it collapses, metal crashing loudly. The groaning intensifies. You grab nothing and sprint for the exit."
+        }
+      },
+      {
+        "id": "medic_systematic",
+        "text": "Search systematically for valuable medical supplies",
+        "requirements": {
+          "hasRole": "Medic"
+        },
+        "successChance": 0.85,
+        "success": {
+          "medicine": 3,
+          "morale": 10,
+          "successNarration": "The medic moves efficiently, checking behind the counter and prescription area. They find antibiotics, sterile gauze, and painkillers. Professional work."
+        },
+        "failure": {
+          "damage": "1d6",
+          "medicine": 1,
+          "morale": -5,
+          "failureNarration": "The medic searches quickly but knocks over a display. Groaning erupts behind a door. You grab one bottle of pills and retreat."
+        }
+      },
+      {
+        "id": "back_room_thorough",
+        "text": "Search the back room thoroughly",
+        "requirements": {},
+        "successChance": 0.45,
+        "success": {
+          "medicine": 4,
+          "morale": 10,
+          "successNarration": "You push into the storage room. It's dark and reeks, but the supply shelves are untouched. You load up and slip out before anything notices."
+        },
+        "failure": {
+          "injury": "deep_cut",
+          "morale": -15,
+          "failureNarration": "A jagged metal shelf tears into your hand. A second groan swells from the dark behind you. You retreat instantly, backing out through the doorway before anything lurches into view."
+        }
+      },
+      {
+        "id": "scout_first",
+        "text": "Check for danger before entering",
+        "requirements": {
+          "hasRole": "Scout"
+        },
+        "successChance": 0.9,
+        "success": {
+          "medicine": 2,
+          "food": 1,
+          "morale": 5,
+          "successNarration": "The scout peers through the back door first, confirming nothing is moving. You search safely and find medicine and canned food without incident."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -3,
+          "failureNarration": "Even with caution, something stirs when you open a cabinet. You grab what you can and leave quickly."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Too risky - move on",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -5,
+          "successNarration": "You stand in the doorway for five seconds, then back away. The groaning gets louder. Smart choice."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "gas_station_loot_01",
+    "region": ["east_coast", "midwest", "plains"],
+    "danger": "low",
+    "location": "Highway Gas Station",
+    "description": "The pumps are dry, but the convenience store might have supplies. A faded sign reads 'Cold Beer, Hot Coffee.' Both are long gone.",
+    "choices": [
+      {
+        "id": "search_store",
+        "text": "Search the convenience store",
+        "requirements": {},
+        "successChance": 0.75,
+        "success": {
+          "food": 3,
+          "morale": 5,
+          "successNarration": "The shelves are mostly empty, but you find beef jerky, chips, and bottled water in the back cooler. Small victories."
+        },
+        "failure": {
+          "food": 1,
+          "morale": -3,
+          "failureNarration": "You search for ten minutes and find one dented can of soup. Everything else is gone or spoiled."
+        }
+      },
+      {
+        "id": "check_trucks",
+        "text": "Check the abandoned trucks for fuel",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "fuel": 3,
+          "morale": 10,
+          "successNarration": "Two semi trucks sit in the lot. You siphon fuel from both tanks—enough to keep moving for days."
+        },
+        "failure": {
+          "morale": -5,
+          "failureNarration": "Every tank is bone dry. Someone beat you here weeks ago."
+        }
+      },
+      {
+        "id": "engineer_siphon",
+        "text": "Siphon fuel from underground tanks",
+        "requirements": {
+          "hasRole": "Engineer"
+        },
+        "successChance": 0.8,
+        "success": {
+          "fuel": 5,
+          "morale": 15,
+          "successNarration": "The engineer rigs a pump from spare parts. After twenty minutes, you're pulling fuel from the underground tanks. A mother lode."
+        },
+        "failure": {
+          "fuel": 1,
+          "morale": -5,
+          "failureNarration": "The underground tanks are contaminated—water and rust. You salvage a little usable fuel, but not much."
+        }
+      },
+      {
+        "id": "thorough_search",
+        "text": "Search everything - store, trucks, office",
+        "requirements": {},
+        "successChance": 0.5,
+        "success": {
+          "food": 4,
+          "fuel": 2,
+          "morale": 10,
+          "successNarration": "You spend an hour combing through every corner. The manager's office yields snacks and a fuel can. Worth the time."
+        },
+        "failure": {
+          "damage": "2d4",
+          "food": 1,
+          "morale": -10,
+          "failureNarration": "While searching the back office, you step through rotted flooring. Your ankle twists hard. You limp out with almost nothing."
+        }
+      }
+    ]
+  },
+  {
+    "id": "military_checkpoint_01",
+    "region": ["east_coast"],
+    "danger": "high",
+    "location": "Overrun Military Checkpoint",
+    "description": "Sandbags, razor wire, and bodies in uniform. The checkpoint was overwhelmed. Humvees sit abandoned, but the ammo crates might still be here.",
+    "choices": [
+      {
+        "id": "loot_ammo",
+        "text": "Search for ammunition",
+        "requirements": {},
+        "successChance": 0.55,
+        "success": {
+          "ammo": 5,
+          "morale": 5,
+          "successNarration": "You find an unsealed ammo crate behind sandbags. Five boxes of rounds. You load them quickly and retreat."
+        },
+        "failure": {
+          "injury": "gunshot_wound",
+          "morale": -20,
+          "failureNarration": "You're reaching into a crate when a trap triggers—someone rigged a shotgun. The blast catches your shoulder. You crawl away bleeding."
+        }
+      },
+      {
+        "id": "soldier_protocol",
+        "text": "Secure area first using military protocol",
+        "requirements": {
+          "hasRole": "Soldier"
+        },
+        "successChance": 0.8,
+        "success": {
+          "ammo": 6,
+          "medicine": 2,
+          "morale": 15,
+          "successNarration": "The soldier clears the area methodically, checking corners and tripwires. They locate ammunition, medical supplies, and MREs in the command tent. Clean work."
+        },
+        "failure": {
+          "damage": "2d6",
+          "ammo": 2,
+          "morale": -10,
+          "failureNarration": "Even with training, the checkpoint is a maze of hazards. You trigger something—gas grenade. You grab ammo and flee, eyes streaming."
+        }
+      },
+      {
+        "id": "check_vehicles",
+        "text": "Check the Humvees for supplies",
+        "requirements": {},
+        "successChance": 0.65,
+        "success": {
+          "fuel": 3,
+          "food": 2,
+          "morale": 5,
+          "successNarration": "The Humvees are locked but not secured well. You pry open one and find jerry cans and ration packs. Good haul."
+        },
+        "failure": {
+          "damage": "1d6",
+          "morale": -5,
+          "failureNarration": "You're forcing a door when an alarm trips—loud. Movement starts in the trees. You abandon the search and run."
+        }
+      },
+      {
+        "id": "avoid",
+        "text": "Too dangerous - leave it",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -3,
+          "successNarration": "You stand at the perimeter for thirty seconds, then back away. Military sites always have surprises. Not worth it."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "pharmacy_loot_02",
+    "region": ["east_coast", "midwest", "appalachian"],
+    "danger": "medium",
+    "location": "Strip Mall Pharmacy",
+    "description": "The storefront is shattered. Overturned shelves inside, but a faint chemical smell suggests some medicine is still intact.",
+    "choices": [
+      {
+        "id": "front_rush",
+        "text": "Grab whatever is near the entrance and bail",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "medicine": 1,
+          "food": 1,
+          "morale": 0,
+          "successNarration": "You snatch bandages and vitamins from near the door. One protein bar sits on the floor. You're in and out in seconds."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "You grab a bottle but it slips, shattering loudly. Something moves in the back. You flee empty-handed."
+        }
+      },
+      {
+        "id": "medic_targeted_search",
+        "text": "Go straight for high-value medications",
+        "requirements": {
+          "hasRole": "Medic"
+        },
+        "successChance": 0.85,
+        "success": {
+          "medicine": 3,
+          "morale": 10,
+          "successNarration": "The medic heads directly to the prescription counter. They know exactly what to look for—antibiotics, antiseptics, painkillers. Loaded and out in two minutes."
+        },
+        "failure": {
+          "injury": "deep_cut",
+          "morale": -10,
+          "failureNarration": "While reaching behind the counter, the medic's arm catches on broken glass. Deep cut. They grab what they can and retreat, bleeding."
+        }
+      },
+      {
+        "id": "crawl_under_debris",
+        "text": "Crawl under collapsed shelving to reach the back counter",
+        "requirements": {},
+        "successChance": 0.45,
+        "success": {
+          "medicine": 4,
+          "morale": 10,
+          "successNarration": "You squeeze under the collapsed shelves. The back counter is untouched—full bottles of medicine. You crawl out loaded with supplies."
+        },
+        "failure": {
+          "injury": "concussion",
+          "morale": -15,
+          "addInjuryId": "deep_cut",
+          "injuryChance": 0.2,
+          "failureNarration": "A shelf collapses on you while crawling. Metal cracks your skull. You drag yourself out dazed and bleeding, vision blurred."
+        }
+      },
+      {
+        "id": "scout_clearance",
+        "text": "Check stability of debris and movement inside",
+        "requirements": {
+          "hasRole": "Scout"
+        },
+        "successChance": 0.9,
+        "success": {
+          "medicine": 2,
+          "food": 1,
+          "morale": 5,
+          "successNarration": "The scout tests the shelves first, finding safe paths. You search methodically and exit with medicine and snacks without triggering anything."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -3,
+          "failureNarration": "The scout gives the all-clear, but a hidden shelf tips when you touch it. You scramble out with minor scrapes."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Walk away before drawing attention",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -5,
+          "successNarration": "You peer through the broken window, then turn and leave. The debris looks unstable and the darkness inside feels wrong."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "grocery_loot_01",
+    "region": ["east_coast", "midwest"],
+    "danger": "medium",
+    "location": "Neighborhood Grocery Store",
+    "description": "The automatic doors hang open. Shopping carts are overturned in the lot. The smell inside is terrible.",
+    "choices": [
+      {
+        "id": "canned_goods_aisle",
+        "text": "Head straight for the canned goods aisle",
+        "requirements": {},
+        "successChance": 0.65,
+        "success": {
+          "food": 3,
+          "morale": 5,
+          "successNarration": "The aisle is ransacked but not empty. You find dented cans of soup, beans, and vegetables. Enough to last days."
+        },
+        "failure": {
+          "damage": "1d6",
+          "morale": -10,
+          "failureNarration": "You're loading cans when something moves in the frozen section. You turn and run, dropping half your haul."
+        }
+      },
+      {
+        "id": "pharmacy_counter",
+        "text": "Check the in-store pharmacy counter",
+        "requirements": {},
+        "successChance": 0.5,
+        "success": {
+          "medicine": 2,
+          "morale": 5,
+          "successNarration": "The pharmacy section is locked but the glass is broken. You reach through and grab bottles—antiseptic, bandages, aspirin."
+        },
+        "failure": {
+          "injury": "deep_cut",
+          "morale": -15,
+          "failureNarration": "Your arm catches on jagged glass reaching through. Blood flows freely. You pull back empty-handed, wrapping the wound."
+        }
+      },
+      {
+        "id": "cook_best_supplies",
+        "text": "Identify the best preserved food",
+        "requirements": {
+          "hasRole": "Cook"
+        },
+        "successChance": 0.8,
+        "success": {
+          "food": 5,
+          "morale": 15,
+          "successNarration": "The cook knows what to look for—canned goods, dried pasta, sealed rice. They fill bags efficiently, avoiding spoiled items. Expert selection."
+        },
+        "failure": {
+          "food": 2,
+          "morale": -5,
+          "failureNarration": "Even with expertise, most food is ruined. The cook salvages what they can—a few cans—but pickings are slim."
+        }
+      },
+      {
+        "id": "back_storage",
+        "text": "Search the back storage area",
+        "requirements": {},
+        "successChance": 0.45,
+        "success": {
+          "food": 4,
+          "medicine": 1,
+          "morale": 10,
+          "successNarration": "The storage room is dark and stinks, but pallets of canned goods sit unopened. You load up quickly and slip out."
+        },
+        "failure": {
+          "injury": "zombie_bite",
+          "morale": -25,
+          "failureNarration": "You push through plastic sheeting into storage. Something grabs your arm from the dark—teeth sink in. You tear free and run, bleeding heavily."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "The smell alone says this place is a death trap",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -3,
+          "successNarration": "You stand at the entrance, the stench overwhelming. Whatever's inside isn't worth it. You turn and leave."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "grocery_loot_02",
+    "region": ["midwest", "plains"],
+    "danger": "low",
+    "location": "Corner Market",
+    "description": "A small market on a quiet street corner. The windows are intact. It might be untouched.",
+    "choices": [
+      {
+        "id": "front_shelves",
+        "text": "Search the front shelves quickly",
+        "requirements": {},
+        "successChance": 0.8,
+        "success": {
+          "food": 2,
+          "morale": 5,
+          "successNarration": "The shelves have chips, crackers, and canned soda. Not fancy, but it'll keep you going."
+        },
+        "failure": {
+          "morale": -3,
+          "failureNarration": "Someone looted this days ago. Shelves are bare except for empty packaging."
+        }
+      },
+      {
+        "id": "coolers_check",
+        "text": "Check the coolers for bottled water",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "food": 3,
+          "morale": 5,
+          "successNarration": "The coolers are dark, but still cold somehow. Bottled water and energy drinks. You load up."
+        },
+        "failure": {
+          "morale": -2,
+          "failureNarration": "The coolers are empty and powerless. Nothing left."
+        }
+      },
+      {
+        "id": "register_office",
+        "text": "Search the register area and back office",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "food": 2,
+          "ammo": 1,
+          "morale": 10,
+          "successNarration": "The office desk has a locked drawer. You force it—snacks and a handgun with ammunition. Lucky find."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "You're searching the register when glass breaks behind you. You turn and flee, not waiting to see what caused it."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Leave it—too quiet feels wrong",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -2,
+          "successNarration": "You stare through the window. It's too pristine. Too quiet. You back away slowly and keep moving."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "home_loot_01",
+    "region": ["east_coast", "midwest", "appalachian"],
+    "danger": "medium",
+    "location": "Abandoned Suburban House",
+    "description": "A two-story house with a white picket fence. The front door is open. Someone lived here recently.",
+    "choices": [
+      {
+        "id": "kitchen_search",
+        "text": "Search the kitchen for food",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "food": 3,
+          "morale": 5,
+          "successNarration": "The pantry has canned vegetables and pasta. The fridge is dead and disgusting, but you ignore it and load your pack."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "You're rifling through cabinets when footsteps creak upstairs. You freeze, then bolt for the door."
+        }
+      },
+      {
+        "id": "bathroom_meds",
+        "text": "Check the bathroom medicine cabinet",
+        "requirements": {},
+        "successChance": 0.65,
+        "success": {
+          "medicine": 2,
+          "morale": 5,
+          "successNarration": "The medicine cabinet has prescription bottles, bandages, and antiseptic. You take everything."
+        },
+        "failure": {
+          "morale": -3,
+          "failureNarration": "The cabinet is empty except for expired vitamins. Nothing useful."
+        }
+      },
+      {
+        "id": "garage_tools",
+        "text": "Search the garage for fuel and tools",
+        "requirements": {},
+        "successChance": 0.55,
+        "success": {
+          "fuel": 2,
+          "morale": 5,
+          "successNarration": "A lawnmower sits in the corner with gas in the tank. You siphon it. Also find a toolbox—useful."
+        },
+        "failure": {
+          "damage": "1d6",
+          "morale": -10,
+          "failureNarration": "The garage door slams shut behind you—wind or something else. You panic and force it back open, bruising your shoulder."
+        }
+      },
+      {
+        "id": "upstairs_bedrooms",
+        "text": "Search the upstairs bedrooms",
+        "requirements": {},
+        "successChance": 0.5,
+        "success": {
+          "food": 1,
+          "medicine": 1,
+          "morale": 0,
+          "successNarration": "Bedrooms have nothing valuable except a first-aid kit in a nightstand and granola bars in a drawer."
+        },
+        "failure": {
+          "injury": "zombie_bite",
+          "morale": -25,
+          "failureNarration": "You push open a bedroom door. Something lunges from the closet—teeth and hands. You fight it off, but not before it bites your arm."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Don't enter—this was someone's home",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -2,
+          "successNarration": "You stand on the porch, hand on the doorframe. Family photos on the walls inside. You turn and leave it undisturbed."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "home_loot_02",
+    "region": ["midwest", "plains"],
+    "danger": "low",
+    "location": "Cul-de-sac House",
+    "description": "A modest home in a quiet cul-de-sac. The lawn is overgrown. No signs of violence.",
+    "choices": [
+      {
+        "id": "quick_kitchen",
+        "text": "Quick search of the kitchen",
+        "requirements": {},
+        "successChance": 0.75,
+        "success": {
+          "food": 2,
+          "morale": 5,
+          "successNarration": "Canned soup, crackers, and instant coffee. You bag it all and leave through the back door."
+        },
+        "failure": {
+          "morale": -2,
+          "failureNarration": "The kitchen is bare. Whoever lived here took everything when they fled."
+        }
+      },
+      {
+        "id": "basement_storage",
+        "text": "Check the basement for stored supplies",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "food": 3,
+          "medicine": 1,
+          "morale": 10,
+          "successNarration": "The basement has emergency supplies—canned goods, bottled water, a medical kit. Smart homeowner."
+        },
+        "failure": {
+          "damage": "1d6",
+          "morale": -10,
+          "failureNarration": "The basement stairs are rotten. You fall halfway down, landing hard on concrete. No supplies worth the pain."
+        }
+      },
+      {
+        "id": "garage_fuel",
+        "text": "Siphon fuel from the car in the garage",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "fuel": 3,
+          "morale": 5,
+          "successNarration": "A sedan sits in the garage, tank half full. You siphon it quickly and move on."
+        },
+        "failure": {
+          "morale": -3,
+          "failureNarration": "The car's tank is empty. Someone beat you to it."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Leave the house alone",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -1,
+          "successNarration": "You glance through the window. It looks peaceful. You don't disturb it."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "school_loot_01",
+    "region": ["east_coast", "midwest"],
+    "danger": "high",
+    "location": "Abandoned Elementary School",
+    "description": "The playground is silent. The front doors are chained shut, but a window is broken.",
+    "choices": [
+      {
+        "id": "cafeteria_food",
+        "text": "Search the cafeteria for food",
+        "requirements": {},
+        "successChance": 0.55,
+        "success": {
+          "food": 4,
+          "morale": 5,
+          "successNarration": "The cafeteria freezer is dead, but the dry storage has industrial cans of vegetables and fruit. You load up."
+        },
+        "failure": {
+          "damage": "2d6",
+          "morale": -15,
+          "failureNarration": "The cafeteria doors burst open as you enter. A dozen shapes stumble toward you. You flee, taking hits."
+        }
+      },
+      {
+        "id": "nurses_office",
+        "text": "Search the nurse's office for medical supplies",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "medicine": 2,
+          "morale": 5,
+          "successNarration": "The nurse's office has bandages, ice packs, and children's medicine. You take it all."
+        },
+        "failure": {
+          "injury": "deep_cut",
+          "morale": -10,
+          "failureNarration": "The office door is jammed. You force it and your hand slips, slicing open on broken glass."
+        }
+      },
+      {
+        "id": "classrooms_quick",
+        "text": "Quick sweep of classrooms",
+        "requirements": {},
+        "successChance": 0.5,
+        "success": {
+          "food": 2,
+          "morale": 0,
+          "successNarration": "Some classrooms have snack bins for kids. You find granola bars and juice boxes. Better than nothing."
+        },
+        "failure": {
+          "damage": "1d6",
+          "morale": -10,
+          "failureNarration": "You're searching a classroom when movement erupts in the hallway. You barricade the door and escape through a window."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Schools are where outbreaks spread—avoid it",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -3,
+          "successNarration": "You stare at the empty swings. Schools were evacuation centers. Then they became tombs. You walk away."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "school_loot_02",
+    "region": ["midwest", "appalachian"],
+    "danger": "medium",
+    "location": "High School Campus",
+    "description": "A sprawling high school with multiple buildings. Lockers hang open. Papers litter the ground.",
+    "choices": [
+      {
+        "id": "athletic_storage",
+        "text": "Search the athletic department storage",
+        "requirements": {},
+        "successChance": 0.65,
+        "success": {
+          "food": 2,
+          "medicine": 1,
+          "morale": 5,
+          "successNarration": "The storage room has sports drinks, protein bars, and a well-stocked first-aid kit. Athletes ate well."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "The storage room door swings open violently, slamming into you. You stagger back and retreat."
+        }
+      },
+      {
+        "id": "auto_shop_fuel",
+        "text": "Check the auto shop for fuel and tools",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "fuel": 3,
+          "morale": 10,
+          "successNarration": "The auto shop has jerry cans of gas and mechanic's tools. You take everything portable."
+        },
+        "failure": {
+          "damage": "2d4",
+          "morale": -10,
+          "failureNarration": "The shop is locked. You force the door, but something inside was waiting. You flee before it reaches you."
+        }
+      },
+      {
+        "id": "library_quiet",
+        "text": "Search the library—quieter and safer",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "food": 1,
+          "morale": 5,
+          "successNarration": "The library is undisturbed. You find vending machine snacks and a quiet place to breathe for a moment."
+        },
+        "failure": {
+          "morale": -3,
+          "failureNarration": "The library is empty and eerie. You find nothing and leave quickly, unnerved."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Too big, too many hiding places—move on",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -2,
+          "successNarration": "The campus is massive. Too many blind corners. You circle it and keep driving."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "police_station_01",
+    "region": ["east_coast", "midwest"],
+    "danger": "high",
+    "location": "City Police Substation",
+    "description": "The substation is barricaded from the inside. Someone made a stand here. Didn't work.",
+    "choices": [
+      {
+        "id": "armory_search",
+        "text": "Search for the armory",
+        "requirements": {},
+        "successChance": 0.5,
+        "success": {
+          "ammo": 6,
+          "morale": 10,
+          "successNarration": "You find the armory door forced open. Rifles gone, but handgun ammunition remains. You load up."
+        },
+        "failure": {
+          "injury": "gunshot_wound",
+          "morale": -25,
+          "failureNarration": "The armory is booby-trapped. A shotgun blast catches you in the side. You drag yourself out bleeding."
+        }
+      },
+      {
+        "id": "evidence_room",
+        "text": "Check the evidence room for confiscated items",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "ammo": 3,
+          "medicine": 1,
+          "morale": 5,
+          "successNarration": "Evidence lockers have confiscated drugs and weapons. You take ammunition and prescription pills."
+        },
+        "failure": {
+          "damage": "1d6",
+          "morale": -10,
+          "failureNarration": "The evidence room is dark and reeks. Something moves inside. You back out before it reaches the door."
+        }
+      },
+      {
+        "id": "soldier_tactical",
+        "text": "Clear the building tactically",
+        "requirements": {
+          "hasRole": "Soldier"
+        },
+        "successChance": 0.75,
+        "success": {
+          "ammo": 5,
+          "medicine": 2,
+          "morale": 15,
+          "successNarration": "The soldier clears room by room, securing areas before searching. They find ammunition, medical supplies, and MREs. Professional work."
+        },
+        "failure": {
+          "damage": "2d6",
+          "morale": -15,
+          "failureNarration": "Even with training, the substation is a maze of danger. You trigger something—gas canister. You grab what you can and flee."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Police stations are fortresses turned tombs—avoid it",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -3,
+          "successNarration": "You stand outside, looking at the barricaded windows. Whatever happened here was desperate. You leave it alone."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "police_station_02",
+    "region": ["appalachian", "plains"],
+    "danger": "medium",
+    "location": "Small Town Police Station",
+    "description": "A single-story brick building with two police cars parked outside. The lights are off. It's quiet.",
+    "choices": [
+      {
+        "id": "patrol_cars",
+        "text": "Search the patrol cars for supplies",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "ammo": 2,
+          "medicine": 1,
+          "morale": 5,
+          "successNarration": "The trunk of one car has a shotgun and a first-aid kit. Standard patrol gear."
+        },
+        "failure": {
+          "morale": -3,
+          "failureNarration": "Both cars are empty. Stripped clean days ago."
+        }
+      },
+      {
+        "id": "front_desk",
+        "text": "Search the front desk and offices",
+        "requirements": {},
+        "successChance": 0.65,
+        "success": {
+          "food": 1,
+          "ammo": 2,
+          "morale": 5,
+          "successNarration": "Desk drawers have ammunition and snacks. Small-town cops kept it simple."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "You're searching a desk when something crashes in the back. You flee before investigating."
+        }
+      },
+      {
+        "id": "holding_cells",
+        "text": "Check the holding cells in back",
+        "requirements": {},
+        "successChance": 0.5,
+        "success": {
+          "food": 2,
+          "morale": 0,
+          "successNarration": "One cell has meal trays untouched. You take the sealed food, trying not to think about who was locked in here."
+        },
+        "failure": {
+          "injury": "zombie_bite",
+          "morale": -25,
+          "failureNarration": "A cell door hangs open. Something lunges out—teeth and rage. You fight it off, but not before it bites your shoulder."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Leave it alone",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -2,
+          "successNarration": "You circle the building once. It feels wrong. You get back in the car and drive."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "farm_loot_01",
+    "region": ["midwest", "plains", "appalachian"],
+    "danger": "medium",
+    "location": "Rural Farmhouse",
+    "description": "A farmhouse at the end of a long gravel drive. The barn door swings in the wind. Chickens used to live here.",
+    "choices": [
+      {
+        "id": "farmhouse_pantry",
+        "text": "Search the farmhouse pantry",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "food": 4,
+          "morale": 10,
+          "successNarration": "The pantry is stocked—home-canned vegetables, flour, sugar. Farm life meant preparation. You load up."
+        },
+        "failure": {
+          "damage": "1d6",
+          "morale": -10,
+          "failureNarration": "The pantry door creaks open. Something moves in the back of the house. You grab one jar and run."
+        }
+      },
+      {
+        "id": "barn_fuel",
+        "text": "Check the barn for fuel and tools",
+        "requirements": {},
+        "successChance": 0.65,
+        "success": {
+          "fuel": 3,
+          "morale": 5,
+          "successNarration": "The barn has a tractor with diesel in the tank. You siphon it, along with some tools from the workshop."
+        },
+        "failure": {
+          "damage": "2d4",
+          "morale": -15,
+          "failureNarration": "The barn floor is rotten. You fall through into darkness below. You climb out bruised and empty-handed."
+        }
+      },
+      {
+        "id": "chicken_coop",
+        "text": "Search the chicken coop and outbuildings",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "food": 2,
+          "morale": 0,
+          "successNarration": "The coop has old feed bags—rice and grain. Not fresh, but edible."
+        },
+        "failure": {
+          "morale": -5,
+          "failureNarration": "The coop is empty except for bones and feathers. Nothing left."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Farms attract scavengers and worse—move on",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -2,
+          "successNarration": "You idle in the driveway. The silence feels oppressive. You reverse out and leave."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "farm_loot_02",
+    "region": ["midwest", "plains"],
+    "danger": "low",
+    "location": "Abandoned Dairy Farm",
+    "description": "A large dairy operation sits empty. Cows are long gone. The barn is massive.",
+    "choices": [
+      {
+        "id": "main_barn",
+        "text": "Search the main barn",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "fuel": 2,
+          "food": 2,
+          "morale": 5,
+          "successNarration": "The barn has diesel storage tanks and sacks of grain. You take what you can carry."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "The barn is unstable. Boards crack underfoot. You retreat carefully, taking nothing."
+        }
+      },
+      {
+        "id": "farmhouse_quick",
+        "text": "Quick search of the farmhouse",
+        "requirements": {},
+        "successChance": 0.65,
+        "success": {
+          "food": 3,
+          "morale": 5,
+          "successNarration": "The kitchen has preserved food in Mason jars. Farmers prepared for winter. You clean out the pantry."
+        },
+        "failure": {
+          "morale": -3,
+          "failureNarration": "The farmhouse is bare. Family took everything when they left."
+        }
+      },
+      {
+        "id": "silo_storage",
+        "text": "Check the grain silo for stored feed",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "food": 4,
+          "morale": 10,
+          "successNarration": "The silo still has grain—not meant for humans, but edible in a pinch. You bag it."
+        },
+        "failure": {
+          "damage": "2d6",
+          "morale": -15,
+          "failureNarration": "You climb the silo ladder and it gives way. You fall hard, landing on concrete. Lucky to walk away."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Nothing here but ghosts",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -1,
+          "successNarration": "You tour the property slowly. It's peaceful. Too peaceful. You leave it undisturbed."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "ranger_station_01",
+    "region": ["northwest", "appalachian"],
+    "danger": "low",
+    "location": "Forest Ranger Cabin",
+    "description": "A wooden cabin deep in the forest. Smoke-jumper gear hangs on the porch. The door is unlocked.",
+    "choices": [
+      {
+        "id": "cabin_supplies",
+        "text": "Search the cabin for supplies",
+        "requirements": {},
+        "successChance": 0.75,
+        "success": {
+          "food": 3,
+          "medicine": 1,
+          "morale": 10,
+          "successNarration": "Rangers kept emergency rations and medical kits. You find MREs, bottled water, and a well-stocked first-aid kit."
+        },
+        "failure": {
+          "morale": -2,
+          "failureNarration": "The cabin is empty. Someone else found it first."
+        }
+      },
+      {
+        "id": "radio_tower",
+        "text": "Check the radio tower for equipment",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "fuel": 1,
+          "morale": 5,
+          "successNarration": "The tower has a generator with fuel. You drain it and take the can."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "The tower ladder is rusted. You climb two rungs and it breaks. You fall, bruising badly."
+        }
+      },
+      {
+        "id": "tool_shed",
+        "text": "Search the tool shed",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "fuel": 2,
+          "morale": 5,
+          "successNarration": "The shed has chainsaws and fuel cans. You take the fuel and a few useful tools."
+        },
+        "failure": {
+          "morale": -3,
+          "failureNarration": "The shed is locked and you can't force it. You move on."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Leave the station alone",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": 0,
+          "successNarration": "You stand on the porch. It feels respectful to leave it for the next traveler. You walk away."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "ranger_station_02",
+    "region": ["northwest"],
+    "danger": "medium",
+    "location": "Lakeside Ranger Station",
+    "description": "A station overlooking a mountain lake. Boats are tied to the dock. It looks peaceful.",
+    "choices": [
+      {
+        "id": "station_kitchen",
+        "text": "Search the station kitchen",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "food": 4,
+          "morale": 10,
+          "successNarration": "The kitchen has canned goods and freeze-dried camping meals. Rangers lived out here for weeks at a time."
+        },
+        "failure": {
+          "damage": "1d6",
+          "morale": -10,
+          "failureNarration": "The kitchen window shatters as you enter. Something moves on the dock. You flee before it reaches the door."
+        }
+      },
+      {
+        "id": "boats_fuel",
+        "text": "Siphon fuel from the boats",
+        "requirements": {},
+        "successChance": 0.65,
+        "success": {
+          "fuel": 3,
+          "morale": 5,
+          "successNarration": "Two boats have gas tanks. You siphon both, filling your cans."
+        },
+        "failure": {
+          "morale": -5,
+          "failureNarration": "The boats are bone dry. Someone drained them already."
+        }
+      },
+      {
+        "id": "bunkhouse_search",
+        "text": "Search the ranger bunkhouse",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "medicine": 2,
+          "food": 1,
+          "morale": 5,
+          "successNarration": "The bunkhouse has personal effects—medical kits, snacks, bottled water. You take it all."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "A bunk collapses when you step on it. You crash through rotten wood and retreat, bruised."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Too isolated—anything could be hiding here",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -2,
+          "successNarration": "You circle the station once. The lake is too quiet. You get back in the car."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "hospital_loot_01",
+    "region": ["east_coast", "midwest"],
+    "danger": "critical",
+    "location": "City Hospital Emergency Wing",
+    "description": "The hospital is a nightmare. Ambulances crashed in the bay. Groaning echoes from every hallway.",
+    "choices": [
+      {
+        "id": "ambulance_search",
+        "text": "Search the ambulances for med kits",
+        "requirements": {},
+        "successChance": 0.65,
+        "success": {
+          "medicine": 2,
+          "morale": 5,
+          "successNarration": "One ambulance still has supplies. You grab trauma kits and oxygen canisters. Fast work."
+        },
+        "failure": {
+          "damage": "1d6",
+          "morale": -8,
+          "injuryTier": "zombie_contact",
+          "injuryChance": 1.0,
+          "failureNarration": "You're reaching into an ambulance when hands grab from underneath. You tear free, but teeth graze your arm."
+        }
+      },
+      {
+        "id": "er_supply_room",
+        "text": "Push into the ER supply rooms",
+        "requirements": {},
+        "successChance": 0.45,
+        "success": {
+          "medicine": 3,
+          "morale": 10,
+          "successNarration": "You force open a supply closet. Shelves of medical equipment—antibiotics, surgical tools, IV bags. You load up and escape."
+        },
+        "failure": {
+          "injury": "zombie_bite",
+          "morale": -20,
+          "injuryTier": "zombie_contact",
+          "injuryChance": 1.0,
+          "failureNarration": "The supply room door bursts open. The ER is full of them. One grabs you before you react, teeth sinking into your shoulder. You fight free and run."
+        }
+      },
+      {
+        "id": "medic_triage_supplies",
+        "text": "Quickly target the most useful emergency supplies",
+        "requirements": {
+          "hasRole": "Medic"
+        },
+        "successChance": 0.8,
+        "success": {
+          "medicine": 3,
+          "morale": 15,
+          "successNarration": "The medic knows exactly where to look. Crash carts, triage stations—they grab what's needed and you're out in three minutes."
+        },
+        "failure": {
+          "damage": "2d4",
+          "morale": -10,
+          "injuryTier": "zombie_contact",
+          "injuryChance": 1.0,
+          "failureNarration": "Even with expertise, the ER is too dangerous. You grab supplies but take hits escaping the swarm."
+        }
+      },
+      {
+        "id": "roof_access_search",
+        "text": "Head for the roof, searching stairwells on the way",
+        "requirements": {},
+        "successChance": 0.5,
+        "success": {
+          "medicine": 1,
+          "food": 1,
+          "morale": 5,
+          "successNarration": "You climb the stairwell, searching each floor quickly. A vending machine on the third floor yields snacks. The roof is clear."
+        },
+        "failure": {
+          "injury": "concussion",
+          "morale": -15,
+          "injuryTier": "zombie_contact",
+          "injuryChance": 0.25,
+          "addInjuryId": "sprained_ankle",
+          "failureNarration": "On the stairs, you trip over debris and fall hard. Your head cracks against concrete. Dazed, you crawl upward as groaning starts below."
+        }
+      },
+      {
+        "id": "avoid",
+        "text": "Hospitals are nests now—get out while you can",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -5,
+          "successNarration": "You stand in the ambulance bay for ten seconds. The smell alone is enough. You turn and leave."
+        },
+        "failure": {
+          "injuryTier": "zombie_contact",
+          "injuryChance": 1.0
+        }
+      }
+    ]
+  },
+  {
+    "id": "hospital_loot_02",
+    "region": ["midwest", "appalachian"],
+    "danger": "medium",
+    "location": "Rural Clinic",
+    "description": "A low brick clinic at the edge of town. The waiting room is dark. A sign for 'Supplies' hangs above a side door.",
+    "choices": [
+      {
+        "id": "waiting_room",
+        "text": "Search the waiting room and reception desk",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "medicine": 1,
+          "food": 1,
+          "morale": 5,
+          "successNarration": "The reception desk has a first-aid kit and vending machine snacks. Small finds, but useful."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "You're searching the desk when a door slams in the back. You freeze, then bolt."
+        }
+      },
+      {
+        "id": "supply_closet",
+        "text": "Check the supply closet and exam rooms",
+        "requirements": {},
+        "successChance": 0.55,
+        "success": {
+          "medicine": 2,
+          "morale": 5,
+          "successNarration": "The supply closet is unlocked. Bandages, antiseptic, syringes. You clean it out."
+        },
+        "failure": {
+          "injury": "deep_cut",
+          "morale": -10,
+          "failureNarration": "You force a cabinet open and your hand slips, slicing deep on metal. Blood wells up. You bandage it and leave."
+        }
+      },
+      {
+        "id": "medic_organized_raid",
+        "text": "Lead an organized sweep for medications",
+        "requirements": {
+          "hasRole": "Medic"
+        },
+        "successChance": 0.85,
+        "success": {
+          "medicine": 3,
+          "morale": 10,
+          "successNarration": "The medic methodically searches exam rooms and medication lockers. They find prescription drugs and surgical supplies. Efficient work."
+        },
+        "failure": {
+          "medicine": 1,
+          "morale": -5,
+          "failureNarration": "Even with training, the clinic is mostly picked clean. You find one bottle of antibiotics and leave."
+        }
+      },
+      {
+        "id": "back_entrance",
+        "text": "Use the back entrance to avoid the main hall",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "medicine": 1,
+          "food": 1,
+          "morale": 5,
+          "successNarration": "The back door is unlocked. You slip into the storage area, grab supplies, and exit without incident."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "The back door creaks loudly when you open it. Something moves inside. You retreat without entering."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "If the outbreak started here, best not to linger",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -3,
+          "successNarration": "You peer through the window. Medical buildings were ground zero. You turn and leave."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "motel_loot_01",
+    "region": ["east_coast", "midwest"],
+    "danger": "medium",
+    "location": "Highway Motel",
+    "description": "A flickering motel sign buzzes weakly. Doors hang open along the balcony.",
+    "choices": [
+      {
+        "id": "room_to_room",
+        "text": "Go room to room, searching quickly",
+        "requirements": {},
+        "successChance": 0.65,
+        "success": {
+          "food": 2,
+          "medicine": 1,
+          "morale": 5,
+          "successNarration": "Most rooms are empty, but you find snacks, bottled water, and a bathroom first-aid kit. Quick work."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "You push open a door and something moves inside. You back out fast, not waiting to see what."
+        }
+      },
+      {
+        "id": "office_search",
+        "text": "Search the front office and storage room",
+        "requirements": {},
+        "successChance": 0.55,
+        "success": {
+          "food": 2,
+          "ammo": 1,
+          "morale": 5,
+          "successNarration": "The office desk has a locked drawer. You force it—snacks and a handgun with ammunition. The owner was prepared."
+        },
+        "failure": {
+          "damage": "1d6",
+          "morale": -8,
+          "failureNarration": "You're searching the office when glass shatters behind you. You don't wait to investigate."
+        }
+      },
+      {
+        "id": "negotiator_read_signs",
+        "text": "Study signs of previous fights to avoid danger",
+        "requirements": {
+          "hasRole": "Negotiator"
+        },
+        "successChance": 0.8,
+        "success": {
+          "food": 2,
+          "morale": 10,
+          "successNarration": "The negotiator reads the scene—blood patterns, barricades. They identify safe rooms and you search those only. Smart work."
+        },
+        "failure": {
+          "morale": -5,
+          "failureNarration": "The signs are ambiguous. You search cautiously and find little. Better safe than sorry."
+        }
+      },
+      {
+        "id": "laundry_room",
+        "text": "Check the laundry room and maintenance closet",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "food": 1,
+          "medicine": 1,
+          "morale": 5,
+          "successNarration": "The laundry room has vending machine snacks and cleaning supplies you can repurpose. Small finds."
+        },
+        "failure": {
+          "injury": "sprained_ankle",
+          "morale": -10,
+          "failureNarration": "You step on a wet floor and your ankle twists badly. You limp out, cursing."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Too many doors, too many hiding spots—move on",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -3,
+          "successNarration": "You count the open doors. Too many unknowns. You get back in the car."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "motel_loot_02",
+    "region": ["plains", "midwest"],
+    "danger": "low",
+    "location": "Roadside Motor Lodge",
+    "description": "A single-story motor lodge sits quiet under a big sky. It looks undisturbed.",
+    "choices": [
+      {
+        "id": "single_room_search",
+        "text": "Pick one room and search it thoroughly",
+        "requirements": {},
+        "successChance": 0.8,
+        "success": {
+          "food": 2,
+          "morale": 5,
+          "successNarration": "You search one room methodically. Snacks, bottled water, soap. Nothing fancy, but useful."
+        },
+        "failure": {
+          "morale": -2,
+          "failureNarration": "The room is bare. Whoever stayed here left nothing behind."
+        }
+      },
+      {
+        "id": "vending_machines",
+        "text": "Check vending machines and try to pry them open",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "food": 2,
+          "morale": 5,
+          "successNarration": "You force the vending machine door with a crowbar. Chips, candy bars, and soda. A small jackpot."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "The machine tips as you pry it. It crashes down, pinning your leg briefly. You escape bruised."
+        }
+      },
+      {
+        "id": "maintenance_room",
+        "text": "Search the maintenance room for fuel or tools",
+        "requirements": {},
+        "successChance": 0.55,
+        "success": {
+          "fuel": 2,
+          "morale": 5,
+          "successNarration": "The maintenance closet has cleaning supplies and a fuel can for the mower. You take the fuel."
+        },
+        "failure": {
+          "injury": "deep_cut",
+          "morale": -10,
+          "failureNarration": "You reach into a dark closet and your hand catches on something sharp. Deep cut. You back out bleeding."
+        }
+      },
+      {
+        "id": "skip",
+        "text": "Leave the lodge undisturbed and move on",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -1,
+          "successNarration": "You idle in the parking lot. It looks peaceful. You leave it that way."
+        },
+        "failure": {}
+      }
+    ]
+  }
+]

@@ -1,0 +1,974 @@
+[
+  {
+    "id": "pharmacy_complex",
+    "location": "Abandoned Pharmacy",
+    "description": "The pharmacy sits half-collapsed at the corner of a silent street. Shattered glass litters the pavement, and shelves are visible through the broken front window, some still lined with dusty boxes. A dull, irregular thud echoes from somewhere in the back rooms, just loud enough for {SURVIVOR1} and {SURVIVOR2} to know they’re not alone in there.",
+    "choices": [
+      {
+        "text": "{SURVIVOR1} slips inside quietly and sweeps only the front shelves",
+        "successChance": 0.65,
+        "success": {
+          "medicine": 2,
+          "food": 1
+        },
+        "failure": {
+          "damage": "2d4",
+          "morale": -5
+        }
+      },
+      {
+        "text": "The {ROLE1_CAP} takes the lead, carefully sorting real medication from useless stock",
+        "requirements": {
+          "hasRole": "Medic"
+        },
+        "successChance": 0.85,
+        "success": {
+          "medicine": 5,
+          "morale": 10
+        },
+        "failure": {
+          "damage": "2d4",
+          "medicine": 2,
+          "morale": -3
+        }
+      },
+      {
+        "text": "{SURVIVOR1} circles the building, checking windows and alleys while {SURVIVOR2} watches the street",
+        "requirements": {
+          "hasRole": "Scout"
+        },
+        "successChance": 0.9,
+        "success": {
+          "medicine": 3,
+          "food": 1,
+          "morale": 5
+        },
+        "failure": {
+          "morale": -3
+        }
+      },
+      {
+        "text": "{SURVIVOR1} forces their way behind the prescription counter, going deep for the good stuff",
+        "successChance": 0.4,
+        "success": {
+          "medicine": 4,
+          "morale": 5
+        },
+        "failure": {
+          "damage": "3d6",
+          "morale": -10
+        }
+      },
+      {
+        "text": "{SURVIVOR1} makes deliberate noise outside, trying to draw whatever’s inside toward the front while {SURVIVOR2} waits to slip in",
+        "requirements": {
+          "ammo": 1
+        },
+        "successChance": 0.75,
+        "success": {
+          "medicine": 3,
+          "ammo": -1,
+          "morale": 5
+        },
+        "failure": {
+          "damage": "3d6",
+          "ammo": -1,
+          "morale": -10
+        }
+      },
+      {
+        "text": "The place feels wrong — {SURVIVOR1} urges {SURVIVOR2} to back away and leave it alone",
+        "successChance": 1,
+        "success": {
+          "morale": -5
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "military_checkpoint",
+    "location": "Abandoned Military Checkpoint",
+    "description": "Concrete barriers and rusting razor wire choke the highway ahead. Abandoned vehicles sit nose-to-tail between sandbag nests and metal barricades. Faded warning signs flap in the wind, and {SURVIVOR1} can still see the outlines of old blast marks on the tarmac. If anyone left supplies behind, they’re buried somewhere in this maze.",
+    "choices": [
+      {
+        "text": "The {ROLE1_CAP} studies the layout, using old training to move through the checkpoint like it’s still active",
+        "requirements": {
+          "hasRole": "Soldier"
+        },
+        "successChance": 0.8,
+        "success": {
+          "ammo": 5,
+          "medicine": 2,
+          "food": 2,
+          "morale": 10
+        },
+        "failure": {
+          "damage": "2d4",
+          "morale": -5
+        }
+      },
+      {
+        "text": "{SURVIVOR1} moves slowly along the barricades, checking for tripwires, loose mines, or rigged doors",
+        "requirements": {
+          "hasRole": "Engineer"
+        },
+        "successChance": 0.75,
+        "success": {
+          "ammo": 3,
+          "fuel": 2,
+          "morale": 5
+        },
+        "failure": {
+          "damage": "3d6",
+          "morale": -10
+        }
+      },
+      {
+        "text": "{SURVIVOR1} stays back with binoculars, watching for movement before either of them steps into the kill zone",
+        "requirements": {
+          "hasRole": "Scout"
+        },
+        "successChance": 0.85,
+        "success": {
+          "ammo": 3,
+          "food": 1,
+          "morale": 5
+        },
+        "failure": {
+          "morale": -3
+        }
+      },
+      {
+        "text": "They rush in for a quick smash-and-grab among the nearest vehicles and supply crates",
+        "successChance": 0.5,
+        "success": {
+          "ammo": 2,
+          "food": 1
+        },
+        "failure": {
+          "damage": "4d6",
+          "morale": -15
+        }
+      },
+      {
+        "text": "{SURVIVOR1} calls out cautiously between the barricades, hoping if anyone remains they’ll talk before shooting",
+        "successChance": 0.6,
+        "success": {
+          "ammo": 2,
+          "medicine": 1,
+          "morale": 5
+        },
+        "failure": {
+          "damage": "3d6",
+          "morale": -10
+        }
+      },
+      {
+        "text": "They agree it’s too exposed — {SURVIVOR1} turns the vehicle around to look for another way through",
+        "requirements": {
+          "fuel": 1
+        },
+        "successChance": 1,
+        "success": {
+          "fuel": -1,
+          "morale": -5
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "survivor_camp_trade",
+    "location": "Survivor Trading Post",
+    "description": "A loose ring of tents and tarps clusters around a burned-out truck just off the road. Cookfires burn low, weapons are visible, and a scrap of cloth painted with a crude ‘TRADE’ symbol flaps from a pole. A few faces watch {SURVIVOR1} and {SURVIVOR2} approach, wary but not immediately hostile.",
+    "choices": [
+      {
+        "text": "The {ROLE1_CAP} steps forward to negotiate, trading words and smiles before anything leaves their packs",
+        "requirements": {
+          "hasRole": "Negotiator",
+          "food": 2
+        },
+        "successChance": 0.85,
+        "success": {
+          "food": -2,
+          "medicine": 4,
+          "ammo": 2,
+          "morale": 10
+        },
+        "failure": {
+          "food": -2,
+          "medicine": 2,
+          "morale": -5
+        }
+      },
+      {
+        "text": "{SURVIVOR1} offers a straight trade — food on the table in exchange for anything resembling proper medicine",
+        "requirements": {
+          "food": 3
+        },
+        "successChance": 0.75,
+        "success": {
+          "food": -3,
+          "medicine": 5
+        },
+        "failure": {
+          "food": -3,
+          "medicine": 2,
+          "morale": -5
+        }
+      },
+      {
+        "text": "They lay out a few cans and packets, asking what kind of ammunition the camp can spare in return",
+        "requirements": {
+          "food": 3
+        },
+        "successChance": 0.75,
+        "success": {
+          "food": -3,
+          "ammo": 6
+        },
+        "failure": {
+          "food": -3,
+          "ammo": 2,
+          "morale": -5
+        }
+      },
+      {
+        "text": "{SURVIVOR1} asks quietly about the road ahead — safe routes, dead zones, and stories of what waits further west",
+        "successChance": 0.7,
+        "success": {
+          "morale": 10
+        },
+        "failure": {
+          "morale": -5
+        }
+      },
+      {
+        "text": "The {ROLE1_CAP} offers basic medical help around the camp in exchange for whatever they can spare",
+        "requirements": {
+          "hasRole": "Medic"
+        },
+        "successChance": 0.9,
+        "success": {
+          "food": 3,
+          "medicine": 2,
+          "morale": 15
+        },
+        "failure": {
+          "morale": 5
+        }
+      },
+      {
+        "text": "{SURVIVOR1} hangs back, watching faces, weapons and exits for any sign this might be a setup",
+        "requirements": {
+          "hasRole": "Scout"
+        },
+        "successChance": 0.95,
+        "success": {
+          "morale": 10
+        },
+        "failure": {
+          "morale": 0
+        }
+      },
+      {
+        "text": "Neither of them fully trusts the camp — they nod, keep their distance, and move on",
+        "successChance": 1,
+        "success": {
+          "morale": -5
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "crashed_helicopter",
+    "location": "Military Helicopter Crash Site",
+    "description": "The trees thin into a blackened scar where a helicopter tore through the canopy and hit the ground hard. Twisted metal lies half-buried in scorched earth, and a thin trail of smoke still rises from the wreck. Crates lie scattered around the impact site, some cracked, some intact, all of them tempting. {SURVIVOR1} and {SURVIVOR2} see no bodies — which is its own kind of worry.",
+    "choices": [
+      {
+        "text": "The {ROLE1_CAP} advances like it’s an active battlefield, clearing blind spots and checking for survivors or hostiles",
+        "requirements": {
+          "hasRole": "Soldier"
+        },
+        "successChance": 0.8,
+        "success": {
+          "ammo": 4,
+          "medicine": 2,
+          "food": 1,
+          "morale": 10
+        },
+        "failure": {
+          "damage": "2d4",
+          "ammo": 1,
+          "morale": -5
+        }
+      },
+      {
+        "text": "{SURVIVOR1} focuses on fuel lines, battery units, and anything that still looks salvageable from the wreck",
+        "requirements": {
+          "hasRole": "Engineer"
+        },
+        "successChance": 0.75,
+        "success": {
+          "fuel": 4,
+          "ammo": 2,
+          "morale": 10
+        },
+        "failure": {
+          "damage": "2d4",
+          "fuel": 1
+        }
+      },
+      {
+        "text": "The {ROLE1_CAP} picks through medical crates and emergency kits, looking for anything unbroken",
+        "requirements": {
+          "hasRole": "Medic"
+        },
+        "successChance": 0.8,
+        "success": {
+          "medicine": 6,
+          "morale": 10
+        },
+        "failure": {
+          "damage": "2d4",
+          "medicine": 2
+        }
+      },
+      {
+        "text": "They rush the nearest crates, grab what they can carry, and get ready to bolt",
+        "successChance": 0.55,
+        "success": {
+          "ammo": 2,
+          "food": 1,
+          "medicine": 1
+        },
+        "failure": {
+          "damage": "3d6",
+          "morale": -10
+        }
+      },
+      {
+        "text": "{SURVIVOR1} stays at the treeline with a clear view while {SURVIVOR2} edges closer to test how dangerous the site really is",
+        "requirements": {
+          "hasRole": "Scout"
+        },
+        "successChance": 0.9,
+        "success": {
+          "ammo": 3,
+          "medicine": 2,
+          "morale": 5
+        },
+        "failure": {
+          "morale": -3
+        }
+      },
+      {
+        "text": "They wait and watch from cover, giving the area time in case anyone — or anything — comes to investigate the crash",
+        "requirements": {
+          "food": 1
+        },
+        "successChance": 0.85,
+        "success": {
+          "food": -1,
+          "ammo": 2,
+          "medicine": 2,
+          "morale": 5
+        },
+        "failure": {
+          "food": -1,
+          "morale": -5
+        }
+      },
+      {
+        "text": "The wreck feels like a magnet for trouble — they decide the risk isn’t worth it and move on",
+        "successChance": 1,
+        "success": {
+          "morale": -10
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "zombie_horde_complex",
+    "location": "Massive Zombie Horde",
+    "description": "The highway ahead is carpeted with bodies that won’t stay still. Dozens upon dozens of zombies shamble in loose knots between abandoned cars, dragging limbs and leaving dark streaks on the asphalt. From where {SURVIVOR1} and {SURVIVOR2} stand, there’s no clean way straight through — only bad options and worse ones.",
+    "choices": [
+      {
+        "text": "The {ROLE1_CAP} sets up a noisy diversion, drawing the horde toward a distant point with gunfire and clattering metal",
+        "requirements": {
+          "hasRole": "Soldier",
+          "ammo": 2
+        },
+        "successChance": 0.75,
+        "success": {
+          "ammo": -2,
+          "morale": 10
+        },
+        "failure": {
+          "damage": "4d6",
+          "ammo": -2,
+          "morale": -15
+        }
+      },
+      {
+        "text": "{SURVIVOR1} scouts the terrain, looking for a narrow back route that skirts the worst of the horde",
+        "requirements": {
+          "hasRole": "Scout",
+          "fuel": 1
+        },
+        "successChance": 0.85,
+        "success": {
+          "fuel": -1,
+          "morale": 10
+        },
+        "failure": {
+          "fuel": -1,
+          "morale": -5
+        }
+      },
+      {
+        "text": "{SURVIVOR1} grips the wheel and aims the vehicle straight down the clearest line they can find, trusting speed and momentum",
+        "requirements": {
+          "fuel": 2
+        },
+        "successChance": 0.4,
+        "success": {
+          "fuel": -2,
+          "morale": -5
+        },
+        "failure": {
+          "damage": "5d8",
+          "fuel": -2,
+          "morale": -20
+        }
+      },
+      {
+        "text": "They choose a long, winding detour through backroads and side streets, burning fuel to avoid the mass of undead",
+        "requirements": {
+          "fuel": 2
+        },
+        "successChance": 0.8,
+        "success": {
+          "fuel": -2,
+          "morale": -5
+        },
+        "failure": {
+          "fuel": -2,
+          "morale": -10
+        }
+      },
+      {
+        "text": "They find a place to camp within sight of the horde, waiting for hours or longer in the hope the mass slowly drifts apart",
+        "requirements": {
+          "food": 2
+        },
+        "successChance": 0.7,
+        "success": {
+          "food": -2,
+          "morale": 5
+        },
+        "failure": {
+          "food": -2,
+          "damage": "4d6",
+          "morale": -15
+        }
+      },
+      {
+        "text": "They abandon the vehicle, tighten their packs, and try to slip between the dead on foot",
+        "successChance": 0.6,
+        "success": {
+          "fuel": 0,
+          "morale": -10
+        },
+        "failure": {
+          "damage": "5d8",
+          "morale": -20
+        }
+      }
+    ]
+  },
+  {
+    "id": "injured_stranger",
+    "location": "Injured Stranger on Roadside",
+    "description": "A figure lies half on the shoulder of the road, half in the gravel, one leg wrapped in a blood-soaked bandage. Their hand lifts weakly as {SURVIVOR1} and {SURVIVOR2} approach, voice rough and hoarse as they call for help. The empty fields on either side feel too open, too quiet for comfort.",
+    "choices": [
+      {
+        "text": "The {ROLE1_CAP} kneels beside the stranger, using precious supplies to stabilise the wound properly",
+        "requirements": {
+          "hasRole": "Medic",
+          "medicine": 2
+        },
+        "successChance": 0.85,
+        "success": {
+          "medicine": -2,
+          "morale": 20
+        },
+        "failure": {
+          "medicine": -2,
+          "morale": 5
+        }
+      },
+      {
+        "text": "{SURVIVOR1} scans the ditches, nearby cars, and tree lines, making sure this isn’t bait for an ambush",
+        "requirements": {
+          "hasRole": "Scout"
+        },
+        "successChance": 0.9,
+        "success": {
+          "morale": 10
+        },
+        "failure": {
+          "damage": "3d6",
+          "morale": -15
+        }
+      },
+      {
+        "text": "They leave a small dose of medicine beside the stranger, offering quick help but refusing to linger",
+        "requirements": {
+          "medicine": 1
+        },
+        "successChance": 0.75,
+        "success": {
+          "medicine": -1,
+          "morale": 10
+        },
+        "failure": {
+          "medicine": -1,
+          "damage": "3d6",
+          "morale": -10
+        }
+      },
+      {
+        "text": "{SURVIVOR1} tries to help with bare hands and torn fabric, doing what they can without using supplies",
+        "successChance": 0.5,
+        "success": {
+          "morale": 10
+        },
+        "failure": {
+          "morale": -10
+        }
+      },
+      {
+        "text": "The {ROLE1_CAP} talks to the stranger, probing their story and watching closely for any tells",
+        "requirements": {
+          "hasRole": "Negotiator"
+        },
+        "successChance": 0.8,
+        "success": {
+          "morale": 10
+        },
+        "failure": {
+          "damage": "3d6",
+          "morale": -10
+        }
+      },
+      {
+        "text": "They harden themselves, keep the doors shut, and drive past without stopping",
+        "successChance": 1,
+        "success": {
+          "morale": -15
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "flooded_bridge",
+    "location": "Flooded Bridge Crossing",
+    "description": "The river below the bridge roars brown and swollen, churning around half-submerged tree trunks and debris. Water spills across the cracked roadway in places, making the structure groan and flex. {SURVIVOR1} can see sections where the guardrail has already torn away and dropped into the current.",
+    "choices": [
+      {
+        "text": "The {ROLE1_CAP} moves slowly along the bridge, checking supports and stress points before deciding",
+        "requirements": {
+          "hasRole": "Engineer"
+        },
+        "successChance": 0.85,
+        "success": {
+          "morale": 10
+        },
+        "failure": {
+          "damage": "3d6",
+          "morale": -10
+        }
+      },
+      {
+        "text": "{SURVIVOR1} searches up and down the bank for any sign of a shallower crossing or sturdy ford",
+        "requirements": {
+          "hasRole": "Scout"
+        },
+        "successChance": 0.8,
+        "success": {
+          "fuel": -1,
+          "morale": 5
+        },
+        "failure": {
+          "fuel": -2,
+          "morale": -10
+        }
+      },
+      {
+        "text": "They ease the vehicle onto the bridge, inching forward with slow, careful progress",
+        "successChance": 0.55,
+        "success": {
+          "morale": 5
+        },
+        "failure": {
+          "damage": "4d6",
+          "fuel": -2,
+          "morale": -15
+        }
+      },
+      {
+        "text": "{SURVIVOR1} guns the engine, hoping speed will carry them across before the bridge gives way",
+        "requirements": {
+          "fuel": 1
+        },
+        "successChance": 0.45,
+        "success": {
+          "fuel": -1,
+          "morale": 10
+        },
+        "failure": {
+          "damage": "5d8",
+          "fuel": -2,
+          "morale": -20
+        }
+      },
+      {
+        "text": "They decide to wait it out nearby, burning food and time in the hope the water drops a little",
+        "requirements": {
+          "food": 2
+        },
+        "successChance": 0.75,
+        "success": {
+          "food": -2,
+          "morale": -5
+        },
+        "failure": {
+          "food": -2,
+          "morale": -15
+        }
+      },
+      {
+        "text": "They turn away from the river entirely and commit to a long detour inland",
+        "requirements": {
+          "fuel": 3
+        },
+        "successChance": 0.9,
+        "success": {
+          "fuel": -3,
+          "morale": -5
+        },
+        "failure": {
+          "fuel": -3,
+          "morale": -10
+        }
+      }
+    ]
+  },
+  {
+    "id": "abandoned_restaurant",
+    "location": "Roadside Diner",
+    "description": "A faded neon sign hangs dead above a narrow parking lot, its windows streaked and grimy but mostly intact. The door to the roadside diner stands slightly open, swaying just enough to creak. Something sour and rotten rides the air when {SURVIVOR1} and {SURVIVOR2} get close, but places like this sometimes hide untouched food.",
+    "choices": [
+      {
+        "text": "The {ROLE1_CAP} heads straight for the kitchen, sorting what’s still edible from what will make them sick",
+        "requirements": {
+          "hasRole": "Cook"
+        },
+        "successChance": 0.85,
+        "success": {
+          "food": 6,
+          "morale": 15
+        },
+        "failure": {
+          "damage": "2d4",
+          "food": 2,
+          "morale": -5
+        }
+      },
+      {
+        "text": "{SURVIVOR1} sweeps the diner for threats first — booths, kitchen doors, storage rooms, and any dark corners",
+        "requirements": {
+          "hasRole": "Scout"
+        },
+        "successChance": 0.85,
+        "success": {
+          "food": 4,
+          "morale": 5
+        },
+        "failure": {
+          "damage": "2d6",
+          "morale": -5
+        }
+      },
+      {
+        "text": "They move methodically through the kitchen, opening cupboards, fridges, and storage shelves despite the smell",
+        "successChance": 0.55,
+        "success": {
+          "food": 4,
+          "morale": 5
+        },
+        "failure": {
+          "damage": "3d6",
+          "morale": -10
+        }
+      },
+      {
+        "text": "{SURVIVOR1} stays near the front counter, grabbing whatever cans or packets are easiest to reach",
+        "successChance": 0.7,
+        "success": {
+          "food": 2
+        },
+        "failure": {
+          "damage": "2d4",
+          "morale": -5
+        }
+      },
+      {
+        "text": "They push into the walk-in freezer and back storage, chasing the chance of a real haul",
+        "successChance": 0.45,
+        "success": {
+          "food": 5,
+          "morale": 10
+        },
+        "failure": {
+          "damage": "4d6",
+          "morale": -15
+        }
+      },
+      {
+        "text": "The air inside feels wrong — they decide the risk of whatever’s rotting in there isn’t worth it",
+        "successChance": 1,
+        "success": {
+          "morale": -5
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "highway_bandits",
+    "location": "Highway Roadblock",
+    "description": "A wall of wrecked cars blocks the highway, pushed together into a makeshift barricade. As {SURVIVOR1} slows, figures rise from behind the metal — weapons visible, faces shadowed. One of them calls out that this is a toll road now, demanding supplies if anyone wants to pass through alive.",
+    "choices": [
+      {
+        "text": "The {ROLE1_CAP} steps out where they can be seen, trying to talk the bandits down before things escalate",
+        "requirements": {
+          "hasRole": "Negotiator"
+        },
+        "successChance": 0.7,
+        "success": {
+          "morale": 10
+        },
+        "failure": {
+          "damage": "3d6",
+          "morale": -15
+        }
+      },
+      {
+        "text": "The {ROLE1_CAP} marks targets and angles, planning a fast, brutal response if it comes to a fight",
+        "requirements": {
+          "hasRole": "Soldier",
+          "ammo": 3
+        },
+        "successChance": 0.6,
+        "success": {
+          "ammo": -3,
+          "morale": 10
+        },
+        "failure": {
+          "damage": "5d8",
+          "ammo": -3,
+          "morale": -20
+        }
+      },
+      {
+        "text": "{SURVIVOR1} agrees to pay in food, handing over supplies to avoid bloodshed",
+        "requirements": {
+          "food": 3
+        },
+        "successChance": 0.85,
+        "success": {
+          "food": -3,
+          "morale": -10
+        },
+        "failure": {
+          "food": -3,
+          "damage": "3d6",
+          "morale": -15
+        }
+      },
+      {
+        "text": "They offer medicine instead, hoping it’s valuable enough to satisfy the toll",
+        "requirements": {
+          "medicine": 2
+        },
+        "successChance": 0.85,
+        "success": {
+          "medicine": -2,
+          "morale": -10
+        },
+        "failure": {
+          "medicine": -2,
+          "damage": "3d6",
+          "morale": -15
+        }
+      },
+      {
+        "text": "{SURVIVOR1} aims the vehicle at the barricade and slams the accelerator, trying to smash through",
+        "requirements": {
+          "fuel": 2
+        },
+        "successChance": 0.45,
+        "success": {
+          "fuel": -2,
+          "damage": "3d6",
+          "morale": -5
+        },
+        "failure": {
+          "damage": "5d8",
+          "fuel": -2,
+          "morale": -20
+        }
+      },
+      {
+        "text": "{SURVIVOR1} and {SURVIVOR2} look for a way around, weaving through side roads and fields to bypass the roadblock",
+        "requirements": {
+          "hasRole": "Scout",
+          "fuel": 2
+        },
+        "successChance": 0.75,
+        "success": {
+          "fuel": -2,
+          "morale": 5
+        },
+        "failure": {
+          "fuel": -2,
+          "damage": "3d6",
+          "morale": -10
+        }
+      },
+      {
+        "text": "They turn back the way they came, burning fuel to put as much distance as possible between them and the bandits",
+        "requirements": {
+          "fuel": 3
+        },
+        "successChance": 0.9,
+        "success": {
+          "fuel": -3,
+          "morale": -10
+        },
+        "failure": {
+          "fuel": -3,
+          "morale": -15
+        }
+      }
+    ]
+  },
+  {
+    "id": "gas_station_intact",
+    "location": "Seemingly Intact Gas Station",
+    "description": "A small gas station sits just off the road, its pumps upright, windows unbroken, and signage still mostly intact. The forecourt is oddly clean, with only a few scattered leaves and no obvious signs of struggle. To {SURVIVOR1} and {SURVIVOR2}, it looks impossibly good — which is exactly what makes it unnerving.",
+    "choices": [
+      {
+        "text": "{SURVIVOR1} circles wide around the station, checking rooftops, side doors, and blind spots before going anywhere near the pumps",
+        "requirements": {
+          "hasRole": "Scout"
+        },
+        "successChance": 0.85,
+        "success": {
+          "fuel": 4,
+          "food": 2,
+          "morale": 10
+        },
+        "failure": {
+          "damage": "2d6",
+          "morale": -5
+        }
+      },
+      {
+        "text": "The {ROLE1_CAP} inspects the pump housings and underground lines, looking for tampering, leaks, or crude traps",
+        "requirements": {
+          "hasRole": "Engineer"
+        },
+        "successChance": 0.8,
+        "success": {
+          "fuel": 5,
+          "morale": 10
+        },
+        "failure": {
+          "damage": "3d6",
+          "morale": -10
+        }
+      },
+      {
+        "text": "{SURVIVOR1} pulls up, fills fast, and plans to be gone before anyone — or anything — can react",
+        "successChance": 0.5,
+        "success": {
+          "fuel": 3
+        },
+        "failure": {
+          "damage": "4d6",
+          "morale": -15
+        }
+      },
+      {
+        "text": "They head into the store, sweeping aisles and back rooms for food, medicine, and other supplies",
+        "successChance": 0.45,
+        "success": {
+          "food": 3,
+          "medicine": 1,
+          "fuel": 2
+        },
+        "failure": {
+          "damage": "4d6",
+          "morale": -15
+        }
+      },
+      {
+        "text": "The {ROLE1_CAP} approaches any signs of life carefully, testing whether this station is defended or truly abandoned",
+        "requirements": {
+          "hasRole": "Negotiator"
+        },
+        "successChance": 0.75,
+        "success": {
+          "fuel": 3,
+          "food": 2,
+          "morale": 10
+        },
+        "failure": {
+          "damage": "3d6",
+          "morale": -10
+        }
+      },
+      {
+        "text": "{SURVIVOR1} watches from a distance while {SURVIVOR2} makes a brief, cautious approach, ready to pull back at the first bad sign",
+        "requirements": {
+          "food": 1
+        },
+        "successChance": 0.85,
+        "success": {
+          "food": -1,
+          "fuel": 3,
+          "morale": 5
+        },
+        "failure": {
+          "food": -1,
+          "morale": -5
+        }
+      },
+      {
+        "text": "It feels too perfect — they agree to leave the station untouched and drive on",
+        "successChance": 1,
+        "success": {
+          "morale": -10
+        },
+        "failure": {}
+      }
+    ]
+  }
+]

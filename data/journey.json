@@ -1,0 +1,70 @@
+{
+  "totalMiles": 2950,
+  "startLocation": "Newark, New Jersey",
+  "endLocation": "Northern California Safe Zone",
+  "regions": [
+    {
+      "name": "East Coast to Appalachians",
+      "mileStart": 0,
+      "mileEnd": 300,
+      "theme": "Urban decay, dense suburbs, initial chaos",
+      "description": "Crowded highways, abandoned suburbs, coastal cities in flames. The outbreak is fresh here - bodies everywhere, military checkpoints overrun.",
+      "encounterTags": ["urban", "dense", "chaos", "military", "suburbs"],
+      "difficulty": "hard"
+    },
+    {
+      "name": "Appalachian Mountains",
+      "mileStart": 300,
+      "mileEnd": 600,
+      "theme": "Mountains, isolation, rural settlements",
+      "description": "Winding mountain roads, isolated cabins, small towns cut off from the world. Fewer infected, but resources are scarce and locals are territorial.",
+      "encounterTags": ["mountain", "rural", "isolated", "territorial", "nature"],
+      "difficulty": "medium"
+    },
+    {
+      "name": "Ohio Valley & Rust Belt",
+      "mileStart": 600,
+      "mileEnd": 1100,
+      "theme": "Industrial decay, river crossings, abandoned factories",
+      "description": "Rust belt cities falling apart, rivers to cross, industrial zones full of hazards. Survivor communities are forming, but not all are friendly.",
+      "encounterTags": ["industrial", "urban", "rivers", "communities", "factories"],
+      "difficulty": "hard"
+    },
+    {
+      "name": "Great Plains",
+      "mileStart": 1100,
+      "mileEnd": 1700,
+      "theme": "Endless horizons, farmland, small towns",
+      "description": "Flat, open country. You can see for miles - which means they can see you too. Small farming towns, grain silos, and long stretches of nothing.",
+      "encounterTags": ["plains", "rural", "farming", "exposed", "weather"],
+      "difficulty": "medium"
+    },
+    {
+      "name": "Rocky Mountains",
+      "mileStart": 1700,
+      "mileEnd": 2200,
+      "theme": "High altitude, harsh weather, treacherous passes",
+      "description": "Snow-capped peaks, narrow passes, brutal weather. The cold slows the infected, but it'll kill you just as dead. Mountain communities survived better than most.",
+      "encounterTags": ["mountain", "cold", "altitude", "passes", "harsh"],
+      "difficulty": "very_hard"
+    },
+    {
+      "name": "Great Basin & Nevada Desert",
+      "mileStart": 2200,
+      "mileEnd": 2650,
+      "theme": "Desert wasteland, military installations, extreme heat",
+      "description": "Scorching desert, abandoned military bases, isolated highway stops. Water is everything. The infected don't last long here, but neither do people without supplies.",
+      "encounterTags": ["desert", "military", "heat", "isolated", "scarcity"],
+      "difficulty": "very_hard"
+    },
+    {
+      "name": "Northern California",
+      "mileStart": 2650,
+      "mileEnd": 2950,
+      "theme": "Coastal hills, dense forests, hope on the horizon",
+      "description": "Green hills, redwood forests, approaching the safe zone. You're so close. But others are heading here too - refugees, raiders, and things worse than infected.",
+      "encounterTags": ["coastal", "forest", "crowded", "hope", "competition"],
+      "difficulty": "hard"
+    }
+  ]
+}

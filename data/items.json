@@ -1,0 +1,136 @@
+{
+  "baseResources": {
+    "food": 12,
+    "medicine": 1,
+    "fuel": 10,
+    "ammo": 6,
+    "morale": 70
+  },
+
+  "starterBonuses": {
+    "scout": {
+      "fuel": 2
+    },
+    "medic": {
+      "medicine": 2
+    },
+    "soldier": {
+      "ammo": 3
+    },
+    "engineer": {
+      "fuel": 2
+    },
+    "cook": {
+      "food": 4
+    },
+    "negotiator": {
+      "food": 2,
+      "ammo": 1
+    }
+  },
+
+  "consumptionRates": {
+    "food": {
+      "perSurvivorPerDay": 1,
+      "description": "Each living survivor consumes 1 food per day"
+    },
+    "fuel": {
+      "perDay": 1,
+      "description": "Vehicle consumes 1 fuel per day when traveling"
+    }
+  },
+
+  "starvationEffects": {
+    "healthLoss": 5,
+    "moraleLoss": 10,
+    "description": "When food reaches 0, each survivor loses 5 HP and group loses 10 morale per day"
+  },
+
+  "outOfFuelEffects": {
+    "travelSpeedReduction": 0.5,
+    "milesPerDayNormal": [20, 40],
+    "milesPerDayOnFoot": [10, 20],
+    "moraleLoss": 5,
+    "ambushChanceIncrease": 0.20,
+    "description": "Without fuel, travel on foot at half speed, morale drops, ambush chance increases 20%"
+  },
+
+  "medicineEffect": {
+    "healAmount": 25,
+    "medic Bonus": "Also cures one medicine-curable injury",
+    "description": "Using medicine heals 25 HP. If Medic present, also cures one injury."
+  },
+
+  "moraleModifiers": {
+    "high": {
+      "threshold": 70,
+      "successBonus": 0.05,
+      "description": "At 70+ morale, +5% success chance on all choices"
+    },
+    "low": {
+      "threshold": 30,
+      "successPenalty": 0.05,
+      "description": "At 30 or below morale, -5% success chance on all choices"
+    }
+  },
+
+  "resourceRanges": {
+    "food": {
+      "critical": 2,
+      "low": 5,
+      "good": 10,
+      "description": "Food warnings at 2 or below (critical), 5 or below (low)"
+    },
+    "medicine": {
+      "critical": 0,
+      "low": 1,
+      "good": 3,
+      "description": "Medicine is always scarce - any amount is valuable"
+    },
+    "fuel": {
+      "critical": 0,
+      "low": 2,
+      "good": 5,
+      "description": "Fuel warnings at 0 (on foot), 2 or below (low)"
+    },
+    "ammo": {
+      "critical": 0,
+      "low": 3,
+      "good": 8,
+      "description": "Ammo warnings at 0 (defenseless), 3 or below (low)"
+    },
+    "morale": {
+      "critical": 30,
+      "low": 50,
+      "good": 70,
+      "description": "Morale affects success chances and ambush vulnerability"
+    }
+  },
+
+  "encounterRewards": {
+    "food": {
+      "common": [1, 3],
+      "good": [4, 5],
+      "excellent": [6, 8],
+      "notes": "Food found in 40% of scavenge encounters"
+    },
+    "medicine": {
+      "rare": 1,
+      "good": 2,
+      "excellent": 3,
+      "notes": "Medicine only in pharmacies, hospitals, medical sites (20% of encounters)"
+    },
+    "fuel": {
+      "common": [1, 2],
+      "good": [3, 4],
+      "excellent": [5, 6],
+      "notes": "Fuel at gas stations, vehicles, military sites (30% of encounters)"
+    },
+    "ammo": {
+      "rare": [2, 3],
+      "good": [4, 5],
+      "excellent": [6, 8],
+      "notes": "Ammo at police, military, gun stores (25% of encounters)"
+    }
+  }
+}

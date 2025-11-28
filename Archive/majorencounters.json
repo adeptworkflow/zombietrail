@@ -1,0 +1,264 @@
+[
+  {
+    "id": "burned_town_complex",
+    "location": "Burned Residential Block",
+    "phases": [
+      {
+        "description": "A column of smoke rises above a row of ruined homes, the heat still radiating across the street. Somewhere deeper inside, someone screams for help. Flames still lick along collapsed beams, and the air tastes of ash.",
+        "choices": [
+          {
+            "text": "{SURVIVOR1} leads a cautious approach, staying low and scanning for structural danger",
+            "successChance": 0.8,
+            "success": { "morale": 3 },
+            "failure": {
+              "damage": "2d6",
+              "morale": -5
+            }
+          },
+          {
+            "text": "{SURVIVOR2} calls out, hoping the survivor can guide them without entering the worst of the fire",
+            "successChance": 0.6,
+            "success": { "morale": 2 },
+            "failure": { "morale": -5 }
+          },
+          {
+            "text": "Avoid the burning block entirely — the risks outweigh the reward",
+            "successChance": 1,
+            "success": { "morale": -2 },
+            "failure": {}
+          }
+        ]
+      },
+      {
+        "description": "Deeper in the ruined street, two possible leads emerge: a collapsed storm shelter with faint movement below, and a pinned survivor trapped beneath fallen timber. Smoke swirls low across the ground.",
+        "choices": [
+          {
+            "text": "{SURVIVOR1} inspects the collapsed storm shelter, listening for whoever might be trapped inside",
+            "successChance": 0.75,
+            "success": {
+              "food": 1,
+              "medicine": 1,
+              "morale": 3
+            },
+            "failure": {
+              "damage": "3d6",
+              "morale": -10
+            }
+          },
+          {
+            "text": "{SURVIVOR2} rushes to free the pinned survivor, using leverage and speed",
+            "successChance": 0.85,
+            "success": { "morale": 10 },
+            "failure": {
+              "damage": "2d6",
+              "morale": -5
+            }
+          }
+        ]
+      },
+      {
+        "description": "The fire spreads rapidly. Heat waves shimmer off the pavement and a section of roof collapses behind them, showering sparks through the air.",
+        "choices": [
+          {
+            "text": "Retreat quickly with whatever supplies they recovered",
+            "successChance": 0.85,
+            "success": { "morale": 3 },
+            "failure": {
+              "damage": "3d6",
+              "morale": -10
+            }
+          },
+          {
+            "text": "{SURVIVOR1} and {SURVIVOR2} attempt a final rescue sprint before the flames cut off the path completely",
+            "successChance": 0.4,
+            "success": {
+              "medicine": 2,
+              "food": 1,
+              "morale": 10
+            },
+            "failure": {
+              "damage": "5d8",
+              "morale": -20
+            }
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": "collapsed_tunnel_complex",
+    "location": "Partially-Collapsed Highway Tunnel",
+    "phases": [
+      {
+        "description": "A highway tunnel ahead is partially collapsed, debris scattered across lanes. Vehicles lie crushed along the walls and faint groans echo from deeper inside. The air is stale, thick with dust.",
+        "choices": [
+          {
+            "text": "{SURVIVOR1} ({ROLE1_CAP}) checks the tunnel’s stability from a safe distance",
+            "requirements": { "hasRole": "Scout" },
+            "successChance": 0.85,
+            "success": { "morale": 5 },
+            "failure": { "morale": -3 }
+          },
+          {
+            "text": "{SURVIVOR2} ({ROLE2_CAP}) inspects the debris for a possible safe route",
+            "requirements": { "hasRole": "Engineer" },
+            "successChance": 0.8,
+            "success": {
+              "fuel": 1,
+              "morale": 5
+            },
+            "failure": {
+              "damage": "2d6",
+              "morale": -5
+            }
+          },
+          {
+            "text": "Push forward blindly into the tunnel, hoping luck holds",
+            "successChance": 0.5,
+            "success": { "morale": -2 },
+            "failure": {
+              "damage": "3d6",
+              "morale": -10
+            }
+          }
+        ]
+      },
+      {
+        "description": "Inside the tunnel, dust filters through beams of dying light. Two possible paths lie ahead — a narrow crawlspace above a fallen truck, or a dark, stagnant-water underpass beneath the wreck.",
+        "choices": [
+          {
+            "text": "{SURVIVOR1} climbs into the upper crawlspace, pulling debris aside as quietly as possible",
+            "successChance": 0.7,
+            "success": {
+              "food": 1,
+              "morale": 5
+            },
+            "failure": {
+              "damage": "2d6",
+              "morale": -5
+            }
+          },
+          {
+            "text": "{SURVIVOR2} wades through the lower path, feeling for footing beneath murky water",
+            "successChance": 0.6,
+            "success": { "medicine": 1 },
+            "failure": {
+              "damage": "2d6",
+              "morale": -10
+            }
+          }
+        ]
+      },
+      {
+        "description": "The tunnel groans ominously. Dust trickles from above as another collapse threatens. A massive barrier of debris blocks the exit.",
+        "choices": [
+          {
+            "text": "Force through the debris before the tunnel gives way",
+            "successChance": 0.65,
+            "success": { "morale": 5 },
+            "failure": {
+              "damage": "4d6",
+              "morale": -15
+            }
+          },
+          {
+            "text": "Detour through a side maintenance corridor",
+            "requirements": { "fuel": 1 },
+            "successChance": 0.8,
+            "success": {
+              "fuel": -1,
+              "morale": 2
+            },
+            "failure": {
+              "fuel": -1,
+              "morale": -5
+            }
+          }
+        ]
+      }
+    ]
+  },
+
+  {
+    "id": "stranded_convoy_complex",
+    "location": "Abandoned FEMA Convoy",
+    "phases": [
+      {
+        "description": "A long line of FEMA trucks stretches across the roadside. Doors hang open, paperwork litters the ground, and supply crates lie scattered like someone left in a hurry.",
+        "choices": [
+          {
+            "text": "{SURVIVOR1} ({ROLE1_CAP}) secures the perimeter before anyone gets too close",
+            "requirements": { "hasRole": "Soldier" },
+            "successChance": 0.85,
+            "success": { "morale": 5 },
+            "failure": {
+              "damage": "2d6",
+              "morale": -5
+            }
+          },
+          {
+            "text": "Approach the convoy slowly, checking for movement between the trucks",
+            "successChance": 0.75,
+            "success": { "morale": 2 },
+            "failure": { "morale": -3 }
+          },
+          {
+            "text": "Leave the convoy untouched and move on",
+            "successChance": 1,
+            "success": { "morale": -5 },
+            "failure": {}
+          }
+        ]
+      },
+      {
+        "description": "The interior of the convoy shows signs of both order and chaos — sealed crates beside ripped-open ones, and tracks in the dust that lead nowhere.",
+        "choices": [
+          {
+            "text": "Search unopened crates carefully",
+            "successChance": 0.7,
+            "success": {
+              "food": 2,
+              "medicine": 2
+            },
+            "failure": {
+              "damage": "3d6",
+              "morale": -5
+            }
+          },
+          {
+            "text": "{SURVIVOR2} checks the trucks’ tanks for usable fuel",
+            "successChance": 0.6,
+            "success": { "fuel": 2 },
+            "failure": { "morale": -5 }
+          }
+        ]
+      },
+      {
+        "description": "At the head of the convoy waits a battered communications truck. Its door hangs crooked, metal warped and paint blistered by heat.",
+        "choices": [
+          {
+            "text": "{SURVIVOR1} climbs into the comms truck to search for supplies or intel",
+            "successChance": 0.65,
+            "success": {
+              "food": 1,
+              "medicine": 1,
+              "ammo": 2,
+              "morale": 5
+            },
+            "failure": {
+              "damage": "4d6",
+              "morale": -10
+            }
+          },
+          {
+            "text": "Back away before the situation becomes more dangerous",
+            "successChance": 1,
+            "success": { "morale": -2 },
+            "failure": {}
+          }
+        ]
+      }
+    ]
+  }
+]

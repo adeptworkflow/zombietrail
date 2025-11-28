@@ -1,0 +1,242 @@
+[
+  {
+    "id": "nightmare_attack",
+    "region": [
+      "any"
+    ],
+    "danger": "high",
+    "ambush": true,
+    "location": "Night Camp",
+    "description": "As darkness settles, faint groans drift through the trees. Shadows shift. The dead have caught your scent.",
+    "choices": [
+      {
+        "id": "fight_them_off",
+        "text": "Grab weapons and fight off the attackers",
+        "requirements": {},
+        "successChance": 0.55,
+        "success": {
+          "ammo": -2,
+          "morale": -5,
+          "resultNarration": "You hold the line and push the infected back into the night."
+        },
+        "failure": {
+          "damage": "2d6",
+          "injuryTier": "zombie_contact",
+          "injuryChance": 1.0,
+          "morale": -20,
+          "resultNarration": "The infected swarm the camp. You break free, wounded and shaken."
+        }
+      },
+      {
+        "id": "hide_and_wait",
+        "text": "Retreat into hiding places and wait for them to pass",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "morale": -5,
+          "resultNarration": "The infected shuffle past your hiding place, unaware of your presence."
+        },
+        "failure": {
+          "morale": -15,
+          "injuryTier": "zombie_contact",
+          "injuryChance": 0.5,
+          "resultNarration": "One of them sniffs too close\u2014you're forced to bolt, narrowly escaping harm."
+        }
+      },
+      {
+        "id": "quiet_escape",
+        "text": "Slip away silently into the dark and abandon the camp",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "morale": -10,
+          "resultNarration": "You slip away into the dark, losing your camp but avoiding the undead."
+        },
+        "failure": {
+          "morale": -20,
+          "damage": "1d6",
+          "resultNarration": "A loose branch snaps underfoot. The horde turns. You barely make it out."
+        }
+      }
+    ]
+  },
+  {
+    "id": "raider_night_raid",
+    "region": [
+      "any"
+    ],
+    "danger": "high",
+    "ambush": true,
+    "location": "Night Camp",
+    "description": "Whispers and footsteps circle the camp. Raiders have found you.",
+    "choices": [
+      {
+        "id": "stand_and_fight",
+        "text": "Defend the camp with force",
+        "requirements": {},
+        "successChance": 0.5,
+        "success": {
+          "ammo": -2,
+          "morale": -5,
+          "resultNarration": "You repel the raiders after a desperate exchange."
+        },
+        "failure": {
+          "damage": "2d6",
+          "addInjuryId": "gunshot_wound",
+          "injuryChance": 0.3,
+          "morale": -20,
+          "resultNarration": "Gunfire erupts. You retreat wounded as the raiders scatter your supplies."
+        }
+      },
+      {
+        "id": "negotiate",
+        "text": "Try to negotiate or stall them",
+        "requirements": {
+          "hasRole": "Negotiator"
+        },
+        "successChance": 0.5,
+        "success": {
+          "morale": -5,
+          "resultNarration": "You talk the raiders down enough for them to leave without bloodshed."
+        },
+        "failure": {
+          "morale": -10,
+          "damage": "1d6",
+          "resultNarration": "The raiders laugh off your attempt and push in aggressively."
+        }
+      },
+      {
+        "id": "slip_out",
+        "text": "Escape into the night and abandon your camp",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "morale": -10,
+          "resultNarration": "You fade into the darkness before the raiders notice you're gone."
+        },
+        "failure": {
+          "addInjuryId": "sprained_ankle",
+          "injuryChance": 0.3,
+          "morale": -15,
+          "resultNarration": "You trip on uneven ground as you flee, twisting your ankle."
+        }
+      }
+    ]
+  },
+  {
+    "id": "stray_dog_night_disturbance",
+    "region": [
+      "any"
+    ],
+    "danger": "medium",
+    "ambush": true,
+    "location": "Night Camp",
+    "description": "Low growls echo in the darkness. A stray dog prowls near your camp, hungry and unpredictable.",
+    "choices": [
+      {
+        "id": "scare_it_off",
+        "text": "Wave torches or tools to scare it away",
+        "requirements": {},
+        "successChance": 0.75,
+        "success": {
+          "morale": 0,
+          "resultNarration": "The dog retreats into the shadows, startled by your noise."
+        },
+        "failure": {
+          "morale": -5,
+          "addInjuryId": "deep_cut",
+          "injuryChance": 0.2,
+          "resultNarration": "It snaps at you before retreating. A shallow bite stings painfully."
+        }
+      },
+      {
+        "id": "offer_food",
+        "text": "Toss a small piece of food to distract it",
+        "requirements": {},
+        "successChance": 0.9,
+        "success": {
+          "food": -1,
+          "morale": 2,
+          "resultNarration": "The dog snatches the food and vanishes quietly."
+        },
+        "failure": {
+          "morale": -5,
+          "resultNarration": "The dog ignores the food and circles even closer."
+        }
+      },
+      {
+        "id": "wait_silently",
+        "text": "Stay quiet and wait for it to lose interest",
+        "requirements": {},
+        "successChance": 0.8,
+        "success": {
+          "morale": 1,
+          "resultNarration": "After a tense minute, the dog wanders away."
+        },
+        "failure": {
+          "morale": -5,
+          "resultNarration": "It growls and scratches at your pack before leaving."
+        }
+      }
+    ]
+  },
+  {
+    "id": "storm_night_collapse",
+    "region": [
+      "any"
+    ],
+    "danger": "medium",
+    "ambush": false,
+    "location": "Night Camp",
+    "description": "A violent storm erupts overhead. Branches snap and the wind howls against your shelter.",
+    "choices": [
+      {
+        "id": "reinforce_shelter",
+        "text": "Try to reinforce the shelter",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "morale": -2,
+          "resultNarration": "The shelter holds. You weather the storm, though sleep is impossible."
+        },
+        "failure": {
+          "morale": -10,
+          "addInjuryId": "concussion",
+          "injuryChance": 0.2,
+          "resultNarration": "A branch collapses onto you in the dark. You suffer a nasty blow."
+        }
+      },
+      {
+        "id": "hunker_down",
+        "text": "Stay low and hope the shelter holds",
+        "requirements": {},
+        "successChance": 0.9,
+        "success": {
+          "morale": -5,
+          "resultNarration": "The storm rages but eventually passes."
+        },
+        "failure": {
+          "morale": -10,
+          "damage": "1d6",
+          "resultNarration": "Wind tears part of the shelter loose, battering you with debris."
+        }
+      },
+      {
+        "id": "move_to_safer_spot",
+        "text": "Dart to a sturdier-looking tree or rock formation",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "morale": -5,
+          "resultNarration": "You make it to better cover and ride out the storm."
+        },
+        "failure": {
+          "morale": -10,
+          "addInjuryId": "sprained_ankle",
+          "injuryChance": 0.25,
+          "resultNarration": "You slip on wet ground while relocating."
+        }
+      }
+    ]
+  }
+]

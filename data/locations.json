@@ -1,0 +1,253 @@
+[
+  {
+    "id": "loc_01",
+    "type": "regular",
+    "name": "Hilltop Pharmacy",
+    "region": "east_coast",
+    "mileMarker": 30,
+    "category": "pharmacy",
+    "description": "A small neighborhood pharmacy sits at the corner of a cracked intersection. {SURVIVOR1} and {SURVIVOR2} approach cautiously; the {RELATIONSHIP} notice the front window has been smashed, but shelves still stand.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_02",
+    "type": "regular",
+    "name": "Cedar Grove Gas Stop",
+    "region": "east_coast",
+    "mileMarker": 66,
+    "category": "gas_station",
+    "description": "A lonely gas station squats beside the highway. The pumps are dead, but the convenience store looks mostly intact. A faded sign creaks in the wind.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_03",
+    "type": "regular",
+    "name": "Maple Row Suburban Home",
+    "region": "east_coast",
+    "mileMarker": 95,
+    "category": "home",
+    "description": "A quiet house stands among others long abandoned. {SURVIVOR1} pushes open the broken door while {SURVIVOR2} keeps watch on the silent street.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_04",
+    "type": "regular",
+    "name": "Starlight Grocery",
+    "region": "east_coast",
+    "mileMarker": 128,
+    "category": "grocery",
+    "description": "A medium-sized grocery store with its automatic doors shattered. The aisles inside look chaotic, but not fully looted.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_05",
+    "type": "regular",
+    "name": "Briarwood Elementary",
+    "region": "east_coast",
+    "mileMarker": 165,
+    "category": "school",
+    "description": "An old elementary school sits surrounded by an empty playground. {SURVIVOR2} glances at the dark windows while {SURVIVOR1} listens for movement inside.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_06",
+    "type": "regular",
+    "name": "Redwater Police Substation",
+    "region": "east_coast",
+    "mileMarker": 198,
+    "category": "police_station",
+    "description": "A compact police station reinforced with steel doors. Old patrol cars rot out front. The interior might still hold weapons—or trouble.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_07",
+    "type": "regular",
+    "name": "East Highway Motel",
+    "region": "east_coast",
+    "mileMarker": 224,
+    "category": "motel",
+    "description": "A flickering motel sign buzzes in the dusk. Multiple room doors are wide open, and shadows move behind torn curtains.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_08",
+    "type": "regular",
+    "name": "Greenfield Farm",
+    "region": "east_coast",
+    "mileMarker": 259,
+    "category": "farm",
+    "description": "The remnants of a farmhouse sit beside a collapsed barn. {SURVIVOR1} spots rusting equipment while {SURVIVOR2} circles the fields.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_09",
+    "type": "regular",
+    "name": "Pinebridge Clinic",
+    "region": "east_coast",
+    "mileMarker": 294,
+    "category": "pharmacy",
+    "description": "A small medical clinic rests on the corner of a dead street. The interior looks ransacked but still promising.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_10",
+    "type": "regular",
+    "name": "Appalachian Ranger Cabin",
+    "region": "appalachian",
+    "mileMarker": 324,
+    "category": "ranger_station",
+    "description": "A wooden ranger cabin overlooks dense forest. A map board outside has been shredded by weather.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_11",
+    "type": "regular",
+    "name": "Mountain View Gas & Diner",
+    "region": "appalachian",
+    "mileMarker": 362,
+    "category": "gas_station",
+    "description": "A tiny station with an attached diner. Tables inside remain half-set, as if abandoned in a rush.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_12",
+    "type": "regular",
+    "name": "Highridge School Campus",
+    "region": "appalachian",
+    "mileMarker": 390,
+    "category": "school",
+    "description": "A sprawling high school complex. Broken lockers spill contents across the hallways. Every noise echoes.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_13",
+    "type": "regular",
+    "name": "Floodplain Subdivision",
+    "region": "appalachian",
+    "mileMarker": 417,
+    "category": "home",
+    "description": "Several rows of townhouses sit abandoned, many with kicked-in doors. The area feels strangely untouched.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_14",
+    "type": "regular",
+    "name": "Old Mill Supermarket",
+    "region": "appalachian",
+    "mileMarker": 443,
+    "category": "grocery",
+    "description": "A huge supermarket lies dark and silent. Shopping carts block the entrance as if used for a barricade.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_15",
+    "type": "regular",
+    "name": "Rusthook Farmstead",
+    "region": "appalachian",
+    "mileMarker": 476,
+    "category": "farm",
+    "description": "A weather-beaten farm on the hillside. Several outbuildings lean dangerously, but one barn still stands.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_16",
+    "type": "regular",
+    "name": "Abandoned Guard Depot",
+    "region": "appalachian",
+    "mileMarker": 510,
+    "category": "military",
+    "description": "Tall fences surround an old National Guard depot. It looks half-looted but still fortified.",
+    "canSecure": false
+  },
+  {
+    "id": "loc_17",
+    "type": "regular",
+    "name": "Midwest Rest Stop Plaza",
+    "region": "midwest",
+    "mileMarker": 541,
+    "category": "gas_station",
+    "description": "A large rest stop with a central plaza and empty food courts. Cars sit abandoned in chaotic patterns.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_18",
+    "type": "regular",
+    "name": "Three Pines Motel",
+    "region": "midwest",
+    "mileMarker": 568,
+    "category": "motel",
+    "description": "A long row of ground-floor rooms sits under a collapsing roof. Most windows are smashed.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_19",
+    "type": "regular",
+    "name": "Cobalt Springs Suburb",
+    "region": "midwest",
+    "mileMarker": 603,
+    "category": "home",
+    "description": "A suburban neighborhood with cul-de-sacs filled with abandoned cars. Several homes remain unbroken into.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_20",
+    "type": "regular",
+    "name": "Western Plains Farm",
+    "region": "midwest",
+    "mileMarker": 633,
+    "category": "farm",
+    "description": "An open farmstead with large silos and a wide barn. Wind whistles through empty fields.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_21",
+    "type": "regular",
+    "name": "Civic Center Clinic",
+    "region": "midwest",
+    "mileMarker": 673,
+    "category": "pharmacy",
+    "description": "A rural clinic stands with smashed doors but intact exam rooms deeper inside.",
+    "canSecure": true
+  },
+  {
+    "id": "loc_22",
+    "type": "regular",
+    "name": "Northline Ranger Station",
+    "region": "midwest",
+    "mileMarker": 706,
+    "category": "ranger_station",
+    "description": "A lakeside ranger lookout stands tall on wooden stilts, offering visibility but not safety.",
+    "canSecure": true
+  },
+
+  {
+    "id": "poi_philadelphia",
+    "type": "poi",
+    "name": "Philadelphia Ruins",
+    "region": "east_coast",
+    "mileMarker": 120,
+    "multiDay": true,
+    "description": "The shell of Philadelphia rises around the {RELATIONSHIP}. Streets choke with wreckage and silent danger.",
+    "phases": []
+  },
+  {
+    "id": "poi_pittsburgh",
+    "type": "poi",
+    "name": "Pittsburgh Collapse",
+    "region": "appalachian",
+    "mileMarker": 450,
+    "multiDay": true,
+    "description": "Steel bridges twist into the river. Echoes travel strangely through the hollowed-out streets.",
+    "phases": []
+  },
+  {
+    "id": "poi_cleveland",
+    "type": "poi",
+    "name": "Cleveland Dead Zone",
+    "region": "midwest",
+    "mileMarker": 800,
+    "multiDay": true,
+    "description": "Factories loom like rusted giants. Every step into the dark city feels like an invitation.",
+    "phases": []
+  }
+]

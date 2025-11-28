@@ -1,0 +1,200 @@
+[
+  {
+    "id": "quiet_overcast",
+    "details": {
+      "travel": "Hours pass beneath a low ceiling of grey cloud, the kind that blurs the line between afternoon and evening.",
+      "world": "The road ahead is silent — abandoned cars slumped at odd angles, fences tilting like they’ve given up standing.",
+      "survivors": "{SURVIVOR1} and {SURVIVOR2} feel the weight of the stillness, their steps dragging with a quiet, shared fatigue.",
+      "moment": "Thunder murmurs somewhere far off, promising a storm that never quite arrives.",
+      "tone": "Calm but heavy — the kind of day that stretches thin and frays at the edges."
+    },
+    "choices": []
+  },
+  {
+    "id": "quiet_short_rest",
+    "details": {
+      "travel": "A long, gentle stretch of road opens before them, offering a rare sense of ease.",
+      "world": "Grass sways along the verges, untouched and unbothered. A faded sign leans westward, pointing toward a place no one keeps anymore.",
+      "survivors": "Muscles ache, but the empty road gives them a moment to breathe without looking over their shoulders.",
+      "moment": "They drift past an old picnic area — broken tables, peeling paint, memories of normal days.",
+      "tone": "A fragile moment of normality, brief but real."
+    },
+    "choices": [
+      {
+        "text": "{SURVIVOR1} suggests pausing here to rest their legs",
+        "success": { "morale": 3 },
+        "failure": {}
+      },
+      {
+        "text": "They decide to keep moving before the quiet starts to feel suspicious",
+        "success": {},
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "quiet_old_memorial",
+    "details": {
+      "travel": "The road curves gently through tall grass and wildflowers reclaiming the edge of the asphalt.",
+      "world": "A small memorial appears — photos warped by sun, plastic flowers bleached pale, a stuffed toy hardened by weather.",
+      "survivors": "The sight slows their steps, stirring quiet thoughts neither chooses to voice.",
+      "moment": "A soft breeze drifts across their path, carrying dust and a faint hint of old earth.",
+      "tone": "Somber and reflective — a reminder of how long the world has been broken."
+    },
+    "choices": []
+  },
+  {
+    "id": "quiet_found_water",
+    "details": {
+      "travel": "A dip in the road reveals several cars abandoned at awkward angles, the scene frozen mid-flight.",
+      "world": "Most have been gutted by scavengers, but one still holds a few scattered containers rolling in the footwell.",
+      "survivors": "{SURVIVOR1} approaches first while {SURVIVOR2} watches the treeline, but only wind answers.",
+      "moment": "A half-full bottle of clean water rests against the seat, untouched.",
+      "tone": "A brief stroke of luck — small, but enough to lift spirits."
+    },
+    "choices": [
+      {
+        "text": "Take the water — clean finds like this are rare",
+        "success": { "morale": 2 },
+        "failure": {}
+      },
+      {
+        "text": "{SURVIVOR1} decides to leave it, uneasy about how strange it feels to find something intact",
+        "success": {},
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "quiet_drizzle",
+    "details": {
+      "travel": "A thin drizzle settles over everything, soft enough not to sting but relentless enough to soak.",
+      "world": "Puddles form in cracks and potholes, mirroring the washed-out sky.",
+      "survivors": "Their clothes cling damply, but the cool air keeps their thoughts sharp and alert.",
+      "moment": "A sudden burst of wings draws their eyes upward as a flock of birds takes flight.",
+      "tone": "Slow and damp — a day that wears patience thin but keeps them moving."
+    },
+    "choices": []
+  },
+  {
+    "id": "quiet_argument",
+    "details": {
+      "travel": "The miles drag by in a straight, unbroken line.",
+      "world": "Old evacuation debris litters the road — backpacks split open, posters flaking apart, crates crushed under tires.",
+      "survivors": "Frayed nerves lead to a sharp, pointless argument between {SURVIVOR1} and {SURVIVOR2}.",
+      "moment": "It ends quickly, but the tension hangs in the air for long minutes afterward.",
+      "tone": "Human and raw — exhaustion scraping away at patience."
+    },
+    "choices": [
+      {
+        "text": "{SURVIVOR1} breaks the silence and talks it through",
+        "success": { "morale": 2 },
+        "failure": {}
+      },
+      {
+        "text": "They walk in silence until the moment passes on its own",
+        "success": {},
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "quiet_old_camp",
+    "details": {
+      "travel": "The road narrows as it winds toward a cluster of worn-down shelters.",
+      "world": "A collapsed tent, rusted cookware, and the remains of a fire pit hint at a camp long abandoned.",
+      "survivors": "No footprints, no movement — just the quiet echo of a place once lived in.",
+      "moment": "{SURVIVOR2} spots a sealed protein bar half-buried beside the cold ashes.",
+      "tone": "Eerie but oddly comforting — traces of the past without present danger."
+    },
+    "choices": [
+      {
+        "text": "Take the protein bar — every scrap helps",
+        "success": { "food": 1 },
+        "failure": {}
+      },
+      {
+        "text": "{SURVIVOR1} decides to leave it untouched out of respect",
+        "success": {},
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "quiet_clear_evening",
+    "details": {
+      "travel": "The long day settles into evening, the sky painted in soft oranges and fading gold.",
+      "world": "Shadows stretch across the cracked asphalt as sunlight slips behind distant trees.",
+      "survivors": "Their legs ache, but the quiet of the evening carries a surprising calm.",
+      "moment": "They pause for a moment, watching the sun sink and remembering the world before.",
+      "tone": "Warm and quiet — a rare emotional breather."
+    },
+    "choices": []
+  },
+  {
+    "id": "quiet_fatigue",
+    "details": {
+      "travel": "Mile after mile passes with little change in scenery.",
+      "world": "Grass grows through shattered pavement, slowly reclaiming what was once a steady highway.",
+      "survivors": "Fatigue pulls heavily at their limbs and thoughts, wearing them down like sandpaper.",
+      "moment": "A brief stop to stretch eases the worst of the ache.",
+      "tone": "Slow and weary — but they keep pushing forward."
+    },
+    "choices": [
+      {
+        "text": "{SURVIVOR1} suggests resting longer than usual, just this once",
+        "success": { "morale": 2 },
+        "failure": {}
+      },
+      {
+        "text": "{SURVIVOR2} urges them to push through before they lose momentum",
+        "success": {},
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "quiet_signs_of_life",
+    "details": {
+      "travel": "The road bends past a scattered cluster of old houses, roofs caved in or stripped bare.",
+      "world": "A single curtain stirs in the wind, snapping {SURVIVOR1}'s attention upward for a tense heartbeat.",
+      "survivors": "Nothing follows — just nerves playing tricks — but both stay sharper afterward.",
+      "moment": "They move on, alert to every small sound in the empty distance.",
+      "tone": "A flicker of tension in an otherwise quiet stretch."
+    },
+    "choices": []
+  },
+  {
+    "id": "quiet_clear_morning",
+    "details": {
+      "travel": "Morning sun filters through thinning mist, turning the world pale gold.",
+      "world": "The air smells clean — damp earth, sap, and a hint of pine drifting from nearby trees.",
+      "survivors": "A good night’s rest shows in their steps, lighter and more sure than the day before.",
+      "moment": "Two deer cross the road ahead, stopping long enough to watch before disappearing into brush.",
+      "tone": "Gentle and reassuring — the world isn’t entirely lost."
+    },
+    "choices": []
+  },
+  {
+    "id": "quiet_dropped_satchel",
+    "details": {
+      "travel": "A narrow walking trail merges briefly with the road before fading back into the tree line.",
+      "world": "A torn satchel lies half-buried in leaves and dirt, straps frayed but contents still inside.",
+      "survivors": "{SURVIVOR1} checks the area — no tracks, no sound but the rustle of brush.",
+      "moment": "Inside, a sealed energy packet waits untouched by animals or time.",
+      "tone": "A small but welcome stroke of fortune."
+    },
+    "choices": [
+      {
+        "text": "Take the energy packet — no reason to waste it",
+        "success": { "food": 1 },
+        "failure": {}
+      },
+      {
+        "text": "Leave it in case someone comes back for it",
+        "success": {},
+        "failure": {}
+      }
+    ]
+  }
+]
