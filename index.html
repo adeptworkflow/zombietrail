@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zombie Trail - Alpha Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1a1a1a;
+            color: #00ff00;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #ff4444;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px #000;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 30px;
+        }
+        
+        .game-screen {
+            background: #000;
+            border: 2px solid #00ff00;
+            padding: 20px;
+            margin-bottom: 20px;
+            min-height: 300px;
+        }
+        
+        .narration {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #0a0a0a;
+            border-left: 3px solid #00ff00;
+        }
+        
+        .choices {
+            margin-top: 20px;
+        }
+        
+        .choice-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: #003300;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+            text-align: left;
+            transition: all 0.3s;
+        }
+        
+        .choice-btn:hover {
+            background: #00ff00;
+            color: #000;
+            transform: translateX(10px);
+        }
+
+        .choice-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-box {
+            background: #003300;
+            border: 1px solid #00ff00;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .stat-label {
+            font-size: 0.8em;
+            color: #888;
+        }
+        
+        .stat-value {
+            font-size: 1.5em;
+            color: #00ff00;
+        }
+
+        .survivors-display {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .survivor-card {
+            background: #003300;
+            border: 2px solid #00ff00;
+            padding: 15px;
+        }
+
+        .survivor-name {
+            font-size: 1.2em;
+            color: #00ff00;
+            margin-bottom: 5px;
+        }
+
+        .survivor-role {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .survivor-health {
+            color: #ffff00;
+        }
+        
+        .loading {
+            text-align: center;
+            color: #ffff00;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0.3; }
+        }
+
+        /* Character Creation Styles */
+        .char-creation {
+            margin-bottom: 20px;
+        }
+
+        .char-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: #0a0a0a;
+            border-left: 3px solid #00ff00;
+        }
+
+        .char-section h3 {
+            color: #ffff00;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            color: #888;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            background: #003300;
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 1em;
+        }
+
+        .role-select {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .role-option {
+            padding: 15px;
+            background: #003300;
+            border: 2px solid #00ff00;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .role-option:hover {
+            background: #00ff00;
+            color: #000;
+        }
+
+        .role-option.selected {
+            background: #00ff00;
+            color: #000;
+            font-weight: bold;
+        }
+
+        .role-name {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .role-desc {
+            font-size: 0.8em;
+            color: #888;
+        }
+
+        .role-option.selected .role-desc {
+            color: #333;
+        }
+
+        /* Role bonus display */
+        .role-bonus {
+            font-size: 0.85em;
+            color: #ffff00;
+            margin-top: 5px;
+            font-weight: bold;
+        }
+
+        .role-option.selected .role-bonus {
+            color: #000;
+        }
+
+        /* Backstory selection styles */
+        .backstory-option {
+            background: rgba(0, 51, 0, 0.5);
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 2px solid rgba(0, 255, 0, 0.3);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .backstory-option:hover {
+            background: rgba(0, 51, 0, 0.8);
+            border-color: rgba(0, 255, 0, 0.6);
+            transform: translateX(5px);
+        }
+
+        .backstory-option.selected {
+            background: #00ff00;
+            border-color: #00ff00;
+            color: #000;
+        }
+
+        .backstory-name {
+            font-weight: bold;
+            color: #00ff00;
+            margin-bottom: 5px;
+        }
+
+        .backstory-option.selected .backstory-name {
+            color: #000;
+        }
+
+        .backstory-desc {
+            font-size: 0.9em;
+            color: #888;
+            font-style: italic;
+        }
+
+        .backstory-option.selected .backstory-desc {
+            color: #333;
+        }
+
+        .relationship-select {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .relationship-option {
+            padding: 15px;
+            background: #003300;
+            border: 2px solid #00ff00;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .relationship-option:hover {
+            background: #00ff00;
+            color: #000;
+        }
+
+        .relationship-option.selected {
+            background: #00ff00;
+            color: #000;
+            font-weight: bold;
+        }
+
+        /* Relationship name/desc styles */
+        .rel-name {
+            font-weight: bold;
+            color: #00ff00;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .relationship-option.selected .rel-name {
+            color: #000;
+        }
+
+        .rel-desc {
+            font-size: 0.9em;
+            color: #888;
+        }
+
+        .relationship-option.selected .rel-desc {
+            color: #333;
+        }
+
+        .start-journey-btn {
+            width: 100%;
+            padding: 20px;
+            background: #ff4444;
+            color: #fff;
+            border: 2px solid #ff0000;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2em;
+            transition: all 0.3s;
+        }
+
+        .start-journey-btn:hover {
+            background: #ff0000;
+            transform: scale(1.05);
+        }
+
+        .start-journey-btn:disabled {
+            background: #333;
+            border-color: #666;
+            cursor: not-allowed;
+            transform: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧟 ZOMBIE TRAIL 🧟</h1>
+        <div class="subtitle">Alpha Demo - Your Story, Your Choices</div>
+        
+        <!-- Stats (hidden during character creation) -->
+        <div id="stats-section" style="display: none;">
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-label">DAY</div>
+                    <div class="stat-value" id="day">1</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">FOOD</div>
+                    <div class="stat-value" id="food">10</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">MEDICINE</div>
+                    <div class="stat-value" id="medicine">5</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">FUEL</div>
+                    <div class="stat-value" id="fuel">8</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">MORALE</div>
+                    <div class="stat-value" id="morale">70</div>
+                </div>
+            </div>
+
+            <div class="survivors-display" id="survivors-display">
+                <!-- Survivor cards will be populated here -->
+            </div>
+        </div>
+        
+        <div class="game-screen">
+            <div class="narration" id="narration">
+                <p><strong>Welcome to Zombie Trail</strong></p>
+                <p>The world ended three weeks ago. Two survivors are heading west toward the California Safe Zone - 500 miles away.</p>
+                <p>Every choice matters. Can you make it?</p>
+            </div>
+            
+            <div class="choices" id="choices">
+                <button class="choice-btn" onclick="showCharacterCreation()">CREATE YOUR SURVIVORS</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/game.js"></script>
+</body>
+</html>
