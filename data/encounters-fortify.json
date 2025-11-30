@@ -1,0 +1,60 @@
+[
+  {
+    "id": "fortify_camp_basic",
+    "region": [
+      "any"
+    ],
+    "danger": "low",
+    "ambush": false,
+    "location": "Temporary Shelter",
+    "description": "You reinforce your shelter with debris, branches, and whatever materials you can gather nearby.",
+    "choices": [
+      {
+        "id": "reinforce_silently",
+        "text": "Add support quietly",
+        "requirements": {},
+        "successChance": 0.9,
+        "success": {
+          "fortification": 1,
+          "morale": 2,
+          "resultNarration": "You strengthen the shelter without drawing any unwanted attention."
+        },
+        "failure": {
+          "addInjuryId": "sprained_ankle",
+          "injuryChance": 0.1,
+          "resultNarration": "Loose debris shifts underfoot, twisting your ankle."
+        }
+      },
+      {
+        "id": "barricade_entrance",
+        "text": "Drag heavier debris to block the entrance",
+        "requirements": {},
+        "successChance": 0.75,
+        "success": {
+          "fortification": 2,
+          "morale": 3,
+          "resultNarration": "You drag debris into place, solidifying your defensive position."
+        },
+        "failure": {
+          "morale": -3,
+          "resultNarration": "The debris crashes loudly \u2014 you worry it may attract unwanted attention."
+        }
+      },
+      {
+        "id": "craft_simple_alarm",
+        "text": "Set up a basic noise alarm with cans and wire",
+        "requirements": {},
+        "successChance": 0.8,
+        "success": {
+          "fortification": 1,
+          "morale": 4,
+          "resultNarration": "The tripwire alarm is set. It won\u2019t stop anything, but it helps you rest easier."
+        },
+        "failure": {
+          "morale": -2,
+          "resultNarration": "The wire snaps as you tighten it. You'll need to rethink the setup."
+        }
+      }
+    ]
+  }
+]

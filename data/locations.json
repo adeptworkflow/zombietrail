@@ -1,253 +1,505 @@
 [
   {
-    "id": "loc_01",
-    "type": "regular",
+    "id": "hilltop_pharmacy",
     "name": "Hilltop Pharmacy",
-    "region": "east_coast",
-    "mileMarker": 30,
+    "region": "philadelphia_suburbs",
+    "mileMarker": 42,
     "category": "pharmacy",
-    "description": "A small neighborhood pharmacy sits at the corner of a cracked intersection. {SURVIVOR1} and {SURVIVOR2} approach cautiously; the {RELATIONSHIP} notice the front window has been smashed, but shelves still stand.",
-    "canSecure": true
+    "description": "The pharmacy sits quiet on the hill. Route 30 stretches west into the distance.",
+    "canSecure": true,
+    "isStoryLocation": true,
+    "storyNote": "Tutorial - First stop after fleeing Philadelphia",
+    "scavengeAreas": [
+      {
+        "id": "front_counter",
+        "name": "Front Counter Area",
+        "description": "The main counter and shelves near the entrance",
+        "searched": false
+      },
+      {
+        "id": "prescription_area",
+        "name": "Prescription Area",
+        "description": "Behind the counter where prescriptions were filled",
+        "searched": false
+      },
+      {
+        "id": "storage_room",
+        "name": "Back Storage Room",
+        "description": "The storage area in the back - door is slightly ajar",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "quiet"
   },
   {
-    "id": "loc_02",
-    "type": "regular",
-    "name": "Cedar Grove Gas Stop",
-    "region": "east_coast",
-    "mileMarker": 66,
-    "category": "gas_station",
-    "description": "A lonely gas station squats beside the highway. The pumps are dead, but the convenience store looks mostly intact. A faded sign creaks in the wind.",
-    "canSecure": true
+    "id": "route_30_strip_mall",
+    "name": "Route 30 Strip Mall",
+    "region": "philadelphia_suburbs",
+    "mileMarker": 63,
+    "category": "grocery",
+    "description": "Half the storefronts are burned out. The parking lot is a graveyard of abandoned cars, doors hanging open. This was someone's last stand.",
+    "canSecure": true,
+    "scavengeAreas": [
+      {
+        "id": "grocery_store",
+        "name": "Grocery Store",
+        "description": "The main grocery - shelves toppled, but might have something",
+        "searched": false
+      },
+      {
+        "id": "dollar_store",
+        "name": "Dollar Store",
+        "description": "Small discount store next door",
+        "searched": false
+      },
+      {
+        "id": "back_loading_dock",
+        "name": "Loading Dock",
+        "description": "Behind the stores - delivery area",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "movement_inside"
   },
   {
-    "id": "loc_03",
-    "type": "regular",
-    "name": "Maple Row Suburban Home",
-    "region": "east_coast",
-    "mileMarker": 95,
+    "id": "willowbrook_elementary",
+    "name": "Willowbrook Elementary School",
+    "region": "philadelphia_suburbs",
+    "mileMarker": 81,
+    "category": "school",
+    "description": "Crayon drawings still hang on classroom walls. Tiny desks lie overturned. The playground swings creak in the wind. The silence here is the loudest thing you've ever heard.",
+    "canSecure": true,
+    "isStoryLocation": true,
+    "storyNote": "Emotional beat - innocence lost",
+    "scavengeAreas": [
+      {
+        "id": "classrooms",
+        "name": "Classrooms",
+        "description": "Teacher's supply closets and storage",
+        "searched": false
+      },
+      {
+        "id": "cafeteria",
+        "name": "Cafeteria Kitchen",
+        "description": "Industrial kitchen and food storage",
+        "searched": false
+      },
+      {
+        "id": "nurses_office",
+        "name": "Nurse's Office",
+        "description": "Small medical office with first aid supplies",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "quiet"
+  },
+  {
+    "id": "lancaster_outskirts",
+    "name": "Lancaster Town Limits",
+    "region": "small_town_pennsylvania",
+    "mileMarker": 107,
     "category": "home",
-    "description": "A quiet house stands among others long abandoned. {SURVIVOR1} pushes open the broken door while {SURVIVOR2} keeps watch on the silent street.",
-    "canSecure": true
+    "description": "A small Pennsylvania town that tried to quarantine itself. Makeshift barricades block the main road. They didn't hold. The houses beyond are dark and still.",
+    "canSecure": true,
+    "isStoryLocation": true,
+    "storyNote": "Transition from suburbs to small towns",
+    "scavengeAreas": [
+      {
+        "id": "barricade",
+        "name": "Search the Barricade",
+        "description": "Supplies scattered where people fled",
+        "searched": false
+      },
+      {
+        "id": "front_houses",
+        "name": "Nearest Houses",
+        "description": "Row houses closest to the barricade",
+        "searched": false
+      },
+      {
+        "id": "town_center",
+        "name": "Town Center",
+        "description": "Main street shops and buildings",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "groaning"
   },
   {
-    "id": "loc_04",
-    "type": "regular",
-    "name": "Starlight Grocery",
-    "region": "east_coast",
+    "id": "highway_76_motel",
+    "name": "Route 76 Motor Lodge",
+    "region": "small_town_pennsylvania",
     "mileMarker": 128,
-    "category": "grocery",
-    "description": "A medium-sized grocery store with its automatic doors shattered. The aisles inside look chaotic, but not fully looted.",
-    "canSecure": true
+    "category": "motel",
+    "description": "The neon 'VACANCY' sign still flickers weakly. Most room doors have been kicked in. One doesn't show any signs of forced entry.",
+    "canSecure": true,
+    "scavengeAreas": [
+      {
+        "id": "office",
+        "name": "Office and Reception",
+        "description": "Front desk area with keys and records",
+        "searched": false
+      },
+      {
+        "id": "ground_rooms",
+        "name": "Ground Floor Rooms",
+        "description": "Accessible motel rooms on ground level",
+        "searched": false
+      },
+      {
+        "id": "intact_room",
+        "name": "Intact Room",
+        "description": "The one room that wasn't forced open",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "movement_inside"
   },
   {
-    "id": "loc_05",
-    "type": "regular",
-    "name": "Briarwood Elementary",
-    "region": "east_coast",
-    "mileMarker": 165,
-    "category": "school",
-    "description": "An old elementary school sits surrounded by an empty playground. {SURVIVOR2} glances at the dark windows while {SURVIVOR1} listens for movement inside.",
-    "canSecure": true
-  },
-  {
-    "id": "loc_06",
-    "type": "regular",
-    "name": "Redwater Police Substation",
-    "region": "east_coast",
-    "mileMarker": 198,
+    "id": "millbrook_police",
+    "name": "Millbrook Police Station",
+    "region": "small_town_pennsylvania",
+    "mileMarker": 146,
     "category": "police_station",
-    "description": "A compact police station reinforced with steel doors. Old patrol cars rot out front. The interior might still hold weapons—or trouble.",
-    "canSecure": true
+    "description": "A small-town station with reinforced doors. The armory entrance hangs open—someone got here first. But small towns always kept backup supplies.",
+    "canSecure": true,
+    "scavengeAreas": [
+      {
+        "id": "main_office",
+        "name": "Main Office",
+        "description": "Desks, filing cabinets, scattered paperwork",
+        "searched": false
+      },
+      {
+        "id": "armory",
+        "name": "Armory",
+        "description": "Weapons storage - already broken into",
+        "searched": false
+      },
+      {
+        "id": "evidence_room",
+        "name": "Evidence Room",
+        "description": "Locked evidence storage in the basement",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "quiet"
   },
   {
-    "id": "loc_07",
-    "type": "regular",
-    "name": "East Highway Motel",
-    "region": "east_coast",
-    "mileMarker": 224,
-    "category": "motel",
-    "description": "A flickering motel sign buzzes in the dusk. Multiple room doors are wide open, and shadows move behind torn curtains.",
-    "canSecure": true
-  },
-  {
-    "id": "loc_08",
-    "type": "regular",
-    "name": "Greenfield Farm",
-    "region": "east_coast",
-    "mileMarker": 259,
-    "category": "farm",
-    "description": "The remnants of a farmhouse sit beside a collapsed barn. {SURVIVOR1} spots rusting equipment while {SURVIVOR2} circles the fields.",
-    "canSecure": true
-  },
-  {
-    "id": "loc_09",
-    "type": "regular",
-    "name": "Pinebridge Clinic",
-    "region": "east_coast",
-    "mileMarker": 294,
-    "category": "pharmacy",
-    "description": "A small medical clinic rests on the corner of a dead street. The interior looks ransacked but still promising.",
-    "canSecure": true
-  },
-  {
-    "id": "loc_10",
-    "type": "regular",
-    "name": "Appalachian Ranger Cabin",
-    "region": "appalachian",
-    "mileMarker": 324,
-    "category": "ranger_station",
-    "description": "A wooden ranger cabin overlooks dense forest. A map board outside has been shredded by weather.",
-    "canSecure": true
-  },
-  {
-    "id": "loc_11",
-    "type": "regular",
-    "name": "Mountain View Gas & Diner",
-    "region": "appalachian",
-    "mileMarker": 362,
+    "id": "highway_gas_stop",
+    "name": "Interstate Gas & Food",
+    "region": "small_town_pennsylvania",
+    "mileMarker": 159,
     "category": "gas_station",
-    "description": "A tiny station with an attached diner. Tables inside remain half-set, as if abandoned in a rush.",
-    "canSecure": true
+    "description": "A truck stop where the highway meets mountain roads. The pumps are dry. The convenience store's back room might still have something.",
+    "canSecure": true,
+    "scavengeAreas": [
+      {
+        "id": "convenience_store",
+        "name": "Convenience Store",
+        "description": "Front area with snacks and supplies",
+        "searched": false
+      },
+      {
+        "id": "restaurant",
+        "name": "Attached Restaurant",
+        "description": "Small diner area with kitchen",
+        "searched": false
+      },
+      {
+        "id": "back_storage",
+        "name": "Back Storage Room",
+        "description": "Delivery and storage area",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "quiet"
   },
   {
-    "id": "loc_12",
-    "type": "regular",
-    "name": "Highridge School Campus",
-    "region": "appalachian",
-    "mileMarker": 390,
-    "category": "school",
-    "description": "A sprawling high school complex. Broken lockers spill contents across the hallways. Every noise echoes.",
-    "canSecure": true
+    "id": "appalachian_ranger_station",
+    "name": "Tuscarora Ranger Station",
+    "region": "appalachian_wilderness",
+    "mileMarker": 173,
+    "category": "ranger_station",
+    "description": "Deep in state forest, a wooden ranger cabin overlooks dense trees. The rangers are long gone. Their supplies might not be.",
+    "canSecure": true,
+    "isStoryLocation": true,
+    "storyNote": "Transition to wilderness - isolation begins",
+    "scavengeAreas": [
+      {
+        "id": "main_cabin",
+        "name": "Main Cabin",
+        "description": "Living quarters and office area",
+        "searched": false
+      },
+      {
+        "id": "supply_shed",
+        "name": "Supply Shed",
+        "description": "Outdoor equipment and emergency supplies",
+        "searched": false
+      },
+      {
+        "id": "lookout_tower",
+        "name": "Lookout Tower",
+        "description": "Fire watch tower - ladder leads up",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "quiet"
   },
   {
-    "id": "loc_13",
-    "type": "regular",
-    "name": "Floodplain Subdivision",
-    "region": "appalachian",
-    "mileMarker": 417,
-    "category": "home",
-    "description": "Several rows of townhouses sit abandoned, many with kicked-in doors. The area feels strangely untouched.",
-    "canSecure": true
-  },
-  {
-    "id": "loc_14",
-    "type": "regular",
-    "name": "Old Mill Supermarket",
-    "region": "appalachian",
-    "mileMarker": 443,
-    "category": "grocery",
-    "description": "A huge supermarket lies dark and silent. Shopping carts block the entrance as if used for a barricade.",
-    "canSecure": true
-  },
-  {
-    "id": "loc_15",
-    "type": "regular",
-    "name": "Rusthook Farmstead",
-    "region": "appalachian",
-    "mileMarker": 476,
+    "id": "mountain_farmhouse",
+    "name": "Abandoned Dairy Farm",
+    "region": "appalachian_wilderness",
+    "mileMarker": 191,
     "category": "farm",
-    "description": "A weather-beaten farm on the hillside. Several outbuildings lean dangerously, but one barn still stands.",
-    "canSecure": true
+    "description": "An old farmhouse sits beside a collapsed barn. The livestock are gone. Rusted equipment litters the yard. The wind carries no sound but your own breathing.",
+    "canSecure": true,
+    "scavengeAreas": [
+      {
+        "id": "farmhouse",
+        "name": "Farmhouse Interior",
+        "description": "Old family home with pantry and cellar",
+        "searched": false
+      },
+      {
+        "id": "barn",
+        "name": "Collapsed Barn",
+        "description": "Partially standing structure with equipment",
+        "searched": false
+      },
+      {
+        "id": "silo",
+        "name": "Grain Silo",
+        "description": "Tall silo still standing - ladder inside",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "quiet"
   },
   {
-    "id": "loc_16",
-    "type": "regular",
-    "name": "Abandoned Guard Depot",
-    "region": "appalachian",
-    "mileMarker": 510,
+    "id": "eagle_rock_checkpoint",
+    "name": "Eagle Rock Emergency Checkpoint",
+    "region": "appalachian_wilderness",
+    "mileMarker": 204,
     "category": "military",
-    "description": "Tall fences surround an old National Guard depot. It looks half-looted but still fortified.",
-    "canSecure": false
+    "description": "Military barricades and FEMA tents stretch across the highway. This was supposed to be salvation. But the checkpoint is silent. Abandoned. The evacuation already happened—or failed.",
+    "canSecure": false,
+    "isStoryLocation": true,
+    "isBranchingPoint": true,
+    "storyNote": "Major story beat - failed checkpoint, route choice",
+    "scavengeAreas": [
+      {
+        "id": "command_tent",
+        "name": "Command Tent",
+        "description": "Large military tent with radios and maps",
+        "searched": false
+      },
+      {
+        "id": "supply_depot",
+        "name": "Supply Depot",
+        "description": "Stacks of crates and equipment",
+        "searched": false
+      },
+      {
+        "id": "medical_tent",
+        "name": "Medical Tent",
+        "description": "Field hospital with supplies",
+        "searched": false
+      },
+      {
+        "id": "vehicle_area",
+        "name": "Vehicle Staging Area",
+        "description": "Military trucks and equipment",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "movement_inside"
   },
   {
-    "id": "loc_17",
-    "type": "regular",
-    "name": "Midwest Rest Stop Plaza",
-    "region": "midwest",
-    "mileMarker": 541,
-    "category": "gas_station",
-    "description": "A large rest stop with a central plaza and empty food courts. Cars sit abandoned in chaotic patterns.",
-    "canSecure": true
-  },
-  {
-    "id": "loc_18",
-    "type": "regular",
-    "name": "Three Pines Motel",
-    "region": "midwest",
-    "mileMarker": 568,
-    "category": "motel",
-    "description": "A long row of ground-floor rooms sits under a collapsing roof. Most windows are smashed.",
-    "canSecure": true
-  },
-  {
-    "id": "loc_19",
-    "type": "regular",
-    "name": "Cobalt Springs Suburb",
-    "region": "midwest",
-    "mileMarker": 603,
-    "category": "home",
-    "description": "A suburban neighborhood with cul-de-sacs filled with abandoned cars. Several homes remain unbroken into.",
-    "canSecure": true
-  },
-  {
-    "id": "loc_20",
-    "type": "regular",
-    "name": "Western Plains Farm",
-    "region": "midwest",
-    "mileMarker": 633,
-    "category": "farm",
-    "description": "An open farmstead with large silos and a wide barn. Wind whistles through empty fields.",
-    "canSecure": true
-  },
-  {
-    "id": "loc_21",
-    "type": "regular",
-    "name": "Civic Center Clinic",
-    "region": "midwest",
-    "mileMarker": 673,
-    "category": "pharmacy",
-    "description": "A rural clinic stands with smashed doors but intact exam rooms deeper inside.",
-    "canSecure": true
-  },
-  {
-    "id": "loc_22",
-    "type": "regular",
-    "name": "Northline Ranger Station",
-    "region": "midwest",
-    "mileMarker": 706,
+    "id": "forest_trail_cabin",
+    "name": "Mountain Trail Cabin",
+    "region": "forest_route",
+    "mileMarker": 227,
     "category": "ranger_station",
-    "description": "A lakeside ranger lookout stands tall on wooden stilts, offering visibility but not safety.",
-    "canSecure": true
+    "description": "A hunting cabin tucked deep in the forest. No roads lead here—just an overgrown trail. Isolated. Quiet. Maybe too quiet.",
+    "canSecure": true,
+    "routeSpecific": "forest",
+    "storyNote": "Forest route - dangerous wilderness",
+    "scavengeAreas": [
+      {
+        "id": "cabin_interior",
+        "name": "Cabin Interior",
+        "description": "Single room with fireplace and supplies",
+        "searched": false
+      },
+      {
+        "id": "cellar",
+        "name": "Root Cellar",
+        "description": "Underground storage beneath cabin",
+        "searched": false
+      },
+      {
+        "id": "woodshed",
+        "name": "Woodshed",
+        "description": "Outdoor storage building",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "quiet"
   },
-
   {
-    "id": "poi_philadelphia",
-    "type": "poi",
-    "name": "Philadelphia Ruins",
-    "region": "east_coast",
-    "mileMarker": 120,
-    "multiDay": true,
-    "description": "The shell of Philadelphia rises around the {RELATIONSHIP}. Streets choke with wreckage and silent danger.",
-    "phases": []
+    "id": "lakeside_camp",
+    "name": "Pinewood Lake Campground",
+    "region": "forest_route",
+    "mileMarker": 249,
+    "category": "ranger_station",
+    "description": "Picnic tables and fire pits sit empty beside a still lake. The ranger office is locked. The boat dock has one canoe left.",
+    "canSecure": true,
+    "routeSpecific": "forest",
+    "scavengeAreas": [
+      {
+        "id": "ranger_office",
+        "name": "Ranger Office",
+        "description": "Small building with equipment and supplies",
+        "searched": false
+      },
+      {
+        "id": "campsites",
+        "name": "Campsites",
+        "description": "Abandoned tents and gear",
+        "searched": false
+      },
+      {
+        "id": "boat_dock",
+        "name": "Boat Dock Storage",
+        "description": "Shed near the water with fishing gear",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "quiet"
   },
   {
-    "id": "poi_pittsburgh",
-    "type": "poi",
-    "name": "Pittsburgh Collapse",
-    "region": "appalachian",
-    "mileMarker": 450,
-    "multiDay": true,
-    "description": "Steel bridges twist into the river. Echoes travel strangely through the hollowed-out streets.",
-    "phases": []
+    "id": "overlook_point",
+    "name": "Skyline Overlook",
+    "region": "forest_route",
+    "mileMarker": 268,
+    "category": "ranger_station",
+    "description": "A scenic overlook at the mountain's peak. From here you can see for miles—smoke rising from distant towns. The road continues west. There's no turning back now.",
+    "canSecure": false,
+    "routeSpecific": "forest",
+    "isStoryLocation": true,
+    "storyNote": "End of MVP demo - forest route",
+    "scavengeAreas": [
+      {
+        "id": "observation_deck",
+        "name": "Observation Deck",
+        "description": "Viewing platform with abandoned gear",
+        "searched": false
+      },
+      {
+        "id": "visitor_center",
+        "name": "Visitor Center",
+        "description": "Small information building",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "quiet"
   },
   {
-    "id": "poi_cleveland",
-    "type": "poi",
-    "name": "Cleveland Dead Zone",
-    "region": "midwest",
-    "mileMarker": 800,
-    "multiDay": true,
-    "description": "Factories loom like rusted giants. Every step into the dark city feels like an invitation.",
-    "phases": []
+    "id": "highway_diner",
+    "name": "Route 80 Truck Stop Diner",
+    "region": "road_route",
+    "mileMarker": 231,
+    "category": "gas_station",
+    "description": "A chrome-sided diner sits beside a fuel station. Truckers' last meals still sit on the counter. The jukebox is silent.",
+    "canSecure": true,
+    "routeSpecific": "road",
+    "storyNote": "Road route - more civilization, more danger",
+    "scavengeAreas": [
+      {
+        "id": "diner",
+        "name": "Diner Interior",
+        "description": "Counter, booths, and kitchen",
+        "searched": false
+      },
+      {
+        "id": "fuel_station",
+        "name": "Fuel Station Shop",
+        "description": "Small convenience area",
+        "searched": false
+      },
+      {
+        "id": "truck_area",
+        "name": "Truck Parking Area",
+        "description": "Abandoned trucks and trailers",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "movement_inside"
+  },
+  {
+    "id": "truck_stop_plaza",
+    "name": "Interstate Truck Plaza",
+    "region": "road_route",
+    "mileMarker": 256,
+    "category": "gas_station",
+    "description": "A massive truck stop with a convenience store, showers, and restaurant. Semi-trucks block the exits. Someone might still be here.",
+    "canSecure": true,
+    "routeSpecific": "road",
+    "scavengeAreas": [
+      {
+        "id": "main_store",
+        "name": "Main Store",
+        "description": "Large convenience store and restaurant",
+        "searched": false
+      },
+      {
+        "id": "showers",
+        "name": "Shower Facilities",
+        "description": "Bathroom and locker area",
+        "searched": false
+      },
+      {
+        "id": "loading_bays",
+        "name": "Loading Bays",
+        "description": "Truck loading area and warehouses",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "groaning"
+  },
+  {
+    "id": "bridge_crossing",
+    "name": "Susquehanna River Bridge",
+    "region": "road_route",
+    "mileMarker": 277,
+    "category": "military",
+    "description": "A long bridge spans the river. Military roadblocks at both ends. Abandoned supply trucks. The bridge is the only way across—and you're not the only one who knows it.",
+    "canSecure": false,
+    "routeSpecific": "road",
+    "isStoryLocation": true,
+    "storyNote": "End of MVP demo - road route",
+    "scavengeAreas": [
+      {
+        "id": "near_roadblock",
+        "name": "Near Roadblock",
+        "description": "Military checkpoint on this side",
+        "searched": false
+      },
+      {
+        "id": "supply_trucks",
+        "name": "Supply Trucks",
+        "description": "Military vehicles on the bridge",
+        "searched": false
+      },
+      {
+        "id": "far_roadblock",
+        "name": "Far Roadblock",
+        "description": "Checkpoint on the far side",
+        "searched": false
+      }
+    ],
+    "dangerLevel": "movement_inside"
   }
 ]

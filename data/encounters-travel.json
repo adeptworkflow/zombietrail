@@ -1,13 +1,11 @@
 [
   {
     "id": "highway_obstacle_01",
-    "region": [
-      "any"
-    ],
+    "region": ["any"],
     "danger": "medium",
     "ambush": false,
     "location": "Highway",
-    "description": "The highway ahead is blocked by a massive pileup. Dozens of cars crashed into each other. {SURVIVOR1} slows while {SURVIVOR2} scans the wrecks, the {RELATIONSHIP} knowing they'll need to find a way through or around.",
+    "description": "The highway ahead is blocked by a massive pileup. Dozens of cars crashed into each other, metal twisted and glass everywhere.",
     "choices": [
       {
         "id": "push_through",
@@ -18,28 +16,32 @@
         "successChance": 0.65,
         "success": {
           "fuel": -1,
-          "morale": 0
+          "morale": 0,
+          "successNarration": "You ease the vehicle forward, nudging aside crumpled bumpers and loose glass. The engine strains, but you slip through the tightest section without drawing attention."
         },
         "failure": {
           "fuel": -1,
           "damage": "2d4",
-          "morale": -10
+          "morale": -10,
+          "failureNarration": "The undercarriage scrapes hard against twisted metal. Something tears beneath the car—fluid starts dripping. You force through, but the damage is done."
         }
       },
       {
         "id": "scout_alternate",
-        "text": "{ROLE1_CAP} searches for an alternate route",
+        "text": "Search for an alternate route",
         "requirements": {
           "hasRole": "Scout"
         },
         "successChance": 0.85,
         "success": {
           "fuel": -1,
-          "morale": 10
+          "morale": 10,
+          "successNarration": "The scout climbs onto a car roof, scanning the terrain. After a minute, they point to a service road half-hidden by an overpass. You take it and bypass the whole mess."
         },
         "failure": {
           "fuel": -2,
-          "morale": -5
+          "morale": -5,
+          "failureNarration": "The detour loops back to the same highway, miles wasted. By the time you realize the mistake, fuel is low and morale lower."
         }
       },
       {
@@ -48,41 +50,43 @@
         "requirements": {},
         "successChance": 0.75,
         "success": {
-          "morale": -5
+          "morale": -5,
+          "successNarration": "You lock the doors and walk through the pileup on foot. It's nerve-wracking being exposed, but you find a clear path and guide the car through from the outside."
         },
         "failure": {
           "damage": "1d6",
-          "morale": -10
+          "morale": -10,
+          "failureNarration": "Halfway through, movement erupts from a van. You sprint back to the car, taking a hard fall over debris. Scraped and shaken, you reverse out fast."
         }
       },
       {
         "id": "search_cars",
-        "text": "{SURVIVOR1} and {SURVIVOR2} search the wrecked cars for supplies",
+        "text": "Search the wrecked cars for supplies",
         "requirements": {},
         "successChance": 0.55,
         "success": {
           "food": 2,
           "fuel": 1,
-          "morale": 5
+          "morale": 5,
+          "successNarration": "You pop trunks and check glove boxes quickly. Most are empty, but one SUV yields canned food and a half-full gas can. Small victories."
         },
         "failure": {
           "damage": "2d6",
           "morale": -15,
           "addInjuryId": "deep_cut",
-          "injuryChance": 0.25
+          "injuryChance": 0.25,
+          "failureNarration": "A jagged door panel slices deep into your forearm. Blood wells up fast. Then groaning starts—close, from multiple directions. You abandon the search and run."
         }
       }
     ]
   },
   {
     "id": "survivor_encounter_01",
-    "region": [
-      "any"
-    ],
+    "region": ["any"],
     "danger": "medium",
     "ambush": false,
     "location": "Road",
-    "description": "A lone survivor steps into the road, waving frantically. {SURVIVOR1} eases off the gas while {SURVIVOR2} reaches for their weapon. The stranger looks exhausted, and the {RELATIONSHIP} can't tell if this is a plea or a setup.",
+    "description": "A lone survivor steps into the road, waving frantically. They look exhausted, desperate.",
     "choices": [
       {
         "id": "help_them",
@@ -94,17 +98,19 @@
         "success": {
           "food": -2,
           "morale": 15,
-          "medicine": 1
+          "medicine": 1,
+          "successNarration": "They collapse in relief when you stop. You share food and water. In return, they hand over antibiotics from their pack—a medic, once. They nod thanks and disappear into the trees."
         },
         "failure": {
           "food": -2,
           "damage": "2d6",
-          "morale": -15
+          "morale": -15,
+          "failureNarration": "The moment you step out, figures emerge from the ditch. The 'survivor' was bait. You throw supplies and scramble back into the car, taking hits before escaping."
         }
       },
       {
         "id": "negotiator_assess",
-        "text": "{ROLE1_CAP} studies their body language from a distance",
+        "text": "Study their body language from a distance",
         "requirements": {
           "hasRole": "Negotiator"
         },
@@ -112,11 +118,13 @@
         "success": {
           "food": -1,
           "morale": 10,
-          "ammo": 2
+          "ammo": 2,
+          "successNarration": "The negotiator reads genuine fear in their posture. You slow down, crack the window. They're alone and terrified, not a threat. They trade ammunition for a little food, then vanish."
         },
         "failure": {
           "food": -1,
-          "morale": -5
+          "morale": -5,
+          "failureNarration": "They seem genuine, but when you slow down, nothing feels right. You toss out food and keep moving. Better safe than sorry."
         }
       },
       {
@@ -128,17 +136,19 @@
         "successChance": 1.0,
         "success": {
           "food": -1,
-          "morale": 5
+          "morale": 5,
+          "successNarration": "You slow just enough to throw a bag out the window. They catch it and clutch it to their chest. You don't look back."
         },
         "failure": {}
       },
       {
         "id": "keep_driving",
-        "text": "Keep driving \u2013 the {RELATIONSHIP} can\u2019t risk it",
+        "text": "Keep driving—can't risk it",
         "requirements": {},
         "successChance": 1.0,
         "success": {
-          "morale": -10
+          "morale": -10,
+          "successNarration": "You don't slow down. Their shouts fade behind you. It's the smart choice. It doesn't feel good."
         },
         "failure": {}
       }
@@ -146,17 +156,15 @@
   },
   {
     "id": "raider_ambush_01",
-    "region": [
-      "any"
-    ],
+    "region": ["any"],
     "danger": "critical",
     "ambush": true,
     "location": "Highway",
-    "description": "Gunshots crack through the air. Figures rise from behind overturned cars as {SURVIVOR1} slams the brakes. {SURVIVOR2} ducks instinctively. The {RELATIONSHIP} are caught in a well-planned ambush with nowhere obvious to go.",
+    "description": "Gunshots crack through the air. Figures rise from behind overturned cars. A well-planned ambush with nowhere obvious to go.",
     "choices": [
       {
         "id": "soldier_returns_fire",
-        "text": "{ROLE1_CAP} leans out and returns fire immediately",
+        "text": "Return fire immediately",
         "requirements": {
           "hasRole": "Soldier",
           "ammo": 3
@@ -164,12 +172,14 @@
         "successChance": 0.75,
         "success": {
           "ammo": -3,
-          "morale": 15
+          "morale": 15,
+          "successNarration": "The soldier leans out and fires controlled bursts. Two raiders drop. The rest scatter for cover, and you punch through the gap they left open."
         },
         "failure": {
           "ammo": -3,
           "injury": "gunshot_wound",
-          "morale": -20
+          "morale": -20,
+          "failureNarration": "Shots echo. You return fire, but they're better positioned. A round punches through the door—pain flares. You escape bleeding, lucky to be alive."
         }
       },
       {
@@ -181,13 +191,15 @@
         "successChance": 0.45,
         "success": {
           "ammo": -2,
-          "morale": 10
+          "morale": 10,
+          "successNarration": "You fire wildly, not aiming well but making noise. It's enough—they duck for cover. You floor it and break through before they regroup."
         },
         "failure": {
           "ammo": -2,
           "damage": "4d6",
           "food": -3,
-          "morale": -25
+          "morale": -25,
+          "failureNarration": "Bullets shatter the windshield. You fire back, but they're everywhere. The car takes heavy damage. You throw supplies out and they let you limp away, barely."
         }
       },
       {
@@ -199,60 +211,64 @@
         "successChance": 0.8,
         "success": {
           "food": -3,
-          "morale": -15
+          "morale": -15,
+          "successNarration": "You hurl bags of food onto the road. The shooting stops. They descend on the supplies like vultures. You drive away in the silence, humiliated but alive."
         },
         "failure": {
           "food": -3,
           "damage": "2d6",
-          "morale": -25
+          "morale": -25,
+          "failureNarration": "You throw everything. They take it and fire anyway, laughing. Rounds punch through metal. You escape, bleeding and furious."
         }
       },
       {
         "id": "negotiator_talk",
-        "text": "{ROLE1_CAP} shouts back, trying to calm things down",
+        "text": "Shout back, trying to calm things down",
         "requirements": {
           "hasRole": "Negotiator"
         },
         "successChance": 0.6,
         "success": {
           "food": -1,
-          "morale": 5
+          "morale": 5,
+          "successNarration": "The negotiator yells an offer—a small tribute to pass. There's a pause. Then a gruff voice: 'Leave it and go.' You do. They don't shoot."
         },
         "failure": {
           "damage": "3d6",
           "food": -3,
-          "morale": -20
+          "morale": -20,
+          "failureNarration": "Your words mean nothing. They fire harder. You throw supplies and flee, taking hits through the broken glass."
         }
       },
       {
         "id": "run",
-        "text": "{SURVIVOR1} floors it and tries to break through",
+        "text": "Floor it and try to break through",
         "requirements": {
           "fuel": 2
         },
         "successChance": 0.55,
         "success": {
           "fuel": -2,
-          "morale": -10
+          "morale": -10,
+          "successNarration": "You slam the pedal down. Bullets ping off metal. The engine roars and you crash through their weak side, fuel burning fast but freedom ahead."
         },
         "failure": {
           "fuel": -2,
           "damage": "3d6",
           "food": -2,
-          "morale": -20
+          "morale": -20,
+          "failureNarration": "You accelerate, but the car takes heavy fire. Tires blow. You skid to a stop, throwing supplies to buy your escape on foot. The car is lost."
         }
       }
     ]
   },
   {
     "id": "highway_obstacle_02",
-    "region": [
-      "any"
-    ],
+    "region": ["any"],
     "danger": "medium",
     "ambush": false,
     "location": "Highway",
-    "description": "A jackknifed semi blocks most of the lanes ahead, its trailer split open and cargo spilled everywhere. {SURVIVOR2} spots movement under the trailer as {SURVIVOR1} brings the vehicle to a crawl.",
+    "description": "A jackknifed semi blocks most of the lanes ahead, its trailer split open and cargo spilled everywhere. Movement flickers under the trailer.",
     "choices": [
       {
         "id": "slow_weave",
@@ -263,41 +279,47 @@
         "successChance": 0.7,
         "success": {
           "fuel": -1,
-          "morale": 0
+          "morale": 0,
+          "successNarration": "You navigate carefully around broken pallets and spilled boxes. The shapes under the trailer don't move. You pass through quietly."
         },
         "failure": {
           "fuel": -1,
           "damage": "1d6",
-          "morale": -10
+          "morale": -10,
+          "failureNarration": "The cargo shifts under your wheels. Something clatters loudly. Groaning starts immediately. You accelerate out, clipping debris and taking scrapes."
         }
       },
       {
         "id": "scout_on_foot",
-        "text": "{SURVIVOR2} dismounts and guides the vehicle through on foot",
+        "text": "Dismount and guide the vehicle through on foot",
         "requirements": {},
         "successChance": 0.65,
         "success": {
-          "morale": 5
+          "morale": 5,
+          "successNarration": "One of you walks ahead, signaling safe paths. It's slow and tense, but you thread the car through without waking anything."
         },
         "failure": {
           "damage": "1d4",
-          "morale": -5
+          "morale": -5,
+          "failureNarration": "Halfway through, the person on foot trips over a cable. The noise echoes. Shapes stir under the truck. You both scramble back in and reverse fast."
         }
       },
       {
         "id": "scout_find_side_road",
-        "text": "{ROLE1_CAP} looks for a side road or service track",
+        "text": "Look for a side road or service track",
         "requirements": {
           "hasRole": "Scout"
         },
         "successChance": 0.85,
         "success": {
           "fuel": -1,
-          "morale": 10
+          "morale": 10,
+          "successNarration": "The scout spots an access road cutting through the median. It's rough but clear. You bypass the entire mess without incident."
         },
         "failure": {
           "fuel": -2,
-          "morale": -5
+          "morale": -5,
+          "failureNarration": "The detour looked promising but dead-ends at a construction barrier. You backtrack, wasting fuel and time."
         }
       },
       {
@@ -309,1349 +331,842 @@
         "successChance": 1.0,
         "success": {
           "fuel": -2,
-          "morale": -5
+          "morale": -5,
+          "successNarration": "You retreat carefully and take an exit ramp miles back. It adds an hour to the trip, but you avoid whatever was waiting under that truck."
         },
         "failure": {}
       }
     ]
   },
   {
-    "id": "highway_obstacle_03",
-    "region": [
-      "appalachian"
-    ],
-    "danger": "high",
+    "id": "forest_road_01",
+    "region": ["appalachian", "northwest"],
+    "danger": "medium",
     "ambush": false,
-    "location": "Mountain Road",
-    "description": "A narrow mountain pass winds ahead with a rockslide partially blocking the road. Fog clings to the cliff face. {SURVIVOR1} can feel the edge dropping away just beyond the guardrail while {SURVIVOR2} peers into the mist.",
+    "location": "Forest Road",
+    "description": "The road narrows into thick forest. Branches scrape the sides of the car. Visibility is terrible.",
     "choices": [
       {
-        "id": "squeeze_past",
-        "text": "Try to squeeze past the rocks with careful driving",
-        "requirements": {
-          "fuel": 1
-        },
-        "successChance": 0.6,
-        "success": {
-          "fuel": -1,
-          "morale": 5
-        },
-        "failure": {
-          "fuel": -1,
-          "damage": "3d6",
-          "morale": -20
-        }
-      },
-      {
-        "id": "clear_road",
-        "text": "Spend time clearing just enough rocks to pass",
-        "requirements": {
-          "food": 1
-        },
+        "id": "drive_slow_careful",
+        "text": "Drive slowly and carefully through the dense trees",
+        "requirements": {},
         "successChance": 0.7,
         "success": {
-          "food": -1,
-          "morale": 5
+          "morale": 0,
+          "successNarration": "You inch forward, branches scratching the paint. The forest feels claustrophobic, but you emerge into open road without incident."
         },
         "failure": {
-          "food": -1,
-          "damage": "2d4",
-          "morale": -10
+          "damage": "1d4",
+          "morale": -10,
+          "failureNarration": "A fallen log hidden in shadow clips the front bumper hard. The car jolts. Something underneath scrapes badly. You limp forward, cursing."
         }
       },
       {
-        "id": "scout_cliff_path",
-        "text": "{ROLE1_CAP} scouts on foot for a safer path around the slide",
+        "id": "scout_best_path",
+        "text": "Scout ahead on foot to find the best path",
         "requirements": {
           "hasRole": "Scout"
         },
-        "successChance": 0.85,
-        "success": {
-          "fuel": -1,
-          "morale": 10
-        },
-        "failure": {
-          "damage": "2d4",
-          "morale": -10
-        }
-      },
-      {
-        "id": "backtrack",
-        "text": "Backtrack to a wider road, accepting the delay",
-        "requirements": {
-          "fuel": 2
-        },
-        "successChance": 1.0,
-        "success": {
-          "fuel": -2,
-          "morale": -5
-        },
-        "failure": {}
-      }
-    ]
-  },
-  {
-    "id": "highway_obstacle_04",
-    "region": [
-      "plains"
-    ],
-    "danger": "low",
-    "ambush": false,
-    "location": "Country Road",
-    "description": "A fallen tree lies across a lonely country road. Wind whistles through open fields as {SURVIVOR1} brakes and the {RELATIONSHIP} step out, feeling suddenly exposed under the wide sky.",
-    "choices": [
-      {
-        "id": "push_tree",
-        "text": "Work together to push or drag the tree aside",
-        "requirements": {},
         "successChance": 0.8,
         "success": {
-          "morale": 5
-        },
-        "failure": {
-          "damage": "1d3",
-          "morale": -5
-        }
-      },
-      {
-        "id": "cut_and_clear",
-        "text": "{ROLE1_CAP} methodically cuts and clears branches (improv tools)",
-        "requirements": {
-          "hasRole": "Engineer"
-        },
-        "successChance": 0.9,
-        "success": {
-          "morale": 10
+          "morale": 10,
+          "successNarration": "The scout walks ahead, marking obstacles with rocks. You follow their path and avoid the worst hazards completely."
         },
         "failure": {
           "damage": "1d4",
-          "morale": -5
+          "morale": -5,
+          "failureNarration": "The scout returns, but the route they marked hits a washout. You scrape through anyway, taking minor damage."
         }
       },
       {
-        "id": "field_detour",
-        "text": "Drive slowly around through the field",
-        "requirements": {
-          "fuel": 1
-        },
-        "successChance": 0.75,
-        "success": {
-          "fuel": -1,
-          "morale": 0
-        },
-        "failure": {
-          "fuel": -1,
-          "damage": "1d4",
-          "morale": -5
-        }
-      },
-      {
-        "id": "turn_around_tree",
-        "text": "Turn around and take the last junction you passed",
+        "id": "turn_back_forest",
+        "text": "Turn back before going deeper into the forest",
         "requirements": {
           "fuel": 1
         },
         "successChance": 1.0,
         "success": {
           "fuel": -1,
-          "morale": -3
-        },
-        "failure": {}
-      }
-    ]
-  },
-  {
-    "id": "survivor_encounter_02",
-    "region": [
-      "any"
-    ],
-    "danger": "low",
-    "ambush": false,
-    "location": "Highway Rest Area",
-    "description": "A small group has set up a makeshift camp at an abandoned rest area. Smoke curls from a barrel fire as {SURVIVOR2} spots watchful eyes on the roof. The {RELATIONSHIP} could use allies\u2014or at least information.",
-    "choices": [
-      {
-        "id": "approach_openly",
-        "text": "Park in the open and approach with empty hands",
-        "requirements": {},
-        "successChance": 0.8,
-        "success": {
-          "morale": 10,
-          "food": 1
-        },
-        "failure": {
-          "morale": -5
-        }
-      },
-      {
-        "id": "negotiate_trade",
-        "text": "{ROLE1_CAP} offers to trade supplies for information",
-        "requirements": {
-          "hasRole": "Negotiator",
-          "food": 1
-        },
-        "successChance": 0.9,
-        "success": {
-          "food": -1,
-          "morale": 10,
-          "ammo": 2
-        },
-        "failure": {
-          "food": -1,
-          "morale": -5
-        }
-      },
-      {
-        "id": "observe_then_leave",
-        "text": "Watch them from a distance, then move on",
-        "requirements": {},
-        "successChance": 1.0,
-        "success": {
-          "morale": -2
+          "morale": -5,
+          "successNarration": "You reverse out slowly. The forest gives you a bad feeling. You find another route—longer, but safer."
         },
         "failure": {}
       },
       {
-        "id": "join_meal",
-        "text": "Offer to share a meal and news of the road",
+        "id": "push_through_fast",
+        "text": "Floor it and push through quickly",
         "requirements": {
-          "food": 2
+          "fuel": 1
         },
-        "successChance": 0.85,
+        "successChance": 0.5,
         "success": {
-          "food": -2,
-          "morale": 15
+          "fuel": -1,
+          "morale": 5,
+          "successNarration": "You accelerate hard, branches whipping the windshield. The car takes scratches but bursts out the other side in seconds."
         },
         "failure": {
-          "food": -2,
-          "morale": -5
+          "fuel": -1,
+          "damage": "2d6",
+          "morale": -15,
+          "failureNarration": "You floor it, but a hidden branch smashes the side mirror off. Then the car slams into a concealed stump. Metal crunches. You limp out, shaken and damaged."
         }
       }
     ]
   },
   {
-    "id": "survivor_encounter_03",
-    "region": [
-      "any"
-    ],
+    "id": "bridge_crossing_01",
+    "region": ["any"],
     "danger": "medium",
     "ambush": false,
-    "location": "Suburban Street",
-    "description": "A battered SUV sits at the curb with its hood up. A pair of survivors argue quietly beside it as {SURVIVOR1} slows. {SURVIVOR2} can see fear and desperation in their faces as they spot the approaching vehicle.",
+    "location": "River Bridge",
+    "description": "The bridge ahead sags in the middle. Concrete chunks have fallen into the river below. It looks unstable.",
     "choices": [
       {
-        "id": "help_fix_vehicle",
-        "text": "{ROLE1_CAP} offers to help fix their vehicle",
-        "requirements": {
-          "hasRole": "Engineer"
-        },
-        "successChance": 0.85,
-        "success": {
-          "morale": 10,
-          "fuel": 1
-        },
-        "failure": {
-          "damage": "1d4",
-          "morale": -5
-        }
-      },
-      {
-        "id": "trade_supplies",
-        "text": "Trade fuel for food or information",
-        "requirements": {
-          "fuel": 1
-        },
-        "successChance": 0.75,
-        "success": {
-          "fuel": -1,
-          "food": 2,
-          "morale": 5
-        },
-        "failure": {
-          "fuel": -1,
-          "morale": -5
-        }
-      },
-      {
-        "id": "offer_ride",
-        "text": "Offer to take one of them with you for a while",
-        "requirements": {
-          "food": 1
-        },
+        "id": "cross_slowly",
+        "text": "Cross slowly, testing the weight",
+        "requirements": {},
         "successChance": 0.65,
         "success": {
-          "food": -1,
-          "morale": 10,
-          "ammo": 2
-        },
-        "failure": {
-          "food": -1,
-          "morale": -10,
-          "damage": "1d4"
-        }
-      },
-      {
-        "id": "drive_on",
-        "text": "The {RELATIONSHIP} agree you can\u2019t afford to stop",
-        "requirements": {},
-        "successChance": 1.0,
-        "success": {
-          "morale": -8
-        },
-        "failure": {}
-      }
-    ]
-  },
-  {
-    "id": "weather_event_01",
-    "region": [
-      "any"
-    ],
-    "danger": "low",
-    "ambush": false,
-    "location": "Highway",
-    "description": "Rain starts as a drizzle and turns into a pounding storm. Wipers smear mud across the windshield. {SURVIVOR1} leans forward to see while {SURVIVOR2} watches the flooded shoulders nervously.",
-    "choices": [
-      {
-        "id": "keep_driving_slow",
-        "text": "Keep driving slowly with headlights on",
-        "requirements": {
-          "fuel": 1
-        },
-        "successChance": 0.8,
-        "success": {
-          "fuel": -1,
-          "morale": -2
-        },
-        "failure": {
-          "fuel": -1,
-          "damage": "1d4",
-          "morale": -8
-        }
-      },
-      {
-        "id": "pull_over_rest",
-        "text": "Pull over and wait out the worst of it",
-        "requirements": {
-          "food": 1
-        },
-        "successChance": 0.9,
-        "success": {
-          "food": -1,
-          "morale": 5
-        },
-        "failure": {
-          "food": -1,
-          "morale": -3
-        }
-      },
-      {
-        "id": "scout_safe_route",
-        "text": "{ROLE1_CAP} checks maps or notes for higher ground routes",
-        "requirements": {
-          "hasRole": "Scout"
-        },
-        "successChance": 0.85,
-        "success": {
-          "fuel": -1,
-          "morale": 5
-        },
-        "failure": {
-          "fuel": -1,
-          "morale": -5
-        }
-      },
-      {
-        "id": "push_hard",
-        "text": "Push through aggressively to make up time",
-        "requirements": {
-          "fuel": 2
-        },
-        "successChance": 0.6,
-        "success": {
-          "fuel": -2,
-          "morale": 5
-        },
-        "failure": {
-          "fuel": -2,
-          "damage": "2d4",
-          "morale": -10
-        }
-      }
-    ]
-  },
-  {
-    "id": "weather_event_02",
-    "region": [
-      "rockies"
-    ],
-    "danger": "medium",
-    "ambush": false,
-    "location": "Mountain Pass",
-    "description": "Snow begins to fall, light at first, then heavier. The road ahead vanishes into white as {SURVIVOR2} rubs frost from the side window. The {RELATIONSHIP} can feel the temperature dropping fast inside the cab.",
-    "choices": [
-      {
-        "id": "chains_and_crawl",
-        "text": "Fit chains or improv traction and crawl forward",
-        "requirements": {},
-        "successChance": 0.7,
-        "success": {
-          "morale": -2
-        },
-        "failure": {
-          "damage": "2d4",
-          "morale": -10
-        }
-      },
-      {
-        "id": "find_shelter",
-        "text": "Look for a building or overhang to shelter in",
-        "requirements": {
-          "food": 1
-        },
-        "successChance": 0.75,
-        "success": {
-          "food": -1,
-          "morale": 8
-        },
-        "failure": {
-          "food": -1,
-          "morale": -5,
-          "damage": "1d4"
-        }
-      },
-      {
-        "id": "scout_ahead_on_foot",
-        "text": "{ROLE1_CAP} hikes ahead to check if the pass is still open",
-        "requirements": {
-          "hasRole": "Scout"
-        },
-        "successChance": 0.85,
-        "success": {
-          "morale": 5
-        },
-        "failure": {
-          "damage": "2d4",
-          "morale": -10
-        }
-      },
-      {
-        "id": "turn_back_snow",
-        "text": "Turn back toward lower, safer roads",
-        "requirements": {
-          "fuel": 2
-        },
-        "successChance": 1.0,
-        "success": {
-          "fuel": -2,
-          "morale": -5
-        },
-        "failure": {}
-      }
-    ]
-  },
-  {
-    "id": "weather_event_03",
-    "region": [
-      "plains"
-    ],
-    "danger": "high",
-    "ambush": false,
-    "location": "Open Highway",
-    "description": "Dark clouds tower on the horizon. Wind buffets the vehicle as siren-like howls cut across the flatlands. {SURVIVOR1} spots a twisting column dropping from the clouds straight toward the highway.",
-    "choices": [
-      {
-        "id": "outrun_storm",
-        "text": "Try to outrun the storm front",
-        "requirements": {
-          "fuel": 2
-        },
-        "successChance": 0.6,
-        "success": {
-          "fuel": -2,
-          "morale": 5
-        },
-        "failure": {
-          "fuel": -2,
-          "damage": "3d6",
-          "morale": -20
-        }
-      },
-      {
-        "id": "ditch_vehicle",
-        "text": "Abandon vehicle temporarily and take cover in a ditch",
-        "requirements": {},
-        "successChance": 0.75,
-        "success": {
-          "morale": -5
-        },
-        "failure": {
-          "damage": "2d4",
-          "morale": -15
-        }
-      },
-      {
-        "id": "seek_undercroft",
-        "text": "Look for an underpass or sturdy structure to hide beneath",
-        "requirements": {},
-        "successChance": 0.7,
-        "success": {
-          "morale": 5
+          "morale": 5,
+          "successNarration": "You creep across, feeling every groan in the concrete. The bridge holds. You make it to the far side and breathe again."
         },
         "failure": {
           "damage": "2d6",
-          "morale": -15
-        }
-      },
-      {
-        "id": "pray_and_push",
-        "text": "Stay in the vehicle and ride it out together",
-        "requirements": {},
-        "successChance": 0.5,
-        "success": {
-          "morale": -5
-        },
-        "failure": {
-          "damage": "3d6",
           "morale": -20,
-          "addInjuryId": "concussion",
-          "injuryChance": 0.15
-        }
-      }
-    ]
-  },
-  {
-    "id": "vehicle_problem_01",
-    "region": [
-      "any"
-    ],
-    "danger": "medium",
-    "ambush": false,
-    "location": "Highway Shoulder",
-    "description": "The vehicle lurches and a harsh grinding sound fills the cabin. {SURVIVOR1} pulls over as smoke curls from under the hood. The {RELATIONSHIP} trade a worried look\u2014this road is too exposed for a long stop.",
-    "choices": [
-      {
-        "id": "quick_check",
-        "text": "Pop the hood and do a quick inspection",
-        "requirements": {},
-        "successChance": 0.65,
-        "success": {
-          "morale": 5
-        },
-        "failure": {
-          "damage": "1d4",
-          "morale": -5
+          "failureNarration": "Halfway across, a section gives way. The car drops hard onto twisted rebar before catching. You scramble out and drag yourselves to solid ground, abandoning the wreck."
         }
       },
       {
-        "id": "engineer_repair",
-        "text": "{ROLE1_CAP} methodically checks and repairs what they can",
+        "id": "engineer_inspect",
+        "text": "Engineer inspects the structure first",
         "requirements": {
           "hasRole": "Engineer"
         },
         "successChance": 0.85,
         "success": {
           "morale": 10,
-          "fuel": -1
+          "successNarration": "The engineer walks the bridge, tapping supports. They mark a safe path along the left edge. You follow it exactly and cross without issue."
         },
         "failure": {
-          "damage": "1d6",
-          "morale": -10
+          "morale": -5,
+          "failureNarration": "The engineer says it's too risky. You backtrack and find another crossing, losing time but avoiding disaster."
         }
       },
       {
-        "id": "drive_on_damage",
-        "text": "Ignore the warning signs and keep driving",
+        "id": "ford_river",
+        "text": "Find a shallow point and ford the river instead",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "morale": 0,
+          "successNarration": "You find a rocky ford downstream. Water splashes through the doors, but you make it across without serious damage."
+        },
+        "failure": {
+          "damage": "1d6",
+          "fuel": -1,
+          "morale": -10,
+          "failureNarration": "The water is deeper than it looked. The car stalls mid-river. You barely restart the engine and crawl out, soaked and shaken."
+        }
+      },
+      {
+        "id": "speed_across",
+        "text": "Speed across before it can collapse",
         "requirements": {
           "fuel": 1
         },
-        "successChance": 0.6,
-        "success": {
-          "fuel": -1,
-          "morale": -5
-        },
-        "failure": {
-          "fuel": -1,
-          "damage": "3d6",
-          "morale": -15
-        }
-      },
-      {
-        "id": "wait_and_rest",
-        "text": "Use the stop to rest briefly and let the engine cool",
-        "requirements": {
-          "food": 1
-        },
-        "successChance": 0.8,
-        "success": {
-          "food": -1,
-          "morale": 8
-        },
-        "failure": {
-          "food": -1,
-          "morale": -5
-        }
-      }
-    ]
-  },
-  {
-    "id": "vehicle_problem_02",
-    "region": [
-      "desert"
-    ],
-    "danger": "medium",
-    "ambush": false,
-    "location": "Desert Road",
-    "description": "Heat shimmers off the asphalt. The temperature gauge creeps into the red as {SURVIVOR2} wipes sweat from their brow. The engine coughs and the {RELATIONSHIP} feel the power fading.",
-    "choices": [
-      {
-        "id": "stop_cool_engine",
-        "text": "Stop in the shade of a wreck or sign and let the engine cool",
-        "requirements": {
-          "food": 1
-        },
-        "successChance": 0.8,
-        "success": {
-          "food": -1,
-          "morale": 5
-        },
-        "failure": {
-          "food": -1,
-          "damage": "1d4",
-          "morale": -5
-        }
-      },
-      {
-        "id": "engineer_rig_cooling",
-        "text": "{ROLE1_CAP} rigs an improvised cooling fix",
-        "requirements": {
-          "hasRole": "Engineer"
-        },
-        "successChance": 0.9,
-        "success": {
-          "morale": 10
-        },
-        "failure": {
-          "damage": "2d4",
-          "morale": -10
-        }
-      },
-      {
-        "id": "push_through_heat",
-        "text": "Push the engine hard to reach the next town",
-        "requirements": {
-          "fuel": 2
-        },
-        "successChance": 0.6,
-        "success": {
-          "fuel": -2,
-          "morale": -5
-        },
-        "failure": {
-          "fuel": -2,
-          "damage": "3d6",
-          "morale": -15
-        }
-      },
-      {
-        "id": "walk_and_cool",
-        "text": "Walk ahead a while while the engine rests",
-        "requirements": {},
-        "successChance": 0.7,
-        "success": {
-          "morale": -5,
-          "addInjuryId": "exhaustion",
-          "injuryChance": 0.3
-        },
-        "failure": {
-          "damage": "1d6",
-          "morale": -10
-        }
-      }
-    ]
-  },
-  {
-    "id": "vehicle_problem_03",
-    "region": [
-      "any"
-    ],
-    "danger": "high",
-    "ambush": false,
-    "location": "Bridge",
-    "description": "Midway across a long bridge, the engine sputters and dies. The vehicle rolls to a stop with water on both sides. {SURVIVOR1} curses as {SURVIVOR2} eyes the narrowing lines of sight behind you.",
-    "choices": [
-      {
-        "id": "restart_engine",
-        "text": "Try to restart the engine repeatedly",
-        "requirements": {},
         "successChance": 0.55,
         "success": {
-          "morale": 5
+          "fuel": -1,
+          "morale": 5,
+          "successNarration": "You gun the engine and race across. The bridge shudders but holds. You clear it in seconds, heart pounding."
         },
         "failure": {
-          "damage": "2d4",
-          "morale": -10
-        }
-      },
-      {
-        "id": "engineer_detailed_fix",
-        "text": "{ROLE1_CAP} climbs out to attempt a detailed fix under pressure",
-        "requirements": {
-          "hasRole": "Engineer"
-        },
-        "successChance": 0.8,
-        "success": {
-          "morale": 10
-        },
-        "failure": {
-          "damage": "2d6",
-          "morale": -15
-        }
-      },
-      {
-        "id": "push_vehicle",
-        "text": "The {RELATIONSHIP} get out to push while steering",
-        "requirements": {},
-        "successChance": 0.7,
-        "success": {
-          "morale": -5
-        },
-        "failure": {
-          "damage": "2d4",
-          "morale": -10
-        }
-      },
-      {
-        "id": "abandon_and_cross",
-        "text": "Abandon the vehicle and cross the bridge on foot",
-        "requirements": {},
-        "successChance": 0.7,
-        "success": {
-          "morale": -10
-        },
-        "failure": {
+          "fuel": -1,
           "damage": "3d6",
-          "morale": -20
+          "morale": -25,
+          "failureNarration": "You accelerate hard, but the bridge buckles. The car slams down onto concrete chunks. You crawl out bleeding, the vehicle ruined."
         }
       }
     ]
   },
   {
-    "id": "natural_hazard_01",
-    "region": [
-      "appalachian"
-    ],
-    "danger": "medium",
+    "id": "abandoned_checkpoint_01",
+    "region": ["any"],
+    "danger": "low",
     "ambush": false,
-    "location": "Mountain Road",
-    "description": "A fresh rockslide has scattered boulders down the hillside. Some still shift and tumble. {SURVIVOR2} flinches as gravel rattles across the roof while {SURVIVOR1} brakes hard.",
+    "location": "Military Checkpoint",
+    "description": "An abandoned military checkpoint blocks the road. Barriers are half-removed. No signs of life.",
     "choices": [
       {
-        "id": "wait_for_settle",
-        "text": "Wait for the hillside to settle before moving",
-        "requirements": {
-          "food": 1
-        },
-        "successChance": 0.85,
+        "id": "drive_through_checkpoint",
+        "text": "Drive straight through the barriers",
+        "requirements": {},
+        "successChance": 0.8,
         "success": {
-          "food": -1,
-          "morale": 5
+          "morale": 0,
+          "successNarration": "The barriers slide aside with a scrape. No one challenges you. The checkpoint is long dead."
         },
         "failure": {
-          "food": -1,
-          "morale": -5
+          "damage": "1d4",
+          "morale": -5,
+          "failureNarration": "A barrier catches the bumper and tears. You force through, dragging metal. Minor damage, but annoying."
         }
       },
       {
-        "id": "hug_inside_wall",
-        "text": "Crawl along hugging the inside rock wall",
-        "requirements": {
-          "fuel": 1
-        },
-        "successChance": 0.7,
+        "id": "search_checkpoint",
+        "text": "Search the guard post for supplies",
+        "requirements": {},
+        "successChance": 0.6,
         "success": {
-          "fuel": -1,
-          "morale": 0
+          "ammo": 2,
+          "food": 1,
+          "morale": 10,
+          "successNarration": "You find ammunition in a locker and MREs in a desk drawer. Small finds, but they count."
         },
         "failure": {
-          "fuel": -1,
-          "damage": "2d4",
-          "morale": -10
+          "morale": -5,
+          "failureNarration": "The checkpoint has been picked clean. Empty lockers and broken glass. You find nothing worth taking."
         }
       },
       {
-        "id": "scout_safe_line",
-        "text": "{ROLE1_CAP} walks ahead marking a safer path between the rocks",
+        "id": "soldier_tactical_clear",
+        "text": "Soldier clears the checkpoint tactically",
         "requirements": {
-          "hasRole": "Scout"
+          "hasRole": "Soldier"
         },
         "successChance": 0.9,
         "success": {
-          "morale": 10
+          "ammo": 3,
+          "medicine": 1,
+          "morale": 15,
+          "successNarration": "The soldier methodically searches every corner. They find a hidden cache under the floorboards—ammunition, antibiotics, and sealed rations."
         },
         "failure": {
-          "damage": "1d6",
-          "morale": -10,
-          "addInjuryId": "broken_leg",
-          "injuryChance": 0.15
+          "morale": 0,
+          "failureNarration": "Even with training, the checkpoint yields nothing. It's been too thoroughly looted already."
         }
       },
       {
-        "id": "turn_back_slide",
-        "text": "Turn back before the slide gets worse",
+        "id": "bypass_checkpoint",
+        "text": "Drive around it entirely",
         "requirements": {
-          "fuel": 2
+          "fuel": 1
         },
         "successChance": 1.0,
         "success": {
-          "fuel": -2,
-          "morale": -5
+          "fuel": -1,
+          "morale": 0,
+          "successNarration": "You take the shoulder around the checkpoint. It feels safer not to linger. You rejoin the road quickly."
         },
         "failure": {}
       }
     ]
   },
   {
-    "id": "natural_hazard_02",
-    "region": [
-      "east_coast",
-      "plains"
-    ],
-    "danger": "high",
-    "ambush": false,
-    "location": "Flooded Road",
-    "description": "The road dips into a low underpass completely filled with muddy water. Floating debris bumps against submerged cars. {SURVIVOR1} can't see the road surface at all while {SURVIVOR2} studies the flow.",
-    "choices": [
-      {
-        "id": "drive_through_flood",
-        "text": "Risk driving straight through the floodwater",
-        "requirements": {
-          "fuel": 1
-        },
-        "successChance": 0.5,
-        "success": {
-          "fuel": -1,
-          "morale": 5
-        },
-        "failure": {
-          "fuel": -1,
-          "damage": "3d6",
-          "morale": -20
-        }
-      },
-      {
-        "id": "walk_and_probe",
-        "text": "Walk in and probe depth with a stick first",
-        "requirements": {},
-        "successChance": 0.7,
-        "success": {
-          "morale": 0
-        },
-        "failure": {
-          "damage": "2d4",
-          "morale": -10
-        }
-      },
-      {
-        "id": "detour_higher_ground",
-        "text": "{ROLE1_CAP} searches maps for a longer, higher detour",
-        "requirements": {
-          "hasRole": "Scout"
-        },
-        "successChance": 0.85,
-        "success": {
-          "fuel": -2,
-          "morale": 5
-        },
-        "failure": {
-          "fuel": -3,
-          "morale": -5
-        }
-      },
-      {
-        "id": "wait_flood_drop",
-        "text": "Wait hours for the water level to drop",
-        "requirements": {
-          "food": 2
-        },
-        "successChance": 0.8,
-        "success": {
-          "food": -2,
-          "morale": -2
-        },
-        "failure": {
-          "food": -2,
-          "morale": -10
-        }
-      }
-    ]
-  },
-  {
-    "id": "opportunity_encounter_01",
-    "region": [
-      "any"
-    ],
+    "id": "fuel_crisis_01",
+    "region": ["any"],
     "danger": "low",
     "ambush": false,
-    "location": "Truck Stop",
-    "description": "A flicker of light glows in the distance\u2014a half-lit truck stop sign still humming with weak power. {SURVIVOR2} points excitedly as {SURVIVOR1} slows, the {RELATIONSHIP} weighing risk against opportunity.",
+    "location": "Open Road",
+    "description": "The fuel gauge drops into the red. You need to find gas soon or you'll be walking.",
     "choices": [
       {
-        "id": "search_truck_stop",
-        "text": "Search the truck stop thoroughly",
+        "id": "siphon_abandoned_cars",
+        "text": "Siphon fuel from abandoned cars along the roadside",
         "requirements": {},
         "successChance": 0.7,
-        "success": {
-          "food": 2,
-          "fuel": 1,
-          "morale": 10
-        },
-        "failure": {
-          "damage": "1d4",
-          "morale": -5
-        }
-      },
-      {
-        "id": "quick_fuel_grab",
-        "text": "Go straight for the fuel pumps and move on",
-        "requirements": {},
-        "successChance": 0.8,
         "success": {
           "fuel": 2,
-          "morale": 5
+          "morale": 5,
+          "successNarration": "You find three cars with usable fuel. It's dirty work, but you collect enough to keep moving."
         },
         "failure": {
-          "damage": "1d3",
-          "morale": -5
+          "morale": -10,
+          "failureNarration": "Every tank is bone dry or contaminated with rust. You waste an hour and gain nothing."
         }
       },
       {
-        "id": "check_inside_only",
-        "text": "{ROLE1_CAP} checks the shop interior while the other keeps watch",
+        "id": "engineer_optimize",
+        "text": "Engineer adjusts the engine to run leaner",
         "requirements": {
-          "hasRole": "Scout"
+          "hasRole": "Engineer"
         },
-        "successChance": 0.85,
+        "successChance": 0.8,
         "success": {
-          "food": 1,
-          "morale": 5
+          "morale": 10,
+          "successNarration": "The engineer tinkers under the hood for twenty minutes. The engine runs quieter and more efficiently. You'll make it farther on what's left."
         },
         "failure": {
-          "damage": "1d4",
-          "morale": -5
+          "morale": -5,
+          "failureNarration": "The adjustments don't help. The engine still burns fuel too fast. You're on borrowed time."
         }
       },
       {
-        "id": "skip_truck_stop",
-        "text": "It feels wrong\u2014skip it and keep driving",
+        "id": "coast_downhill",
+        "text": "Coast in neutral down hills to save fuel",
         "requirements": {},
         "successChance": 1.0,
         "success": {
-          "morale": -3
+          "morale": -5,
+          "successNarration": "You kill the engine on every slope, letting gravity do the work. It's nerve-wracking and slow, but it stretches the tank."
+        },
+        "failure": {}
+      },
+      {
+        "id": "abandon_vehicle_walk",
+        "text": "Abandon the vehicle and continue on foot",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "fuel": 0,
+          "morale": -15,
+          "successNarration": "You leave the car on the roadside and shoulder your packs. Walking is slow, exposed, and exhausting. But you keep moving west."
         },
         "failure": {}
       }
     ]
   },
   {
-    "id": "opportunity_encounter_02",
-    "region": [
-      "any"
-    ],
+    "id": "weather_storm_01",
+    "region": ["any"],
     "danger": "medium",
     "ambush": false,
-    "location": "Overlook",
-    "description": "The road skirts a ridge with a wide overlook. In the distance, {SURVIVOR2} spots what might be smoke from a settlement. The view could reveal the layout of the land ahead\u2014if the {RELATIONSHIP} risk stopping.",
+    "location": "Open Highway",
+    "description": "Dark clouds roll in fast. Rain starts hammering the windshield. Visibility drops to almost nothing.",
     "choices": [
       {
-        "id": "pull_over_scan",
-        "text": "Pull over and scan the horizon with binoculars or scope",
+        "id": "pull_over_wait",
+        "text": "Pull over and wait for the storm to pass",
         "requirements": {},
         "successChance": 0.8,
         "success": {
-          "morale": 5
+          "morale": 0,
+          "successNarration": "You park under an overpass and wait. The storm rages for an hour, then breaks. You continue in light drizzle."
         },
         "failure": {
-          "morale": -5
+          "damage": "1d4",
+          "morale": -10,
+          "failureNarration": "While parked, something slams into the car's roof—a branch, heavy. It dents the metal but doesn't punch through. You wait it out, shaken."
         }
       },
       {
-        "id": "scout_mark_routes",
-        "text": "{ROLE1_CAP} studies the terrain to mark safer future routes",
+        "id": "drive_slow_storm",
+        "text": "Drive slowly through the storm",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "morale": -5,
+          "successNarration": "You crawl forward at fifteen miles per hour, squinting through the downpour. It's tense and miserable, but you keep moving."
+        },
+        "failure": {
+          "damage": "2d4",
+          "fuel": -1,
+          "morale": -15,
+          "failureNarration": "You can't see the road. The car slides off into a ditch. It takes twenty minutes of pushing and burning fuel to get free, soaked and furious."
+        }
+      },
+      {
+        "id": "scout_sheltered_route",
+        "text": "Scout for a more sheltered route",
         "requirements": {
           "hasRole": "Scout"
         },
-        "successChance": 0.9,
+        "successChance": 0.75,
         "success": {
-          "morale": 10
+          "morale": 10,
+          "successNarration": "The scout finds a parallel road cutting through forest—tree cover blocks the worst of the rain. You switch routes and make good time."
         },
         "failure": {
-          "morale": -5
+          "fuel": -1,
+          "morale": -5,
+          "failureNarration": "The alternate route is washed out. You backtrack through the storm, wasting fuel and patience."
         }
       },
       {
-        "id": "rush_past",
-        "text": "Note the smoke but keep moving",
+        "id": "push_through_fast",
+        "text": "Push through at speed, hoping to outrun it",
         "requirements": {
           "fuel": 1
         },
-        "successChance": 1.0,
+        "successChance": 0.55,
         "success": {
           "fuel": -1,
-          "morale": -2
+          "morale": 5,
+          "successNarration": "You floor it, hydroplaning through puddles. The storm fades behind you after fifteen minutes of white-knuckle driving."
         },
-        "failure": {}
+        "failure": {
+          "fuel": -1,
+          "damage": "2d6",
+          "morale": -20,
+          "failureNarration": "At high speed, you hit standing water and lose control. The car spins, slamming into a guardrail. You survive, barely, but the damage is severe."
+        }
+      }
+    ]
+  },
+  {
+    "id": "roadblock_trap_01",
+    "region": ["any"],
+    "danger": "high",
+    "ambush": true,
+    "location": "Highway",
+    "description": "A neat roadblock of sandbags and wood barriers appears ahead. Too neat. This isn't abandoned—it's a trap.",
+    "choices": [
+      {
+        "id": "scout_observe_first",
+        "text": "Scout observes from a distance before approaching",
+        "requirements": {
+          "hasRole": "Scout"
+        },
+        "successChance": 0.8,
+        "success": {
+          "morale": 10,
+          "successNarration": "The scout spots figures hiding behind the barriers. You back up quietly before they see you, avoiding the ambush entirely."
+        },
+        "failure": {
+          "morale": -5,
+          "failureNarration": "By the time you spot the trap, they've seen you. You reverse fast, but they know you're out here now."
+        }
       },
       {
-        "id": "approach_smoke",
-        "text": "Head off the main road toward the smoke to investigate",
+        "id": "ram_through_roadblock",
+        "text": "Ram through the roadblock at full speed",
+        "requirements": {
+          "fuel": 2
+        },
+        "successChance": 0.6,
+        "success": {
+          "fuel": -2,
+          "damage": "1d6",
+          "morale": 5,
+          "successNarration": "You accelerate hard. The barriers explode on impact. Shouts and gunfire erupt behind you, but you're already gone."
+        },
+        "failure": {
+          "fuel": -2,
+          "damage": "4d6",
+          "morale": -25,
+          "failureNarration": "The barrier is reinforced underneath. You crash into it hard, the car crumpling. They descend on you before you can recover."
+        }
+      },
+      {
+        "id": "detour_offroad",
+        "text": "Cut through the dirt shoulder around the blockade",
+        "requirements": {},
+        "successChance": 0.65,
+        "success": {
+          "morale": 0,
+          "successNarration": "You veer onto rough ground, circling the roadblock. Shots are fired, but you're moving and they miss. You rejoin the road past the trap."
+        },
+        "failure": {
+          "damage": "2d4",
+          "morale": -15,
+          "failureNarration": "The shoulder is softer than it looks. You bog down. They open fire. You escape on foot, leaving the car behind."
+        }
+      },
+      {
+        "id": "reverse_fast",
+        "text": "Reverse immediately and find another route",
+        "requirements": {
+          "fuel": 1
+        },
+        "successChance": 0.75,
+        "success": {
+          "fuel": -1,
+          "morale": -5,
+          "successNarration": "You throw the car into reverse before they react. You escape cleanly and take a longer detour."
+        },
+        "failure": {
+          "fuel": -1,
+          "damage": "2d4",
+          "morale": -15,
+          "failureNarration": "You reverse, but not fast enough. Gunfire cracks. Rounds punch through the trunk. You escape bleeding but alive."
+        }
+      }
+    ]
+  },
+  {
+    "id": "zombie_horde_slow_01",
+    "region": ["any"],
+    "danger": "high",
+    "ambush": false,
+    "location": "Highway",
+    "description": "A massive horde shuffles across the highway ahead. Hundreds of them, slow but relentless.",
+    "choices": [
+      {
+        "id": "wait_them_out",
+        "text": "Park and wait for them to pass",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "morale": -10,
+          "successNarration": "You kill the engine and sit in silence. The horde shambles past, oblivious. It takes two hours, but they clear out."
+        },
+        "failure": {
+          "damage": "2d4",
+          "morale": -20,
+          "failureNarration": "One of them notices the car. Then another. Within minutes, dozens are pounding on the doors. You restart the engine and crash through, taking damage."
+        }
+      },
+      {
+        "id": "drive_through_slowly",
+        "text": "Drive through them slowly, pushing bodies aside",
         "requirements": {
           "fuel": 1
         },
         "successChance": 0.65,
         "success": {
           "fuel": -1,
-          "morale": 10,
-          "food": 1
+          "morale": -5,
+          "successNarration": "You inch forward, bumping corpses aside. They're too slow to react. You clear the horde in ten tense minutes."
         },
         "failure": {
           "fuel": -1,
+          "damage": "3d6",
+          "morale": -25,
+          "failureNarration": "Bodies clog the wheels. The car stalls. They swarm. You restart the engine and ram through, taking heavy damage."
+        }
+      },
+      {
+        "id": "soldier_distraction",
+        "text": "Soldier creates a distraction to draw them off the road",
+        "requirements": {
+          "hasRole": "Soldier",
+          "ammo": 2
+        },
+        "successChance": 0.8,
+        "success": {
+          "ammo": -2,
+          "morale": 15,
+          "successNarration": "The soldier fires shots into the distance. The horde turns as one and shuffles toward the noise. You drive through the gap they leave."
+        },
+        "failure": {
+          "ammo": -2,
           "damage": "2d4",
-          "morale": -10
+          "morale": -15,
+          "failureNarration": "The shots draw some off, but not enough. You're forced to push through the remainder, taking hits."
+        }
+      },
+      {
+        "id": "detour_backroads",
+        "text": "Find a parallel backroad to bypass the horde",
+        "requirements": {
+          "fuel": 2
+        },
+        "successChance": 0.75,
+        "success": {
+          "fuel": -2,
+          "morale": 5,
+          "successNarration": "You find a farm road cutting parallel to the highway. It adds miles but avoids the horde completely."
+        },
+        "failure": {
+          "fuel": -2,
+          "morale": -10,
+          "failureNarration": "The backroad dead-ends at a locked gate. You backtrack, wasting fuel and losing time."
         }
       }
     ]
   },
   {
-    "id": "raider_ambush_02",
-    "region": [
-      "east_coast"
-    ],
-    "danger": "high",
-    "ambush": true,
-    "location": "Urban Street",
-    "description": "As the vehicle crawls between tall, empty buildings, a metal cable snaps up across the road. Tires squeal. {SURVIVOR1} slams the brakes just as figures lean out of shattered windows aiming rifles down.",
+    "id": "medical_emergency_01",
+    "region": ["any"],
+    "danger": "medium",
+    "ambush": false,
+    "location": "Road",
+    "description": "Someone's breathing is wrong. Fever spiking. You need to deal with this now or it'll get worse.",
     "choices": [
       {
-        "id": "reverse_out",
-        "text": "Throw it in reverse and try to back out of the kill zone",
+        "id": "medic_treat_roadside",
+        "text": "Medic treats them by the roadside immediately",
+        "requirements": {
+          "hasRole": "Medic",
+          "medicine": 1
+        },
+        "successChance": 0.85,
+        "success": {
+          "medicine": -1,
+          "morale": 15,
+          "successNarration": "The medic works fast—antibiotics, bandage change, fluids. The fever breaks within an hour. Crisis averted."
+        },
+        "failure": {
+          "medicine": -1,
+          "damage": "1d4",
+          "morale": -10,
+          "failureNarration": "The medic tries, but the fever doesn't break. They're weak and getting weaker. You keep moving, hoping to find better shelter."
+        }
+      },
+      {
+        "id": "push_to_shelter",
+        "text": "Push hard to reach the next town for shelter",
         "requirements": {
           "fuel": 1
         },
         "successChance": 0.6,
         "success": {
           "fuel": -1,
-          "morale": -5
+          "morale": 5,
+          "successNarration": "You drive fast, reaching an abandoned clinic. It has running water and a clean room. They rest and recover overnight."
         },
         "failure": {
           "fuel": -1,
-          "damage": "3d6",
-          "morale": -20
-        }
-      },
-      {
-        "id": "soldier_target_leaders",
-        "text": "{ROLE1_CAP} targets the apparent leaders first",
-        "requirements": {
-          "hasRole": "Soldier",
-          "ammo": 3
-        },
-        "successChance": 0.7,
-        "success": {
-          "ammo": -3,
-          "morale": 15
-        },
-        "failure": {
-          "ammo": -3,
-          "injury": "gunshot_wound",
-          "morale": -20
-        }
-      },
-      {
-        "id": "negotiate_for_passage",
-        "text": "{ROLE1_CAP} yells an offer of supplies for safe passage",
-        "requirements": {
-          "hasRole": "Negotiator",
-          "food": 2
-        },
-        "successChance": 0.65,
-        "success": {
-          "food": -2,
-          "morale": -5
-        },
-        "failure": {
-          "food": -2,
           "damage": "2d4",
-          "morale": -20
+          "morale": -20,
+          "failureNarration": "You race toward town, but they collapse in the back seat before you arrive. You pull over in panic, barely stabilizing them."
         }
       },
       {
-        "id": "abandon_vehicle_escape",
-        "text": "Abandon the vehicle and sprint into a side alley",
+        "id": "rest_and_monitor",
+        "text": "Pull over and rest, monitoring them closely",
         "requirements": {},
-        "successChance": 0.55,
+        "successChance": 0.5,
         "success": {
-          "morale": -15
+          "morale": -5,
+          "successNarration": "You park in shade and wait. After a few hours, the fever breaks naturally. They're weak but stable."
+        },
+        "failure": {
+          "damage": "2d6",
+          "morale": -25,
+          "failureNarration": "Their condition worsens rapidly. Without medicine, there's little you can do. They survive, but barely."
+        }
+      },
+      {
+        "id": "keep_driving_hope",
+        "text": "Keep driving and hope they tough it out",
+        "requirements": {},
+        "successChance": 0.4,
+        "success": {
+          "morale": -10,
+          "successNarration": "They grit through it, miserable and pale. By nightfall, the fever has lessened. They'll live."
         },
         "failure": {
           "damage": "3d6",
-          "morale": -25
+          "morale": -30,
+          "failureNarration": "You push too hard. They deteriorate fast, nearly dying in the back seat. You're forced to stop and stabilize them, losing precious time."
         }
       }
     ]
   },
   {
-    "id": "raider_ambush_03",
-    "region": [
-      "any"
-    ],
-    "danger": "high",
-    "ambush": true,
-    "location": "Rural Roadblock",
-    "description": "A makeshift barricade of cars and barbed wire blocks the road ahead. Before {SURVIVOR1} can reverse, raiders step out from the tree line with shotguns leveled. {SURVIVOR2} counts at least five shapes in the shadows.",
+    "id": "scavenge_opportunity_01",
+    "region": ["any"],
+    "danger": "low",
+    "ambush": false,
+    "location": "Rural Road",
+    "description": "An overturned delivery truck sits on the shoulder. The back doors are open and boxes are scattered.",
     "choices": [
       {
-        "id": "pretend_low_on_supplies",
-        "text": "{ROLE1_CAP} claims you have almost nothing to steal",
+        "id": "quick_grab",
+        "text": "Quick grab of the most obvious supplies",
+        "requirements": {},
+        "successChance": 0.75,
+        "success": {
+          "food": 2,
+          "morale": 5,
+          "successNarration": "You snatch a few intact boxes—canned goods and bottled water. You're in and out in two minutes."
+        },
+        "failure": {
+          "morale": -5,
+          "failureNarration": "The boxes are empty or spoiled. You find nothing worth taking."
+        }
+      },
+      {
+        "id": "thorough_search",
+        "text": "Search thoroughly for valuable items",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "food": 3,
+          "medicine": 1,
+          "morale": 10,
+          "successNarration": "You dig deep into the cargo. Most is ruined, but you find sealed food and a first aid kit buried under debris."
+        },
+        "failure": {
+          "damage": "1d6",
+          "morale": -10,
+          "failureNarration": "You're elbow-deep in boxes when groaning starts nearby. You scramble out, cutting yourself on broken glass in the rush."
+        }
+      },
+      {
+        "id": "scout_perimeter_first",
+        "text": "Scout checks the perimeter for threats first",
+        "requirements": {
+          "hasRole": "Scout"
+        },
+        "successChance": 0.9,
+        "success": {
+          "food": 3,
+          "morale": 15,
+          "successNarration": "The scout confirms it's clear. You search methodically and safely, loading the car with supplies without incident."
+        },
+        "failure": {
+          "morale": 0,
+          "failureNarration": "The scout gives the all-clear, but there's not much left to take. Someone else got here first."
+        }
+      },
+      {
+        "id": "ignore_move_on",
+        "text": "Ignore it and keep moving—probably a trap",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -5,
+          "successNarration": "You don't trust it. Too convenient. You drive past and keep watching the mirrors. Nothing follows."
+        },
+        "failure": {}
+      }
+    ]
+  },
+  {
+    "id": "night_travel_01",
+    "region": ["any"],
+    "danger": "high",
+    "ambush": false,
+    "location": "Highway",
+    "description": "Night has fallen and you're still on the road. Driving in the dark is dangerous—but stopping might be worse.",
+    "choices": [
+      {
+        "id": "drive_headlights_off",
+        "text": "Drive with headlights off to avoid detection",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "morale": -5,
+          "successNarration": "You navigate by moonlight, creeping forward at twenty miles per hour. It's terrifying, but nothing spots you."
+        },
+        "failure": {
+          "damage": "2d6",
+          "morale": -20,
+          "failureNarration": "You can't see the road. The car slams into an unseen obstacle—hard. Metal crunches. You're forced to stop and assess damage."
+        }
+      },
+      {
+        "id": "drive_slow_headlights",
+        "text": "Drive slowly with headlights on",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "morale": 0,
+          "successNarration": "You keep the headlights on and drive cautiously. The beams feel like spotlights, but you make steady progress."
+        },
+        "failure": {
+          "damage": "1d6",
+          "morale": -15,
+          "failureNarration": "Shapes appear in the headlights—too many, too fast. You swerve hard, clipping something. You escape but the car is scratched up."
+        }
+      },
+      {
+        "id": "pull_over_sleep",
+        "text": "Pull over and sleep until dawn",
+        "requirements": {},
+        "successChance": 0.65,
+        "success": {
+          "morale": 5,
+          "successNarration": "You find a hidden spot off the road and lock the doors. The night passes uneventfully. You wake stiff but rested."
+        },
+        "failure": {
+          "damage": "1d4",
+          "morale": -15,
+          "failureNarration": "Something pounds on the car in the middle of the night. You wake in terror, engine roaring as you escape into the dark."
+        }
+      },
+      {
+        "id": "scout_safe_spot",
+        "text": "Scout finds a defensible spot to camp overnight",
+        "requirements": {
+          "hasRole": "Scout"
+        },
+        "successChance": 0.85,
+        "success": {
+          "morale": 10,
+          "successNarration": "The scout locates an overpass with good sightlines. You park underneath and take turns on watch. The night passes quietly."
+        },
+        "failure": {
+          "morale": -5,
+          "failureNarration": "The 'safe' spot turns out to be near a nest of infected. You relocate twice before finding real shelter, exhausted."
+        }
+      }
+    ]
+  },
+  {
+    "id": "refugee_camp_01",
+    "region": ["any"],
+    "danger": "medium",
+    "ambush": false,
+    "location": "Highway Rest Stop",
+    "description": "A makeshift refugee camp occupies a rest stop. Dozens of people living in tents and cars. They watch you approach warily.",
+    "choices": [
+      {
+        "id": "trade_with_camp",
+        "text": "Approach peacefully and offer to trade",
+        "requirements": {
+          "food": 2
+        },
+        "successChance": 0.7,
+        "success": {
+          "food": -2,
+          "fuel": 2,
+          "morale": 10,
+          "successNarration": "You trade food for fuel and information. They're grateful for fresh supplies. One elder points you toward a safer route west."
+        },
+        "failure": {
+          "food": -2,
+          "morale": -10,
+          "failureNarration": "They take the food but give you almost nothing in return. Desperate people, desperate times. You leave feeling cheated."
+        }
+      },
+      {
+        "id": "negotiator_build_rapport",
+        "text": "Negotiator builds rapport with camp leaders",
         "requirements": {
           "hasRole": "Negotiator"
         },
-        "successChance": 0.7,
+        "successChance": 0.8,
         "success": {
-          "morale": 5
+          "medicine": 1,
+          "ammo": 1,
+          "morale": 15,
+          "successNarration": "The negotiator earns their trust. They share medicine and ammunition in exchange for news from the road. Everyone wins."
         },
         "failure": {
-          "food": -2,
-          "ammo": -2,
-          "morale": -15
+          "morale": -5,
+          "failureNarration": "The camp leaders are too paranoid to trust outsiders. You leave without incident, but without help."
         }
       },
       {
-        "id": "ram_blockade",
-        "text": "Try to ram the barricade and burst through",
-        "requirements": {
-          "fuel": 2
-        },
-        "successChance": 0.55,
+        "id": "drive_through_camp",
+        "text": "Drive through without stopping",
+        "requirements": {},
+        "successChance": 0.8,
         "success": {
-          "fuel": -2,
-          "morale": -5
+          "morale": 0,
+          "successNarration": "You roll through slowly, making eye contact with no one. They let you pass. The tension is thick but you avoid confrontation."
         },
         "failure": {
-          "fuel": -2,
-          "damage": "4d6",
-          "morale": -25
+          "morale": -10,
+          "failureNarration": "Someone throws a rock at the car as you pass. Others shout curses. You accelerate out, shaken by the hostility."
         }
       },
       {
-        "id": "soldier_cover_escape",
-        "text": "{ROLE1_CAP} lays down covering fire while driving through a gap",
-        "requirements": {
-          "hasRole": "Soldier",
-          "ammo": 3,
-          "fuel": 1
-        },
-        "successChance": 0.75,
-        "success": {
-          "ammo": -3,
-          "fuel": -1,
-          "morale": 10
-        },
-        "failure": {
-          "ammo": -3,
-          "fuel": -1,
-          "injury": "gunshot_wound",
-          "morale": -25
-        }
-      },
-      {
-        "id": "surrender_some_supplies",
-        "text": "Hand over a portion of supplies and hope they\u2019re satisfied",
-        "requirements": {
-          "food": 3
-        },
-        "successChance": 0.75,
-        "success": {
-          "food": -3,
-          "morale": -10
-        },
-        "failure": {
-          "food": -3,
-          "damage": "2d4",
-          "morale": -20
-        }
-      }
-    ]
-  },
-  {
-    "id": "zombie_horde_ambush_01",
-    "region": [
-      "any"
-    ],
-    "danger": "high",
-    "ambush": true,
-    "location": "Highway",
-    "description": "The road dips and curves\u2014then the headlights catch them. Dozens of shambling shapes clog the lanes ahead. By the time {SURVIVOR1} reacts, the horde has already begun to close in around the vehicle.",
-    "choices": [
-      {
-        "id": "plow_through_horde",
-        "text": "Floor it and try to plow through the horde",
-        "requirements": {
-          "fuel": 2
-        },
-        "successChance": 0.6,
-        "success": {
-          "fuel": -2,
-          "damage": "1d6",
-          "morale": -5
-        },
-        "failure": {
-          "fuel": -2,
-          "damage": "4d6",
-          "morale": -25
-        }
-      },
-      {
-        "id": "reverse_out_horde",
-        "text": "Reverse and try to escape the way you came",
+        "id": "avoid_camp_detour",
+        "text": "Detour around the camp entirely",
         "requirements": {
           "fuel": 1
         },
-        "successChance": 0.65,
+        "successChance": 1.0,
         "success": {
           "fuel": -1,
-          "morale": -5
+          "morale": -5,
+          "successNarration": "You take a side road around the camp. Better safe than sorry. You lose some time but avoid potential trouble."
         },
-        "failure": {
-          "fuel": -1,
-          "damage": "3d6",
-          "morale": -20
-        }
-      },
-      {
-        "id": "soldier_clears_path",
-        "text": "{ROLE1_CAP} leans out and fires into the densest cluster",
-        "requirements": {
-          "hasRole": "Soldier",
-          "ammo": 3
-        },
-        "successChance": 0.7,
-        "success": {
-          "ammo": -3,
-          "morale": 10
-        },
-        "failure": {
-          "ammo": -3,
-          "damage": "3d6",
-          "morale": -20,
-          "injuryTier": "zombie_contact",
-          "injuryChance": 1.0
-        }
-      },
-      {
-        "id": "escape_on_foot_side",
-        "text": "Abandon the road and scramble down the embankment on foot",
-        "requirements": {},
-        "successChance": 0.6,
-        "success": {
-          "morale": -10
-        },
-        "failure": {
-          "damage": "3d6",
-          "morale": -25,
-          "injuryTier": "zombie_contact",
-          "injuryChance": 1.0
-        }
-      }
-    ]
-  },
-  {
-    "id": "zombie_horde_ambush_02",
-    "region": [
-      "urban",
-      "east_coast"
-    ],
-    "danger": "critical",
-    "ambush": true,
-    "location": "Tunnel",
-    "description": "Inside the tunnel, sound multiplies. The engine echoes off concrete\u2014along with distant moans. When brake lights flare ahead, {SURVIVOR2} realizes too late the tunnel is jammed with corpses that begin to move.",
-    "choices": [
-      {
-        "id": "ram_backwards",
-        "text": "Reverse at full speed, bouncing off stalled cars if needed",
-        "requirements": {
-          "fuel": 1
-        },
-        "successChance": 0.55,
-        "success": {
-          "fuel": -1,
-          "damage": "2d4",
-          "morale": -10
-        },
-        "failure": {
-          "fuel": -1,
-          "damage": "4d6",
-          "morale": -30
-        }
-      },
-      {
-        "id": "fight_through_on_foot",
-        "text": "Abandon the vehicle and fight through the tunnel on foot",
-        "requirements": {
-          "ammo": 2
-        },
-        "successChance": 0.5,
-        "success": {
-          "ammo": -2,
-          "morale": -10
-        },
-        "failure": {
-          "ammo": -2,
-          "morale": -30,
-          "injuryTier": "zombie_contact",
-          "injuryChance": 1.0
-        }
-      },
-      {
-        "id": "climb_over_cars",
-        "text": "Climb over the jammed cars, avoiding direct fights where possible",
-        "requirements": {},
-        "successChance": 0.55,
-        "success": {
-          "morale": -10
-        },
-        "failure": {
-          "damage": "3d6",
-          "morale": -25,
-          "addInjuryId": "sprained_ankle",
-          "injuryChance": 0.3
-        }
-      },
-      {
-        "id": "retreat_and_seal",
-        "text": "Retreat and try to block the tunnel entrance behind you",
-        "requirements": {},
-        "successChance": 0.6,
-        "success": {
-          "morale": -5
-        },
-        "failure": {
-          "damage": "2d4",
-          "morale": -20
-        }
+        "failure": {}
       }
     ]
   },
   {
     "id": "zombie_horde_ambush_03",
-    "region": [
-      "plains",
-      "midwest"
-    ],
+    "region": ["plains", "midwest"],
     "danger": "high",
     "ambush": true,
     "location": "Rural Highway",
-    "description": "A long line of abandoned cars leads into a low dip in the road. As the {RELATIONSHIP} inch forward, heads begin to rise between the vehicles. The horde was sleeping in the shade.",
+    "description": "A long line of abandoned cars leads into a low dip in the road. As you inch forward, heads begin to rise between the vehicles. The horde was sleeping in the shade.",
     "choices": [
       {
         "id": "u_turn_fast",
@@ -1662,30 +1177,34 @@
         "successChance": 0.7,
         "success": {
           "fuel": -1,
-          "morale": -5
+          "morale": -5,
+          "successNarration": "You crank the wheel hard and reverse. The tires squeal. Behind you, the horde rises fully, but you're already speeding away."
         },
         "failure": {
           "fuel": -1,
           "damage": "2d4",
-          "morale": -20
+          "morale": -20,
+          "failureNarration": "The U-turn is too slow. They swarm the car before you complete it. You ram through, taking damage, and escape barely."
         }
       },
       {
         "id": "slow_crawl_silent",
-        "text": "Crawl forward as quietly as possible, minimal noise",
+        "text": "Crawl forward as quietly as possible",
         "requirements": {},
         "successChance": 0.6,
         "success": {
-          "morale": -5
+          "morale": -5,
+          "successNarration": "You inch forward, engine barely idling. They stir but don't fully wake. You clear the dip without triggering the horde."
         },
         "failure": {
           "damage": "2d4",
-          "morale": -15
+          "morale": -15,
+          "failureNarration": "A tire bumps a car door—loud. The horde erupts. You floor it, crashing through, taking hits on all sides."
         }
       },
       {
         "id": "soldier_decoy",
-        "text": "{ROLE1_CAP} tosses noise-making decoys to draw them away",
+        "text": "Toss noise-making decoys to draw them away",
         "requirements": {
           "hasRole": "Soldier",
           "ammo": 1
@@ -1693,12 +1212,14 @@
         "successChance": 0.75,
         "success": {
           "ammo": -1,
-          "morale": 10
+          "morale": 10,
+          "successNarration": "The soldier tosses a firecracker into the distance. It pops loudly. The horde shambles toward the noise. You drive through the gap they leave."
         },
         "failure": {
           "ammo": -1,
           "damage": "2d6",
-          "morale": -20
+          "morale": -20,
+          "failureNarration": "The decoy doesn't draw enough of them. You're forced to ram through the remainder, taking heavy damage."
         }
       },
       {
@@ -1710,29 +1231,29 @@
         "successChance": 0.7,
         "success": {
           "fuel": -1,
-          "morale": 0
+          "morale": 0,
+          "successNarration": "You veer off-road into a cornfield. The car bounces over rough ground, but you circle the entire horde and rejoin the highway past them."
         },
         "failure": {
           "fuel": -1,
           "damage": "2d4",
-          "morale": -10
+          "morale": -10,
+          "failureNarration": "The field is softer than it looks. The car bogs down. You barely get free before the horde reaches you, escaping with damage."
         }
       }
     ]
   },
   {
     "id": "hostile_group_ambush_01",
-    "region": [
-      "appalachian"
-    ],
+    "region": ["appalachian"],
     "danger": "high",
     "ambush": true,
     "location": "Mountain Switchback",
-    "description": "At a tight bend, a pickup blocks the outside lane and locals with hunting rifles step out from the treeline. Their faces are hard and territorial. {SURVIVOR1} feels the drop-off to the side and the trap closing.",
+    "description": "At a tight bend, a pickup blocks the outside lane and locals with hunting rifles step out from the treeline. Their faces are hard and territorial.",
     "choices": [
       {
         "id": "talk_local_rules",
-        "text": "{ROLE1_CAP} asks about their rules and offers to pay a toll",
+        "text": "Ask about their rules and offer to pay a toll",
         "requirements": {
           "hasRole": "Negotiator",
           "food": 2
@@ -1740,12 +1261,14 @@
         "successChance": 0.7,
         "success": {
           "food": -2,
-          "morale": -5
+          "morale": -5,
+          "successNarration": "The negotiator talks calmly. After a tense exchange, they accept food as toll. You're allowed to pass, humiliated but alive."
         },
         "failure": {
           "food": -2,
           "damage": "2d4",
-          "morale": -20
+          "morale": -20,
+          "failureNarration": "They take the food and fire a warning shot anyway. You scramble into the car and flee, bullets whizzing past."
         }
       },
       {
@@ -1757,27 +1280,31 @@
         "successChance": 0.55,
         "success": {
           "fuel": -1,
-          "morale": -5
+          "morale": -5,
+          "successNarration": "You hug the cliff edge, tires on gravel. They shout but don't shoot. You scrape past their truck and accelerate down the switchback."
         },
         "failure": {
           "fuel": -1,
           "damage": "4d6",
-          "morale": -25
+          "morale": -25,
+          "failureNarration": "The edge gives way. The car slides sideways, teetering. You overcorrect and crash into their truck. They drag you out bleeding."
         }
       },
       {
         "id": "soldier_show_force",
-        "text": "{ROLE1_CAP} steps out visibly armed but not aiming, asserting strength",
+        "text": "Step out visibly armed but not aiming",
         "requirements": {
           "hasRole": "Soldier"
         },
         "successChance": 0.65,
         "success": {
-          "morale": 10
+          "morale": 10,
+          "successNarration": "The soldier steps out calmly, rifle visible. There's a long silence. Then one of them nods. They let you pass. Respect earned."
         },
         "failure": {
           "damage": "2d6",
-          "morale": -20
+          "morale": -20,
+          "failureNarration": "They see the rifle as a challenge. Shots ring out. You dive back into the car and flee, taking hits."
         }
       },
       {
@@ -1786,28 +1313,28 @@
         "requirements": {},
         "successChance": 0.7,
         "success": {
-          "morale": -10
+          "morale": -10,
+          "successNarration": "You reverse slowly, hands visible. They watch but don't pursue. You find another route, hours lost but alive."
         },
         "failure": {
           "damage": "2d4",
-          "morale": -15
+          "morale": -15,
+          "failureNarration": "Halfway down, they fire. Rounds crack past. You accelerate in reverse, clipping the cliff wall. You escape damaged."
         }
       }
     ]
   },
   {
     "id": "hostile_group_ambush_02",
-    "region": [
-      "any"
-    ],
+    "region": ["any"],
     "danger": "critical",
     "ambush": true,
     "location": "Abandoned Toll Plaza",
-    "description": "As the vehicle enters the toll plaza, floodlights flare to life from a generator. Armed survivors step out from booths, weapons aimed. The gates slam shut behind you, trapping the {RELATIONSHIP} in the lanes.",
+    "description": "As the vehicle enters the toll plaza, floodlights flare to life from a generator. Armed survivors step out from booths, weapons aimed. The gates slam shut behind you.",
     "choices": [
       {
         "id": "negotiate_exit_fee",
-        "text": "{ROLE1_CAP} quickly offers a heavy toll of supplies",
+        "text": "Quickly offer a heavy toll of supplies",
         "requirements": {
           "hasRole": "Negotiator",
           "food": 3
@@ -1815,12 +1342,14 @@
         "successChance": 0.7,
         "success": {
           "food": -3,
-          "morale": -10
+          "morale": -10,
+          "successNarration": "The negotiator shouts an offer through the window. After a tense pause, they accept. The gate opens. You drive through, stripped but alive."
         },
         "failure": {
           "food": -3,
           "ammo": -2,
-          "morale": -25
+          "morale": -25,
+          "failureNarration": "They take the food, then demand more. You throw ammunition too. They laugh as you crawl away, humiliated and broke."
         }
       },
       {
@@ -1833,12 +1362,14 @@
         "success": {
           "fuel": -2,
           "damage": "2d4",
-          "morale": -10
+          "morale": -10,
+          "successNarration": "You gun the engine and hit the gate hard. It buckles. Metal screeches. You crash through into open road, the car dented but functional."
         },
         "failure": {
           "fuel": -2,
           "damage": "4d6",
-          "morale": -30
+          "morale": -30,
+          "failureNarration": "The gate is reinforced. You hit it and bounce back. Gunfire erupts. The car is shredded. You abandon it and flee on foot."
         }
       },
       {
@@ -1850,12 +1381,14 @@
         "successChance": 0.5,
         "success": {
           "ammo": -3,
-          "morale": -5
+          "morale": -5,
+          "successNarration": "You fire at the floodlights, plunging the plaza into darkness. In the chaos, you ram the gate and escape."
         },
         "failure": {
           "ammo": -3,
           "injury": "gunshot_wound",
-          "morale": -30
+          "morale": -30,
+          "failureNarration": "They return fire immediately. A round punches through your shoulder. You drop the gun, bleeding. You barely escape alive."
         }
       },
       {
@@ -1864,25 +1397,24 @@
         "requirements": {},
         "successChance": 0.55,
         "success": {
-          "morale": -15
+          "morale": -15,
+          "successNarration": "You scramble up the toll booth roof and drop over the far side. They're too slow to react. You lose the car, but you live."
         },
         "failure": {
           "damage": "3d6",
-          "morale": -30
+          "morale": -30,
+          "failureNarration": "You climb, but they shoot. You fall hard from the roof, landing wrong. You crawl away bleeding, the car lost forever."
         }
       }
     ]
   },
   {
     "id": "animal_attack_ambush_01",
-    "region": [
-      "plains",
-      "midwest"
-    ],
+    "region": ["plains", "midwest"],
     "danger": "high",
     "ambush": true,
     "location": "Rural Road",
-    "description": "As night falls, eyes glint on the roadside. A pack of feral dogs sprints from the ditch, leaping at the car doors when {SURVIVOR1} slows. {SURVIVOR2} hears snarls and claws scraping metal.",
+    "description": "As night falls, eyes glint on the roadside. A pack of feral dogs sprints from the ditch, leaping at the car doors.",
     "choices": [
       {
         "id": "accelerate_through_pack",
@@ -1894,12 +1426,14 @@
         "success": {
           "fuel": -1,
           "damage": "1d4",
-          "morale": -5
+          "morale": -5,
+          "successNarration": "You floor it. Dogs slam into the sides, snarling. One clings to the bumper before falling off. You leave them in the dust."
         },
         "failure": {
           "fuel": -1,
           "damage": "3d6",
-          "morale": -20
+          "morale": -20,
+          "failureNarration": "They're too fast. One shatters the side window. Teeth and fur everywhere. You swerve wildly, crashing into a ditch before escaping."
         }
       },
       {
@@ -1911,12 +1445,14 @@
         "successChance": 0.75,
         "success": {
           "ammo": -1,
-          "morale": 5
+          "morale": 5,
+          "successNarration": "You fire twice into the sky. The pack scatters instantly, terrified by the gunfire. You drive away in sudden quiet."
         },
         "failure": {
           "ammo": -1,
           "damage": "2d4",
-          "morale": -15
+          "morale": -15,
+          "failureNarration": "The shots don't scare them. They attack harder. You waste ammunition and take bites before escaping."
         }
       },
       {
@@ -1925,11 +1461,13 @@
         "requirements": {},
         "successChance": 0.6,
         "success": {
-          "morale": -5
+          "morale": -5,
+          "successNarration": "You lock the doors and sit in silence. They circle the car, snarling. After twenty tense minutes, they wander off."
         },
         "failure": {
           "damage": "2d4",
-          "morale": -15
+          "morale": -15,
+          "failureNarration": "They don't lose interest. One finds a crack in the door seal and bites through. You panic, starting the engine and fleeing."
         }
       },
       {
@@ -1938,12 +1476,14 @@
         "requirements": {},
         "successChance": 0.55,
         "success": {
-          "morale": -5
+          "morale": -5,
+          "successNarration": "You crack the door, kick hard at the nearest dog. It yelps and the pack backs off. You slam the door and drive."
         },
         "failure": {
           "morale": -20,
           "addInjuryId": "deep_cut",
-          "injuryChance": 0.6
+          "injuryChance": 0.6,
+          "failureNarration": "The moment the door opens, they surge. Teeth sink into your leg. You scream, kick free, and slam the door. Blood everywhere."
         }
       }
     ]

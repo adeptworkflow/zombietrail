@@ -1,38 +1,58 @@
 [
   {
+    "id": "zombie_close_call",
+    "name": "Close Call",
+    "description": "Narrowly avoided a bite. Clothes torn, nerves shattered.",
+    "severity": "none",
+    "daysUntilDeath": null,
+    "daysUntilTurn": null,
+    "cure": null,
+    "cureAmount": 0,
+    "effects": {
+      "damagePerDay": 0,
+      "moralePerDay": -5,
+      "movementPenalty": 0,
+      "decisionPenalty": 0
+    },
+    "narration": "the infected almost sank its teeth in — too close"
+  },
+
+  {
+    "id": "zombie_minor_wound",
+    "name": "Zombie Scratch",
+    "description": "Claws raked your skin. Painful but clean — no infection risk.",
+    "severity": "minor",
+    "daysUntilDeath": null,
+    "daysUntilTurn": null,
+    "cure": "rest",
+    "healDays": 2,
+    "effects": {
+      "damagePerDay": 1,
+      "moralePerDay": -2,
+      "movementPenalty": 0,
+      "decisionPenalty": 0,
+      "infectionRisk": 0
+    },
+    "narration": "skin torn and bleeding, but no sign of infection"
+  },
+
+  {
     "id": "zombie_bite",
     "name": "Zombie Bite",
-    "description": "Bitten by infected. No cure. Countdown to turning.",
-    "severity": "fatal",
+    "description": "Deep bite wound. High risk of turning.",
+    "severity": "critical",
     "daysUntilDeath": null,
     "daysUntilTurn": 2,
     "cure": null,
     "cureAmount": 0,
+    "infectionChance": 0.70,
     "effects": {
       "damagePerDay": 10,
       "moralePerDay": -10,
       "movementPenalty": 0,
       "decisionPenalty": 0
     },
-    "narration": "fever burning, skin turning gray, eyes glazing over"
-  },
-
-  {
-    "id": "infected_bite",
-    "name": "Infected Bite",
-    "description": "Deep bite wound, infected but not zombified. Deadly without treatment.",
-    "severity": "critical",
-    "daysUntilDeath": 3,
-    "daysUntilTurn": null,
-    "cure": "medicine",
-    "cureAmount": 2,
-    "effects": {
-      "damagePerDay": 5,
-      "moralePerDay": -5,
-      "movementPenalty": 0,
-      "decisionPenalty": 0
-    },
-    "narration": "fever burning, infection spreading from the wound"
+    "narration": "the bite burns hot and deep, skin already mottling around the wound"
   },
 
   {
@@ -50,13 +70,13 @@
       "movementPenalty": 0.5,
       "decisionPenalty": 0
     },
-    "narration": "limping badly, every step agony, leg useless"
+    "narration": "limping badly, every step agony"
   },
 
   {
     "id": "gunshot_wound",
     "name": "Gunshot Wound",
-    "description": "Bullet wound, bleeding. Needs medicine fast.",
+    "description": "Bullet wound, bleeding heavily. Needs medical treatment.",
     "severity": "critical",
     "daysUntilDeath": 5,
     "daysUntilTurn": null,
@@ -68,7 +88,7 @@
       "movementPenalty": 0,
       "decisionPenalty": 0
     },
-    "narration": "bleeding through bandages, pain radiating with every heartbeat"
+    "narration": "blood soaking through makeshift bandages, pain sharp with every breath"
   },
 
   {
@@ -86,7 +106,7 @@
       "movementPenalty": 0,
       "decisionPenalty": 0.10
     },
-    "narration": "head pounding, vision blurry, can't think straight"
+    "narration": "head pounding, vision blurry, thoughts sluggish"
   },
 
   {
@@ -104,7 +124,7 @@
       "movementPenalty": 0.2,
       "decisionPenalty": 0
     },
-    "narration": "favoring one leg, wincing with each step"
+    "narration": "favoring one leg, wincing with every step"
   },
 
   {
@@ -123,13 +143,13 @@
       "decisionPenalty": 0,
       "infectionRisk": 0.20
     },
-    "narration": "wound angry and red, oozing blood"
+    "narration": "flesh torn open, edges angry and red"
   },
 
   {
     "id": "exhaustion",
     "name": "Severe Exhaustion",
-    "description": "Pushed too hard. Need rest desperately.",
+    "description": "Pushed beyond limits. Needs immediate rest.",
     "severity": "moderate",
     "daysUntilDeath": null,
     "daysUntilTurn": null,
@@ -141,6 +161,6 @@
       "movementPenalty": 0,
       "decisionPenalty": 0.05
     },
-    "narration": "barely staying upright, every movement feels like pushing through mud"
+    "narration": "barely staying upright, body trembling from overexertion"
   }
 ]

@@ -1,7 +1,9 @@
 [
   {
     "id": "quiet_night_campfire",
-    "region": ["any"],
+    "region": [
+      "any"
+    ],
     "danger": "low",
     "ambush": false,
     "location": "Camp",
@@ -13,33 +15,47 @@
         "requirements": {},
         "successChance": 0.9,
         "success": {
-          "morale": 10
+          "morale": 10,
+          "resultNarration": "The attempt to 'Take turns keeping watch through the night' resolves uneventfully."
         },
         "failure": {
-          "morale": -5
+          "morale": -5,
+          "resultNarration": "The attempt to 'Take turns keeping watch through the night' resolves uneventfully."
         }
       },
       {
         "id": "cook_meal",
         "text": "Cook makes a proper meal from supplies",
-        "requirements": { "hasRole": "Cook", "food": 2 },
+        "requirements": {
+          "hasRole": "Cook",
+          "food": 2
+        },
         "successChance": 1.0,
         "success": {
           "food": -2,
-          "morale": 20
+          "morale": 20,
+          "resultNarration": "The attempt to 'Cook makes a proper meal from supplies' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Cook makes a proper meal from supplies' resolves uneventfully."
+        }
       },
       {
         "id": "medic_tends",
         "text": "Medic tends to injuries",
-        "requirements": { "hasRole": "Medic", "medicine": 1 },
+        "requirements": {
+          "hasRole": "Medic",
+          "medicine": 1
+        },
         "successChance": 1.0,
         "success": {
           "medicine": -1,
-          "morale": 15
+          "morale": 15,
+          "resultNarration": "The attempt to 'Medic tends to injuries' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Medic tends to injuries' resolves uneventfully."
+        }
       },
       {
         "id": "just_sleep",
@@ -47,20 +63,24 @@
         "requirements": {},
         "successChance": 1.0,
         "success": {
-          "morale": 5
+          "morale": 5,
+          "resultNarration": "The attempt to 'Just sleep - worry about tomorrow tomorrow' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Just sleep - worry about tomorrow tomorrow' resolves uneventfully."
+        }
       }
     ]
   },
-
   {
     "id": "safe_house_lucky_find",
-    "region": ["any"],
+    "region": [
+      "any"
+    ],
     "danger": "low",
     "ambush": false,
     "location": "Safe House",
-    "description": "You spot a small brick house with boarded windows and a heavy front door. Inside, it’s dusty but intact. Someone put work into making this place safe… and then never came back.",
+    "description": "You spot a small brick house with boarded windows and a heavy front door. Inside, it\u2019s dusty but intact. Someone put work into making this place safe\u2026 and then never came back.",
     "choices": [
       {
         "id": "secure_house",
@@ -68,33 +88,47 @@
         "requirements": {},
         "successChance": 0.95,
         "success": {
-          "morale": 12
+          "morale": 12,
+          "resultNarration": "The attempt to 'Check rooms and reinforce doors and windows' resolves uneventfully."
         },
         "failure": {
-          "morale": -3
+          "morale": -3,
+          "resultNarration": "The attempt to 'Check rooms and reinforce doors and windows' resolves uneventfully."
         }
       },
       {
         "id": "cook_real_meal",
         "text": "Cook turns the kitchen into a proper mess hall",
-        "requirements": { "hasRole": "Cook", "food": 3 },
+        "requirements": {
+          "hasRole": "Cook",
+          "food": 3
+        },
         "successChance": 1.0,
         "success": {
           "food": -3,
-          "morale": 20
+          "morale": 20,
+          "resultNarration": "The attempt to 'Cook turns the kitchen into a proper mess hall' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Cook turns the kitchen into a proper mess hall' resolves uneventfully."
+        }
       },
       {
         "id": "medic_clinic_setup",
         "text": "Medic sets up a makeshift clinic in the bedroom",
-        "requirements": { "hasRole": "Medic", "medicine": 1 },
+        "requirements": {
+          "hasRole": "Medic",
+          "medicine": 1
+        },
         "successChance": 1.0,
         "success": {
           "medicine": -1,
-          "morale": 15
+          "morale": 15,
+          "resultNarration": "The attempt to 'Medic sets up a makeshift clinic in the bedroom' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Medic sets up a makeshift clinic in the bedroom' resolves uneventfully."
+        }
       },
       {
         "id": "lighten_load",
@@ -102,16 +136,22 @@
         "requirements": {},
         "successChance": 1.0,
         "success": {
-          "morale": 8
+          "morale": 8,
+          "resultNarration": "The attempt to 'Sort, repack, and stash non-essential junk' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Sort, repack, and stash non-essential junk' resolves uneventfully."
+        }
       }
     ]
   },
-
   {
     "id": "farmhouse_loft_rest",
-    "region": ["midwest", "south", "any"],
+    "region": [
+      "midwest",
+      "south",
+      "any"
+    ],
     "danger": "low",
     "ambush": false,
     "location": "Farmhouse Loft",
@@ -123,10 +163,12 @@
         "requirements": {},
         "successChance": 0.95,
         "success": {
-          "morale": 10
+          "morale": 10,
+          "resultNarration": "The attempt to 'Sleep in the loft and take short shifts on watch' resolves uneventfully."
         },
         "failure": {
-          "morale": -5
+          "morale": -5,
+          "resultNarration": "The attempt to 'Sleep in the loft and take short shifts on watch' resolves uneventfully."
         }
       },
       {
@@ -136,22 +178,30 @@
         "successChance": 0.75,
         "success": {
           "food": 2,
-          "morale": 5
+          "morale": 5,
+          "resultNarration": "The attempt to 'Carefully search the barn for leftover feed or canned goods' resolves uneventfully."
         },
         "failure": {
-          "morale": -5
+          "morale": -5,
+          "resultNarration": "The attempt to 'Carefully search the barn for leftover feed or canned goods' resolves uneventfully."
         }
       },
       {
         "id": "cook_stew_pot",
         "text": "Cook throws everything edible into one big stew",
-        "requirements": { "hasRole": "Cook", "food": 2 },
+        "requirements": {
+          "hasRole": "Cook",
+          "food": 2
+        },
         "successChance": 1.0,
         "success": {
           "food": -2,
-          "morale": 18
+          "morale": 18,
+          "resultNarration": "The attempt to 'Cook throws everything edible into one big stew' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Cook throws everything edible into one big stew' resolves uneventfully."
+        }
       },
       {
         "id": "quiet_moment",
@@ -159,16 +209,22 @@
         "requirements": {},
         "successChance": 1.0,
         "success": {
-          "morale": 7
+          "morale": 7,
+          "resultNarration": "The attempt to 'Sit in the loft doorway and watch the fields until dark' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Sit in the loft doorway and watch the fields until dark' resolves uneventfully."
+        }
       }
     ]
   },
-
   {
     "id": "rooftop_sunset_rest",
-    "region": ["east_coast", "west_coast", "any"],
+    "region": [
+      "east_coast",
+      "west_coast",
+      "any"
+    ],
     "danger": "low",
     "ambush": false,
     "location": "Rooftop",
@@ -180,29 +236,40 @@
         "requirements": {},
         "successChance": 1.0,
         "success": {
-          "morale": 15
+          "morale": 15,
+          "resultNarration": "The attempt to 'Talk about life before the outbreak while the sun goes down' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Talk about life before the outbreak while the sun goes down' resolves uneventfully."
+        }
       },
       {
         "id": "plan_route_ahead",
-        "text": "Spread the map out and plan tomorrow’s route",
+        "text": "Spread the map out and plan tomorrow\u2019s route",
         "requirements": {},
         "successChance": 1.0,
         "success": {
-          "morale": 6
+          "morale": 6,
+          "resultNarration": "The attempt to 'Spread the map out and plan tomorrow\u2019s route' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Spread the map out and plan tomorrow\u2019s route' resolves uneventfully."
+        }
       },
       {
         "id": "scout_from_height",
         "text": "Scout uses the vantage point to look for threats and opportunities",
-        "requirements": { "hasRole": "Scout" },
+        "requirements": {
+          "hasRole": "Scout"
+        },
         "successChance": 1.0,
         "success": {
-          "morale": 8
+          "morale": 8,
+          "resultNarration": "The attempt to 'Scout uses the vantage point to look for threats and opportunities' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Scout uses the vantage point to look for threats and opportunities' resolves uneventfully."
+        }
       },
       {
         "id": "simple_rest",
@@ -210,16 +277,20 @@
         "requirements": {},
         "successChance": 1.0,
         "success": {
-          "morale": 5
+          "morale": 5,
+          "resultNarration": "The attempt to 'Lie back on the warm concrete and just breathe' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Lie back on the warm concrete and just breathe' resolves uneventfully."
+        }
       }
     ]
   },
-
   {
     "id": "roadside_chapel_reflection",
-    "region": ["any"],
+    "region": [
+      "any"
+    ],
     "danger": "low",
     "ambush": false,
     "location": "Roadside Chapel",
@@ -231,19 +302,27 @@
         "requirements": {},
         "successChance": 1.0,
         "success": {
-          "morale": 12
+          "morale": 12,
+          "resultNarration": "The attempt to 'Sit in silence for a while and let your thoughts settle' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Sit in silence for a while and let your thoughts settle' resolves uneventfully."
+        }
       },
       {
         "id": "group_check_in",
         "text": "Negotiator leads a calm talk about fears and plans",
-        "requirements": { "hasRole": "Negotiator" },
+        "requirements": {
+          "hasRole": "Negotiator"
+        },
         "successChance": 1.0,
         "success": {
-          "morale": 18
+          "morale": 18,
+          "resultNarration": "The attempt to 'Negotiator leads a calm talk about fears and plans' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Negotiator leads a calm talk about fears and plans' resolves uneventfully."
+        }
       },
       {
         "id": "sleep_in_pews",
@@ -251,9 +330,12 @@
         "requirements": {},
         "successChance": 1.0,
         "success": {
-          "morale": 8
+          "morale": 8,
+          "resultNarration": "The attempt to 'Drag a few pews together into a makeshift bed' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Drag a few pews together into a makeshift bed' resolves uneventfully."
+        }
       },
       {
         "id": "lock_up_chapel",
@@ -261,18 +343,21 @@
         "requirements": {},
         "successChance": 0.95,
         "success": {
-          "morale": 10
+          "morale": 10,
+          "resultNarration": "The attempt to 'Bar the doors and windows before resting' resolves uneventfully."
         },
         "failure": {
-          "morale": -3
+          "morale": -3,
+          "resultNarration": "The attempt to 'Bar the doors and windows before resting' resolves uneventfully."
         }
       }
     ]
   },
-
   {
     "id": "rainy_day_layover",
-    "region": ["any"],
+    "region": [
+      "any"
+    ],
     "danger": "low",
     "ambush": false,
     "location": "Abandoned Building",
@@ -284,9 +369,12 @@
         "requirements": {},
         "successChance": 1.0,
         "success": {
-          "morale": 10
+          "morale": 10,
+          "resultNarration": "The attempt to 'Take advantage of the noise and darkness to sleep deeply' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Take advantage of the noise and darkness to sleep deeply' resolves uneventfully."
+        }
       },
       {
         "id": "organise_supplies",
@@ -294,37 +382,51 @@
         "requirements": {},
         "successChance": 1.0,
         "success": {
-          "morale": 7
+          "morale": 7,
+          "resultNarration": "The attempt to 'Lay everything out and re-pack your bags efficiently' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Lay everything out and re-pack your bags efficiently' resolves uneventfully."
+        }
       },
       {
         "id": "patch_leaks",
         "text": "Engineer improvises repairs to keep the rain out",
-        "requirements": { "hasRole": "Engineer" },
+        "requirements": {
+          "hasRole": "Engineer"
+        },
         "successChance": 1.0,
         "success": {
-          "morale": 12
+          "morale": 12,
+          "resultNarration": "The attempt to 'Engineer improvises repairs to keep the rain out' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Engineer improvises repairs to keep the rain out' resolves uneventfully."
+        }
       },
       {
         "id": "simple_hot_food",
         "text": "Warm up something simple over a small stove",
-        "requirements": { "food": 1 },
+        "requirements": {
+          "food": 1
+        },
         "successChance": 1.0,
         "success": {
           "food": -1,
-          "morale": 10
+          "morale": 10,
+          "resultNarration": "The attempt to 'Warm up something simple over a small stove' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Warm up something simple over a small stove' resolves uneventfully."
+        }
       }
     ]
   },
-
   {
     "id": "gear_maintenance_stop",
-    "region": ["any"],
+    "region": [
+      "any"
+    ],
     "danger": "low",
     "ambush": false,
     "location": "Camp",
@@ -336,208 +438,68 @@
         "requirements": {},
         "successChance": 1.0,
         "success": {
-          "morale": 8
+          "morale": 8,
+          "resultNarration": "The attempt to 'Clean and check weapons, fix straps and holsters' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Clean and check weapons, fix straps and holsters' resolves uneventfully."
+        }
       },
       {
         "id": "engineer_tunes_vehicle",
         "text": "Engineer spends time tuning the engine and checking the wheels",
-        "requirements": { "hasRole": "Engineer" },
+        "requirements": {
+          "hasRole": "Engineer"
+        },
         "successChance": 1.0,
         "success": {
-          "morale": 12
+          "morale": 12,
+          "resultNarration": "The attempt to 'Engineer spends time tuning the engine and checking the wheels' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Engineer spends time tuning the engine and checking the wheels' resolves uneventfully."
+        }
       },
       {
         "id": "medic_checks_injuries",
         "text": "Medic does a proper once-over on all bandages and bruises",
-        "requirements": { "hasRole": "Medic", "medicine": 1 },
+        "requirements": {
+          "hasRole": "Medic",
+          "medicine": 1
+        },
         "successChance": 1.0,
         "success": {
           "medicine": -1,
-          "morale": 15
+          "morale": 15,
+          "resultNarration": "The attempt to 'Medic does a proper once-over on all bandages and bruises' resolves uneventfully."
         },
-        "failure": {}
+        "failure": {
+          "resultNarration": "The attempt to 'Medic does a proper once-over on all bandages and bruises' resolves uneventfully."
+        }
       },
       {
         "id": "eat_rations",
         "text": "Share a modest meal while you work",
-        "requirements": { "food": 2 },
+        "requirements": {
+          "food": 2
+        },
         "successChance": 1.0,
         "success": {
           "food": -2,
-          "morale": 10
-        },
-        "failure": {}
-      }
-    ]
-  },
-
-  {
-    "id": "nightmare_attack",
-    "region": ["any"],
-    "danger": "high",
-    "ambush": true,
-    "location": "Camp",
-    "description": "You wake to movement in the darkness. Something is circling your camp. Multiple somethings. The infected - drawn by the fire or just luck. Either way, they're here.",
-    "choices": [
-      {
-        "id": "fight_them_off",
-        "text": "Fight them off",
-        "requirements": { "ammo": 2 },
-        "successChance": 0.65,
-        "success": {
-          "ammo": -2,
-          "morale": -10
+          "morale": 10,
+          "resultNarration": "The attempt to 'Share a modest meal while you work' resolves uneventfully."
         },
         "failure": {
-          "ammo": -2,
-          "injury": "zombie_bite",
-          "morale": -25
-        }
-      },
-      {
-        "id": "soldier_defensive",
-        "text": "Soldier sets up defensive position",
-        "requirements": { "hasRole": "Soldier", "ammo": 2 },
-        "successChance": 0.85,
-        "success": {
-          "ammo": -2,
-          "morale": 5
-        },
-        "failure": {
-          "ammo": -2,
-          "damage": "3d6",
-          "morale": -15
-        }
-      },
-      {
-        "id": "flee_camp",
-        "text": "Abandon camp and run",
-        "requirements": {},
-        "successChance": 0.7,
-        "success": {
-          "food": -2,
-          "morale": -20
-        },
-        "failure": {
-          "food": -2,
-          "damage": "3d6",
-          "morale": -25
-        }
-      },
-      {
-        "id": "hide_quietly",
-        "text": "Put out fire and hide in silence",
-        "requirements": {},
-        "successChance": 0.55,
-        "success": {
-          "morale": -15
-        },
-        "failure": {
-          "damage": "4d6",
-          "morale": -25
+          "resultNarration": "The attempt to 'Share a modest meal while you work' resolves uneventfully."
         }
       }
     ]
   },
-
-  {
-    "id": "raider_night_raid",
-    "region": ["any"],
-    "danger": "high",
-    "ambush": true,
-    "location": "Camp",
-    "description": "Rough voices and flashlight beams slice through the dark. Figures move between the trees, getting closer to your camp. Raiders, and they’ve seen your fire.",
-    "choices": [
-      {
-        "id": "stand_and_fight_raiders",
-        "text": "Grab weapons and meet them head on",
-        "requirements": { "ammo": 3 },
-        "successChance": 0.6,
-        "success": {
-          "ammo": -3,
-          "morale": -10
-        },
-        "failure": {
-          "ammo": -3,
-          "damage": "3d6",
-          "food": -2,
-          "morale": -25
-        }
-      },
-      {
-        "id": "negotiate_with_leader",
-        "text": "Negotiator tries to talk the leader down",
-        "requirements": { "hasRole": "Negotiator", "food": 2 },
-        "successChance": 0.75,
-        "success": {
-          "food": -2,
-          "morale": -5
-        },
-        "failure": {
-          "food": -2,
-          "damage": "2d6",
-          "morale": -20
-        }
-      },
-      {
-        "id": "scout_slip_away",
-        "text": "Scout guides you out through the dark before they close in",
-        "requirements": { "hasRole": "Scout" },
-        "successChance": 0.8,
-        "success": {
-          "food": -1,
-          "morale": -15
-        },
-        "failure": {
-          "food": -2,
-          "damage": "3d6",
-          "morale": -25
-        }
-      },
-      {
-        "id": "abandon_supplies",
-        "text": "Leave most of the supplies behind and run for it",
-        "requirements": {},
-        "successChance": 0.95,
-        "success": {
-          "food": -3,
-          "ammo": -2,
-          "morale": -20
-        },
-        "failure": {
-          "food": -3,
-          "ammo": -2,
-          "damage": "1d6",
-          "morale": -25
-        }
-      },
-      {
-        "id": "hide_and_listen",
-        "text": "Smother the fire, hide, and hope they just loot the camp and go",
-        "requirements": {},
-        "successChance": 0.6,
-        "success": {
-          "food": -2,
-          "ammo": -1,
-          "morale": -15
-        },
-        "failure": {
-          "food": -2,
-          "ammo": -1,
-          "damage": "2d6",
-          "morale": -25
-        }
-      }
-    ]
-  },
-
   {
     "id": "feral_dog_pack_attack",
-    "region": ["any"],
+    "region": [
+      "any"
+    ],
     "danger": "high",
     "ambush": true,
     "location": "Camp Edge",
@@ -546,31 +508,40 @@
       {
         "id": "warning_shots",
         "text": "Fire a few warning shots into the air",
-        "requirements": { "ammo": 1 },
+        "requirements": {
+          "ammo": 1
+        },
         "successChance": 0.8,
         "success": {
           "ammo": -1,
-          "morale": -10
+          "morale": -10,
+          "resultNarration": "The attempt to 'Fire a few warning shots into the air' resolves uneventfully."
         },
         "failure": {
           "ammo": -1,
           "damage": "2d4",
-          "morale": -20
+          "morale": -20,
+          "resultNarration": "The attempt to 'Fire a few warning shots into the air' resolves uneventfully."
         }
       },
       {
         "id": "soldier_target_leader",
         "text": "Soldier picks out the pack leader and takes the shot",
-        "requirements": { "hasRole": "Soldier", "ammo": 2 },
+        "requirements": {
+          "hasRole": "Soldier",
+          "ammo": 2
+        },
         "successChance": 0.85,
         "success": {
           "ammo": -2,
-          "morale": 0
+          "morale": 0,
+          "resultNarration": "The attempt to 'Soldier picks out the pack leader and takes the shot' resolves uneventfully."
         },
         "failure": {
           "ammo": -2,
           "damage": "2d6",
-          "morale": -15
+          "morale": -15,
+          "resultNarration": "The attempt to 'Soldier picks out the pack leader and takes the shot' resolves uneventfully."
         }
       },
       {
@@ -579,26 +550,253 @@
         "requirements": {},
         "successChance": 0.7,
         "success": {
-          "morale": -15
+          "morale": -15,
+          "resultNarration": "The attempt to 'Scramble onto the vehicle or nearby rocks and wait them out' resolves uneventfully."
         },
         "failure": {
           "damage": "2d4",
-          "morale": -20
+          "morale": -20,
+          "resultNarration": "The attempt to 'Scramble onto the vehicle or nearby rocks and wait them out' resolves uneventfully."
         }
       },
       {
         "id": "throw_food_distraction",
         "text": "Toss some food far from camp and hope they go for it",
-        "requirements": { "food": 1 },
+        "requirements": {
+          "food": 1
+        },
         "successChance": 0.9,
         "success": {
           "food": -1,
-          "morale": -10
+          "morale": -10,
+          "resultNarration": "The attempt to 'Toss some food far from camp and hope they go for it' resolves uneventfully."
         },
         "failure": {
           "food": -1,
           "damage": "1d6",
-          "morale": -20
+          "morale": -20,
+          "resultNarration": "The attempt to 'Toss some food far from camp and hope they go for it' resolves uneventfully."
+        }
+      }
+    ]
+  },
+  {
+    "id": "riverside_break",
+    "region": [
+      "any"
+    ],
+    "danger": "low",
+    "ambush": false,
+    "location": "Riverside",
+    "description": "You find a quiet spot by a slow-moving river. The sound of running water calms the nerves.",
+    "choices": [
+      {
+        "id": "wash_up",
+        "text": "Wash up and clean wounds",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": 8,
+          "health": 5,
+          "resultNarration": "The cool water eases the tension."
+        },
+        "failure": {
+          "resultNarration": "The attempt to 'Wash up and clean wounds' resolves uneventfully."
+        }
+      },
+      {
+        "id": "fish_for_a_while",
+        "text": "Try to fish",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "food": 2,
+          "morale": 5,
+          "resultNarration": "A lucky catch adds to supplies."
+        },
+        "failure": {
+          "morale": -2,
+          "resultNarration": "No bites and wasted time."
+        }
+      },
+      {
+        "id": "lie_in_grass",
+        "text": "Lie down in the grass",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": 10,
+          "health": 3,
+          "resultNarration": "A rare moment of peace."
+        },
+        "failure": {
+          "resultNarration": "The attempt to 'Lie down in the grass' resolves uneventfully."
+        }
+      }
+    ]
+  },
+  {
+    "id": "abandoned_small_cabin",
+    "region": [
+      "any"
+    ],
+    "danger": "low",
+    "ambush": false,
+    "location": "Cabin",
+    "description": "A small dusty cabin offers shelter from the wind.",
+    "choices": [
+      {
+        "id": "rest_on_beds",
+        "text": "Rest on old mattresses",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": 12,
+          "health": 6,
+          "resultNarration": "The lumpy beds still feel heavenly."
+        },
+        "failure": {
+          "resultNarration": "The attempt to 'Rest on old mattresses' resolves uneventfully."
+        }
+      },
+      {
+        "id": "inspect_for_supplies",
+        "text": "Check cupboards",
+        "requirements": {},
+        "successChance": 0.8,
+        "success": {
+          "food": 1,
+          "morale": 4,
+          "resultNarration": "A forgotten tin of food is a welcome sight."
+        },
+        "failure": {
+          "morale": -2,
+          "resultNarration": "Dust and cobwebs\u2014nothing useful."
+        }
+      },
+      {
+        "id": "sit_and_listen",
+        "text": "Sit quietly",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": 7,
+          "resultNarration": "The forest\u2019s hush smooths frayed nerves."
+        },
+        "failure": {
+          "resultNarration": "The attempt to 'Sit quietly' resolves uneventfully."
+        }
+      }
+    ]
+  },
+  {
+    "id": "lone_traveller_approaches",
+    "region": [
+      "any"
+    ],
+    "danger": "medium",
+    "ambush": false,
+    "location": "Camp",
+    "description": "A lone figure approaches cautiously with hands raised.",
+    "choices": [
+      {
+        "id": "hear_them_out",
+        "text": "Hear them out",
+        "requirements": {},
+        "successChance": 0.6,
+        "success": {
+          "morale": 5,
+          "food": 1,
+          "resultNarration": "They share food and move on peacefully."
+        },
+        "failure": {
+          "damage": "1d6",
+          "morale": -5,
+          "resultNarration": "They lash out and flee."
+        }
+      },
+      {
+        "id": "negotiate_trade",
+        "text": "Negotiate a trade",
+        "requirements": {
+          "hasRole": "Negotiator"
+        },
+        "successChance": 0.75,
+        "success": {
+          "food": 1,
+          "morale": 8,
+          "resultNarration": "A calm exchange leaves both sides better off."
+        },
+        "failure": {
+          "morale": -5,
+          "resultNarration": "They grow suspicious and walk away."
+        }
+      },
+      {
+        "id": "drive_them_off",
+        "text": "Drive them off",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": -3,
+          "resultNarration": "They retreat reluctantly into the brush."
+        },
+        "failure": {
+          "resultNarration": "The attempt to 'Drive them off' resolves uneventfully."
+        }
+      }
+    ]
+  },
+  {
+    "id": "rustling_in_the_brush",
+    "region": [
+      "any"
+    ],
+    "danger": "medium",
+    "ambush": false,
+    "location": "Camp Edge",
+    "description": "Brush shifts nearby. Something moves just out of sight.",
+    "choices": [
+      {
+        "id": "investigate_carefully",
+        "text": "Investigate the noise",
+        "requirements": {},
+        "successChance": 0.65,
+        "success": {
+          "morale": 5,
+          "resultNarration": "A deer bolts\u2014false alarm."
+        },
+        "failure": {
+          "morale": -10,
+          "addInjuryId": "deep_cut",
+          "injuryChance": 0.2,
+          "resultNarration": "A feral cat scratches before escaping."
+        }
+      },
+      {
+        "id": "stay_put",
+        "text": "Stay put",
+        "requirements": {},
+        "successChance": 1.0,
+        "success": {
+          "morale": 3,
+          "resultNarration": "The noise fades. Probably wildlife."
+        },
+        "failure": {
+          "resultNarration": "The attempt to 'Stay put' resolves uneventfully."
+        }
+      },
+      {
+        "id": "make_noise",
+        "text": "Make noise",
+        "requirements": {},
+        "successChance": 0.7,
+        "success": {
+          "resultNarration": "Whatever it was runs off."
+        },
+        "failure": {
+          "morale": -5,
+          "resultNarration": "Your shouting echoes uncomfortably."
         }
       }
     ]

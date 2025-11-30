@@ -76,6 +76,17 @@ let charCreation = {
     relationshipBackstory: ""
 };
 
+// Previous stats for change detection
+let previousStats = {
+    survivor1Health: 100,
+    survivor2Health: 100,
+    food: 12,
+    medicine: 1,
+    fuel: 10,
+    ammo: 6,
+    morale: 70
+};
+
 // Role definitions with starter bonuses and backstories
 const roles = {
     scout: { 
@@ -301,6 +312,28 @@ function getLivingSurvivors() {
 
 function isSoloMode() {
     return getLivingSurvivors().length === 1;
+}
+
+// Role-based combat / retreat bonuses (no negatives)
+const roleStats = {
+    "Scout":   { shootBonus: 0.05, meleeBonus: 0.05, retreatBonus: 0.10 },
+    "Soldier": { shootBonus: 0.15, meleeBonus: 0.10, retreatBonus: 0.05 },
+    "Medic":   { shootBonus: 0.00, meleeBonus: 0.00, retreatBonus: 0.05 },
+    "Engineer":{ shootBonus: 0.00, meleeBonus: 0.00, retreatBonus: 0.00 },
+    "Cook":    { shootBonus: 0.00, meleeBonus: 0.00, retreatBonus: 0.00 },
+    "Negotiator": { shootBonus: 0.00, meleeBonus: 0.00, retreatBonus: 0.05 }
+};
+
+function getRoleBonus(statKey) {
+    const living = getLivingSurvivors();
+    let best = 0;
+    living.forEach(survivor => {
+        const stats = roleStats[survivor.role];
+        if (stats && typeof stats[statKey] === 'number') {
+            if (stats[statKey] > best) best = stats[statKey];
+        }
+    });
+    return best;
 }
 
 function formatText(text) {
@@ -609,8 +642,12 @@ function useMedicine(survivorNum) {
     if (survivor.health >= survivor.maxHealth) return;
     
     // Heal 25 HP
-    survivor.health = Math.min(survivor.health + 25, survivor.maxHealth);
+    const healAmount = 25;
+    survivor.health = Math.min(survivor.health + healAmount, survivor.maxHealth);
     gameState.medicine -= 1;
+    
+    // Show healing notification
+    showStatusNotification(`${survivor.name}: Medicine used (+${healAmount} HP)`, true);
     
     // Medic bonus: also cure one injury
     if (hasRole('Medic')) {
@@ -620,7 +657,9 @@ function useMedicine(survivorNum) {
                 inj.cure === 'medicine' && inj.id !== 'zombie_bite'
             );
             if (curable !== -1) {
+                const curedInjury = survivor.injuries[curable];
                 survivor.injuries.splice(curable, 1);
+                showStatusNotification(`${survivor.name}: ${curedInjury.name} treated!`, true);
             }
         }
     }
@@ -651,6 +690,9 @@ function applyInjury(survivor, injuryId) {
     }
     
     survivor.injuries.push(injury);
+    
+    // Show injury notification
+    showStatusNotification(`${survivor.name}: ${injury.name}!`, false);
 }
 
 function triggerMercyKillEvent(bittenSurvivor) {
@@ -903,6 +945,37 @@ function restOvernight() {
 // DAILY ACTION SYSTEM
 // ============================================================================
 
+function getLocationArrivalText(location, isFirstArrival) {
+    // Special narration for Day 1 at Hilltop Pharmacy
+    if (gameState.day === 1 && location.id === 'hilltop_pharmacy' && isFirstArrival) {
+        const milesRemaining = 204 - location.mileMarker; // Eagle Rock at mile 204
+        return `
+            <strong>Day 1 - Morning at ${location.name}</strong><br><br>
+            You pull into the empty parking lot as the sun rises.<br><br>
+            Behind you, Philadelphia is a smudge of smoke on the horizon. The settlement — your home for three weeks — is gone. 
+            Forty-two miles in eight hours of panicked driving. Not far enough, but the car needed rest and so did you.<br><br>
+            A small neighborhood pharmacy sits on the hill ahead. The windows are intact. The doors are locked.<br><br>
+            <strong>Eagle Rock Checkpoint: ${milesRemaining} miles west (roughly 10-12 days of travel)</strong>
+        `;
+    }
+    
+    // Regular location arrival text
+    if (location.mileMarker <= 204) {
+        const milesRemaining = 204 - location.mileMarker;
+        return `
+            <strong>Day ${gameState.day} - ${location.name}</strong><br><br>
+            ${formatText(location.description)}<br><br>
+            <strong>Eagle Rock Checkpoint: ${milesRemaining} miles remaining</strong>
+        `;
+    } else {
+        // Post-Eagle Rock locations (for future routes)
+        return `
+            <strong>Day ${gameState.day} - ${location.name}</strong><br><br>
+            ${formatText(location.description)}
+        `;
+    }
+}
+
 function showDailyBriefing() {
     if (gameState.gameOver) return;
     
@@ -930,12 +1003,11 @@ function showDailyBriefing() {
     gameState.currentLocation = location;
     gameState.currentAction = null;
     
-    const milesToGo = gameState.targetMiles - gameState.milestraveled;
-    const daysToGo = Math.ceil(milesToGo / 30);
+    // Track if this is first arrival at location
+    const isFirstArrival = !location.visited;
+    location.visited = true;
     
-    let briefing = `<strong>Day ${gameState.day} - Morning at ${location.name}</strong><br><br>`;
-    briefing += `${formatText(location.description)}<br><br>`;
-    briefing += `<em>California Safe Zone: ${milesToGo} miles away (roughly ${daysToGo} days of travel)</em><br><br>`;
+    let briefing = getLocationArrivalText(location, isFirstArrival) + '<br><br>';
     
     if (gameState.food <= 2) briefing += `⚠️ <strong>Food critically low!</strong><br>`;
     if (gameState.fuel <= 0) briefing += `⚠️ <strong>Out of fuel - traveling on foot</strong><br>`;
@@ -962,22 +1034,41 @@ function showDailyActions() {
     const choicesDiv = document.getElementById('choices');
     choicesDiv.innerHTML = '';
     
+    const location = gameState.currentLocation;
     const actions = [
         {
             text: '🚗 Travel - Move to next location',
             action: 'travel'
         },
         {
-            text: '🔍 Scavenge - Search this location',
-            action: 'scavenge'
-        },
-        {
             text: '😴 Rest - Stay here and recover',
             action: 'rest'
         }
     ];
-    
-    if (!gameState.locationSecured && gameState.currentLocation.canSecure) {
+
+    // Determine if scavenge should be available
+    let scavengeAvailable = true;
+    if (location) {
+        if (location.scavengeAreas && location.scavengeAreas.length > 0) {
+            // multi-area system
+            const searched = location.areasSearched || [];
+            if (searched.length >= location.scavengeAreas.length) {
+                scavengeAvailable = false;
+            }
+        } else {
+            // old single-roll system
+            if (location.scavenged) scavengeAvailable = false;
+        }
+    }
+
+    if (scavengeAvailable) {
+        actions.splice(1, 0, {
+            text: '🔍 Scavenge - Search this location',
+            action: 'scavenge'
+        });
+    }
+
+    if (!gameState.locationSecured && location && location.canSecure) {
         actions.push({
             text: '🔒 Secure Location - Fortify this area',
             action: 'secure'
@@ -1065,10 +1156,21 @@ function handleTravel() {
     }
 }
 
+// ============================================================================
+// MULTI-AREA SCAVENGING SYSTEM - UPDATED VERSION (NO AI NARRATION, WITH CONTINUE BUTTONS)
+// ============================================================================
+
 function handleScavenge() {
     const location = gameState.currentLocation;
     if (!location) return;
 
+    // NEW: Multi-area system
+    if (location.scavengeAreas && location.scavengeAreas.length > 0) {
+        showMultiAreaScavenge(location);
+        return;
+    }
+
+    // OLD single-roll system fallback
     if (location.scavenged) {
         showNarration(`
             <strong>${location.name}</strong><br><br>
@@ -1098,10 +1200,16 @@ function handleScavenge() {
         return;
     }
 
-    const pool = gameState.scavengeEncounters.filter(enc => {
-        const locName = enc.location;
-        return SCAVENGE_CATEGORY_MAP[category]?.includes(locName);
+    let pool = gameState.scavengeEncounters.filter(enc => {
+        return enc.locationSpecific === location.id;
     });
+
+    if (pool.length === 0) {
+        pool = gameState.scavengeEncounters.filter(enc => {
+            const locName = enc.location;
+            return SCAVENGE_CATEGORY_MAP[category]?.includes(locName);
+        });
+    }
 
     if (pool.length === 0) {
         showNarration(`
@@ -1131,6 +1239,341 @@ function handleScavenge() {
 
     showEncounterChoices(encounter);
 }
+
+function showMultiAreaScavenge(location) {
+    if (!location.areasSearched) {
+        location.areasSearched = [];
+    }
+
+    const dangerText = getDangerLevelText(location.dangerLevel);
+    const searchCount = location.areasSearched.length;
+    const allSearched = searchCount >= location.scavengeAreas.length;
+
+    let narration = `<strong>${location.name}</strong><br><br>`;
+    narration += `${location.description}<br><br>`;
+
+    if (allSearched) {
+        narration += `You've searched every room. There's nothing left to find here.<br><br>`;
+        narration += `Night is falling. Time to rest.`;
+    } else {
+        narration += dangerText;
+
+        if (searchCount > 0) {
+            narration += `<br><br>You've searched ${searchCount} area${searchCount > 1 ? 's' : ''} so far. `;
+            if (searchCount === 1) narration += `Still relatively quiet.`;
+            else if (searchCount === 2) narration += `You're making noise. Something might notice.`;
+            else narration += `You've been here too long. Danger is rising.`;
+        }
+    }
+
+    showNarration(narration);
+
+    const choicesDiv = document.getElementById('choices');
+    choicesDiv.innerHTML = '';
+
+    if (!allSearched) {
+        location.scavengeAreas.forEach(area => {
+            if (!location.areasSearched.includes(area.id)) {
+                const btn = document.createElement('button');
+                btn.className = 'choice-btn';
+                btn.textContent = `Search: ${area.name}`;
+                btn.onclick = () => searchArea(location, area);
+                choicesDiv.appendChild(btn);
+            }
+        });
+    }
+
+    // End button (rest ends the day)
+    const endBtn = document.createElement('button');
+    endBtn.className = 'choice-btn';
+
+    if (searchCount === 0) {
+        endBtn.textContent = 'Back →';
+        endBtn.onclick = () => showDailyBriefing();
+    } else {
+        endBtn.textContent = allSearched ? 'Rest Overnight →' : 'Stop searching and rest overnight →';
+        endBtn.onclick = () => {
+            showNarration(`
+                <strong>Nightfall</strong><br><br>
+                You've spent the day scavenging. Exhausted, you secure the area and settle in for the night.
+            `);
+
+            const choicesDivInner = document.getElementById('choices');
+            choicesDivInner.innerHTML = '';
+            const btn = document.createElement('button');
+            btn.className = 'choice-btn';
+            btn.textContent = 'Sleep →';
+            btn.onclick = () => restOvernight();
+            choicesDivInner.appendChild(btn);
+        };
+    }
+
+    choicesDiv.appendChild(endBtn);
+}
+
+function getDangerLevelText(dangerLevel) {
+    const dangerDescriptions = {
+        'quiet': 'The building is quiet. No obvious signs of danger.',
+        'movement_inside': 'You hear faint movement inside. Could be nothing... or not.',
+        'groaning': 'Low groaning echoes from within. Definitely not empty.',
+        'very_dangerous': 'Multiple threats inside. This is suicide without preparation.'
+    };
+    return dangerDescriptions[dangerLevel] || dangerDescriptions['quiet'];
+}
+
+function searchArea(location, area) {
+    const searchCount = location.areasSearched.length;
+    const baseDanger = 0.1;
+    const dangerIncrease = 0.2;
+    const dangerChance = baseDanger + (searchCount * dangerIncrease);
+
+    location.areasSearched.push(area.id);
+
+    const encounterDanger = Math.random() < dangerChance;
+
+    if (encounterDanger) {
+        const zombieCount = determineZombieCount(searchCount);
+        const canEscape = determineEscapeChance(zombieCount, searchCount);
+        triggerZombieEncounter(location, area, zombieCount, canEscape);
+    } else {
+        triggerSafeScavenge(location, area, searchCount);
+    }
+}
+
+function determineZombieCount(searchCount) {
+    const roll = Math.random();
+
+    if (searchCount === 0) {
+        if (roll < 0.70) return 1;
+        if (roll < 0.95) return 2;
+        return 3;
+    } else if (searchCount === 1) {
+        if (roll < 0.40) return 1;
+        if (roll < 0.85) return 2;
+        return 3;
+    } else if (searchCount === 2) {
+        if (roll < 0.20) return 1;
+        if (roll < 0.70) return 2;
+        return 3;
+    } else {
+        if (roll < 0.10) return 1;
+        if (roll < 0.50) return 2;
+        return 3;
+    }
+}
+
+function determineEscapeChance(zombieCount, searchCount) {
+    let escapeChance = 0;
+
+    if (zombieCount === 1) escapeChance = 0.80;
+    else if (zombieCount === 2) escapeChance = 0.50;
+    else escapeChance = 0.20;
+
+    escapeChance -= searchCount * 0.15;
+    escapeChance = Math.max(0, escapeChance);
+
+    return Math.random() < escapeChance;
+}
+
+function triggerZombieEncounter(location, area, zombieCount, canEscape) {
+    const encounterTexts = {
+        1: "A zombie shambles out from behind cover!",
+        2: "Two zombies turn toward you, groaning!",
+        3: "Three zombies lurch from the darkness!"
+    };
+
+    const escapeTexts = {
+        1: "It's slow. You could back out before it reaches you.",
+        2: "They're across the room. You might make it to the door.",
+        3: "They're closing in fast, but there's still a gap."
+    };
+
+    const trappedTexts = {
+        1: "It's between you and the door. No way out but through it.",
+        2: "They've cut off your escape. You'll have to fight.",
+        3: "You're surrounded. No escape."
+    };
+
+    let narrationText = `
+        <strong>Searching: ${area.name}</strong><br><br>
+        ${area.description}<br><br>
+        ${encounterTexts[zombieCount]}
+    `;
+
+    narrationText += `<br><br>${canEscape ? escapeTexts[zombieCount] : trappedTexts[zombieCount]}`;
+
+    showNarration(narrationText);
+
+    const choicesDiv = document.getElementById('choices');
+    choicesDiv.innerHTML = '';
+
+    // SHOOT if ammo available
+    if (gameState.ammo > 0) {
+        const shootBtn = document.createElement('button');
+        shootBtn.className = 'choice-btn';
+        shootBtn.textContent = 'Shoot';
+        shootBtn.onclick = () => handleCombat('shoot', location, area, zombieCount);
+        choicesDiv.appendChild(shootBtn);
+    }
+
+    // MELEE
+    const meleeBtn = document.createElement('button');
+    meleeBtn.className = 'choice-btn';
+    meleeBtn.textContent = 'Attack with blade';
+    meleeBtn.onclick = () => handleCombat('melee', location, area, zombieCount);
+    choicesDiv.appendChild(meleeBtn);
+
+    // RETREAT
+    if (canEscape) {
+        const fleeBtn = document.createElement('button');
+        fleeBtn.className = 'choice-btn';
+        fleeBtn.textContent = 'Retreat';
+        fleeBtn.onclick = () => handleRetreatFromZombies(location, area, zombieCount);
+        choicesDiv.appendChild(fleeBtn);
+    }
+}
+
+function handleCombat(method, location, area, zombieCount) {
+    const survivors = getLivingSurvivors();
+    if (!survivors.length) return;
+
+    const target = survivors[Math.floor(Math.random() * survivors.length)];
+
+    let baseHitChance = method === 'shoot' ? 0.9 : 0.7;
+    let bonus = method === 'shoot' ? getRoleBonus('shootBonus') : getRoleBonus('meleeBonus');
+
+    const success = Math.random() < Math.min(1, baseHitChance + bonus);
+
+    let narration = `<strong>Combat</strong><br><br>`;
+
+    if (method === 'shoot') {
+        gameState.ammo = Math.max(0, gameState.ammo - 1);
+        narration += `You raise the gun and open fire.<br><br>`;
+    } else {
+        narration += `You close the distance, blade ready.<br><br>`;
+    }
+
+    if (success) {
+        narration += `You take them down quickly before they can do real damage.`;
+    } else {
+        const dmg = randomInt(8, 20) * zombieCount;
+        target.health -= dmg;
+        narration += `${target.name} gets hit during the struggle (-${dmg} HP).`;
+    }
+
+    showNarration(narration);
+    updateStats();
+
+    const choicesDiv = document.getElementById('choices');
+    choicesDiv.innerHTML = '';
+
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.textContent = 'Continue →';
+    btn.onclick = () => showMultiAreaScavenge(location);
+
+    choicesDiv.appendChild(btn);
+}
+
+function handleRetreatFromZombies(location, area, zombieCount) {
+    const baseChance = zombieCount === 1 ? 0.8 : zombieCount === 2 ? 0.55 : 0.25;
+    const bonus = getRoleBonus('retreatBonus');
+
+    const success = Math.random() < Math.min(1, baseChance + bonus);
+
+    let narration = `<strong>Retreat</strong><br><br>`;
+
+    if (success) {
+        narration += `You slip away before they close the distance.`;
+    } else {
+        const survivors = getLivingSurvivors();
+        const target = survivors[Math.floor(Math.random() * survivors.length)];
+        const dmg = randomInt(10, 25);
+        target.health -= dmg;
+        narration += `${target.name} is grabbed during the retreat (-${dmg} HP).`;
+    }
+
+    showNarration(narration);
+    updateStats();
+
+    const choicesDiv = document.getElementById('choices');
+    choicesDiv.innerHTML = '';
+
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.textContent = 'Continue →';
+    btn.onclick = () => showMultiAreaScavenge(location);
+
+    choicesDiv.appendChild(btn);
+}
+
+function triggerSafeScavenge(location, area, searchCount) {
+    let rewards = {};
+    const baseReward = 3 - searchCount;
+
+    if (location.category === 'pharmacy' || area.id.includes('medical') || area.id.includes('nurse')) {
+        rewards.medicine = Math.max(1, randomInt(baseReward, baseReward + 2));
+        if (Math.random() > 0.5) rewards.food = 1;
+    } else if (location.category === 'grocery' || area.id.includes('cafeteria') || area.id.includes('kitchen')) {
+        rewards.food = Math.max(1, randomInt(baseReward, baseReward + 3));
+        if (Math.random() > 0.5) rewards.medicine = 1;
+    } else if (location.category === 'police_station' || location.category === 'military') {
+        rewards.ammo = Math.max(1, randomInt(baseReward, baseReward + 2));
+        if (Math.random() > 0.5) rewards.food = 1;
+    } else if (location.category === 'gas_station') {
+        rewards.fuel = Math.max(1, randomInt(1, 3));
+        rewards.food = Math.max(1, randomInt(1, 2));
+    } else {
+        // Generic location
+        rewards.food = Math.max(1, randomInt(baseReward, baseReward + 2));
+    }
+
+    let rewardText = [];
+
+    if (rewards.food) {
+        gameState.food += rewards.food;
+        rewardText.push(`+${rewards.food} food`);
+    }
+    if (typeof rewards.medicine !== 'undefined') {
+    const current = Number(gameState.medicine) || 0;
+    const change = Number(rewards.medicine) || 0;
+    gameState.medicine = current + change;
+    rewardText.push(`+${change} medicine`);
+}
+
+    if (rewards.ammo) {
+        gameState.ammo += rewards.ammo;
+        rewardText.push(`+${rewards.ammo} ammo`);
+    }
+    if (rewards.fuel) {
+        gameState.fuel += rewards.fuel;
+        rewardText.push(`+${rewards.fuel} fuel`);
+    }
+
+    gameState.morale += 5;
+
+    showNarration(`
+        <strong>Searching: ${area.name}</strong><br><br>
+        ${area.description}<br><br>
+        You search carefully and find supplies: ${rewardText.join(', ')}.
+    `);
+
+    updateStats();
+
+    const choicesDiv = document.getElementById('choices');
+    choicesDiv.innerHTML = '';
+
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.textContent = 'Continue →';
+    btn.onclick = () => showMultiAreaScavenge(location);
+
+    choicesDiv.appendChild(btn);
+}
+
+// ============================================================================
+// END OF UPDATED MULTI-AREA SCAVENGING SYSTEM
+// ============================================================================
 
 function handleRest() {
     const location = gameState.currentLocation;
@@ -1329,7 +1772,12 @@ function applyEncounterOutcome(outcome) {
     }
     
     if (outcome.food) gameState.food = Math.max(0, gameState.food + outcome.food);
-    if (outcome.medicine) gameState.medicine = Math.max(0, gameState.medicine + outcome.medicine);
+    if (typeof outcome.medicine !== 'undefined') {
+    const current = Number(gameState.medicine) || 0;
+    const change = Number(outcome.medicine) || 0;
+    gameState.medicine = Math.max(0, current + change);
+}
+
     if (outcome.fuel) gameState.fuel = Math.max(0, gameState.fuel + outcome.fuel);
     if (outcome.ammo) gameState.ammo = Math.max(0, gameState.ammo + outcome.ammo);
     if (outcome.morale) {
@@ -1451,13 +1899,106 @@ async function generateAINarration(encounter, choice, isSuccess, outcome) {
 // ============================================================================
 
 function updateStats() {
+    // Track changes and show notifications
+    const changes = [];
+    
+    // Check resource changes
+    if (gameState.food !== previousStats.food) {
+        const diff = gameState.food - previousStats.food;
+        changes.push({ stat: 'food', diff, element: document.getElementById('food') });
+    }
+    if (gameState.medicine !== previousStats.medicine) {
+        const diff = gameState.medicine - previousStats.medicine;
+        changes.push({ stat: 'medicine', diff, element: document.getElementById('medicine') });
+    }
+    if (gameState.fuel !== previousStats.fuel) {
+        const diff = gameState.fuel - previousStats.fuel;
+        changes.push({ stat: 'fuel', diff, element: document.getElementById('fuel') });
+    }
+    if (gameState.ammo !== previousStats.ammo) {
+        const diff = gameState.ammo - previousStats.ammo;
+        changes.push({ stat: 'ammo', diff, element: document.getElementById('ammo') });
+    }
+    if (gameState.morale !== previousStats.morale) {
+        const diff = gameState.morale - previousStats.morale;
+        changes.push({ stat: 'morale', diff, element: document.getElementById('morale') });
+    }
+    
+    // Check health changes
+    if (gameState.survivor1.health !== previousStats.survivor1Health) {
+        const diff = gameState.survivor1.health - previousStats.survivor1Health;
+        if (diff !== 0) {
+            showStatusNotification(diff > 0 ? `${gameState.survivor1.name}: +${diff} HP` : `${gameState.survivor1.name}: ${diff} HP`, diff > 0);
+        }
+    }
+    if (gameState.survivor2.health !== previousStats.survivor2Health) {
+        const diff = gameState.survivor2.health - previousStats.survivor2Health;
+        if (diff !== 0) {
+            showStatusNotification(diff > 0 ? `${gameState.survivor2.name}: +${diff} HP` : `${gameState.survivor2.name}: ${diff} HP`, diff > 0);
+        }
+    }
+    
+    // Update display values
     document.getElementById('day').textContent = gameState.day;
     document.getElementById('food').textContent = gameState.food;
     document.getElementById('medicine').textContent = gameState.medicine;
     document.getElementById('fuel').textContent = gameState.fuel;
+    document.getElementById('ammo').textContent = gameState.ammo;
     document.getElementById('morale').textContent = gameState.morale;
     
+    // Show floating stat changes
+    changes.forEach(change => {
+        showStatChange(change.element, change.diff);
+    });
+    
+    // Update previous stats
+    previousStats = {
+        survivor1Health: gameState.survivor1.health,
+        survivor2Health: gameState.survivor2.health,
+        food: gameState.food,
+        medicine: gameState.medicine,
+        fuel: gameState.fuel,
+        ammo: gameState.ammo,
+        morale: gameState.morale
+    };
+    
     updateSurvivorCards();
+}
+
+function showStatChange(element, diff) {
+    if (!element || diff === 0) return;
+    
+    // Add pulse animation
+    element.classList.add('changed');
+    setTimeout(() => element.classList.remove('changed'), 300);
+    
+    // Create floating text
+    const statBox = element.closest('.stat-box');
+    if (!statBox) return;
+    
+    const floatingText = document.createElement('div');
+    floatingText.className = `stat-change ${diff > 0 ? 'positive' : 'negative'}`;
+    floatingText.textContent = diff > 0 ? `+${diff}` : `${diff}`;
+    floatingText.style.left = '50%';
+    floatingText.style.top = '50%';
+    floatingText.style.transform = 'translate(-50%, -50%)';
+    
+    statBox.style.position = 'relative';
+    statBox.appendChild(floatingText);
+    
+    // Remove after animation (2.5s)
+    setTimeout(() => floatingText.remove(), 2500);
+}
+
+function showStatusNotification(message, isPositive = false) {
+    const notification = document.createElement('div');
+    notification.className = `status-notification ${isPositive ? 'positive' : ''}`;
+    notification.textContent = message;
+    
+    document.body.appendChild(notification);
+    
+    // Remove after animation
+    setTimeout(() => notification.remove(), 2000);
 }
 
 function updateSurvivorCards() {
@@ -1773,9 +2314,9 @@ function showNightBeforeScene() {
         The barricades finally gave way just after midnight. By the time the shouting turned to screams, 
         ${gameState.survivor1.name} and ${gameState.survivor2.name} knew they had minutes before the whole settlement fell.<br><br>
         They grabbed whatever they could carry and reached the car, engine struggling as they pushed it out onto the dark road. 
-        The last emergency broadcast they'd heard — before the radio cut to static — mentioned an evacuation checkpoint somewhere west, 
-        though no one seemed certain exactly where.<br><br>
-        With the settlement burning behind them, that rough direction was all they had. Getting clear of the chaos was the real priority. 
+        The last emergency broadcast they'd heard — before the radio cut to static — mentioned an evacuation checkpoint at Eagle Rock, 
+        somewhere west into the mountains.<br><br>
+        With the settlement burning behind them, Eagle Rock was their only hope. Getting clear of the chaos was the real priority. 
         The details could wait until morning.<br><br>
         <hr style="border-color: #00ff00; margin: 20px 0;"><br>
         <strong>${gameState.survivor1.name}</strong> - ${role1.name} (${backstory1.text})<br>
@@ -1784,7 +2325,7 @@ function showNightBeforeScene() {
         <em>${backstory2.description}</em><br><br>
         <strong>Relationship:</strong> ${rel.text} - ${relBackstory.text}<br>
         <em>${relBackstory.description}</em><br><br>
-        Two survivors. 500 miles to safety. One chance.
+        Two survivors. 162 miles to Eagle Rock. One chance.
     `);
 
     const choicesDiv = document.getElementById('choices');
